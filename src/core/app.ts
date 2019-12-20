@@ -1,79 +1,79 @@
 // 实现动态入口
-import Vue from "vue";
-import Component from "vue-class-component";
+import Vue from 'vue'
+import Component from 'vue-class-component'
 @Component({
   components: {},
   beforeCreate() {
     // 动态加载布局文件
     const requireLayout = (): any[] => {
-      let result;
+      let result
       try {
-        const req = require.context("../layouts", false, /\.vue$/);
+        const req = require.context('../layouts', false, /\.vue$/)
         result = (requireContext => requireContext.keys().map(requireContext))(
           req
         ).map((layout: any) => ({
           name: layout.default.options.name,
           component: layout.default
-        }));
+        }))
       } catch (ex) {
-        console.error(ex, "load layout has error");
+        console.error(ex, 'load layout has error')
       }
-      return result;
-    };
+      return result
+    }
 
     // 导入动态组件
     const importComponents = ({ name, component }) => {
-      const components = this.$options.components;
+      const components = this.$options.components
       if (components) {
-        components[name] = component;
+        components[name] = component
       }
-    };
+    }
 
     // 导入布局
-    requireLayout().forEach(importComponents);
+    requireLayout().forEach(importComponents)
   }
 })
 export default class App extends Vue {
   public render(h, props) {
-    // const loadingEl = h('nuxt-loading', { ref: 'loading' })
     // 创建布局元素
-    const layoutEl = h(this.$app.store.getters.layout);
+    const layoutEl = h(this.$app.store.getters.layout)
     // 创建模板元素
     const templateEl = h(
-      "div",
+      'div',
       {
         domProps: {
-          id: "__layout"
+          id: '__layout'
         },
         style: {
-          width: "100%",
-          height: "100%"
+          width: '100%',
+          height: '100%'
         },
         key: this.$app.state.layout
       },
       [layoutEl]
-    );
+    )
     // 创建过渡元素
     const transitionEl = h(
-      "transition",
+      'transition',
       {
         props: {
-          name: "layout",
-          mode: "out-in"
+          name: 'layout',
+          mode: 'out-in'
         }
       },
       [templateEl]
-    );
+    )
 
     return h(
-      "div",
+      'div',
       {
         domProps: {
-          id: "app" // for check root #app
-        }
+          id: 'app' // for check root #app
+        },
+        class: [`theme-${this.$app.state.theme}`]
       },
       [transitionEl]
-    );
+    )
   }
 
   public created() {
@@ -88,7 +88,7 @@ export default class App extends Vue {
   }
 
   public mounted() {
-    return;
+    return
   }
 
   public errorChanged() {

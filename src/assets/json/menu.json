@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "label": "Dashboard",
+    "children": [
+      {
+        "id": 2,
+        "label": "test1"
+      },
+      {
+        "id": 3,
+        "label": "test2"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "label": "orders",
+    "children": [
+      {
+        "id": 5,
+        "label": "Orders"
+      },
+      {
+        "id": 6,
+        "label": "Upload Order"
+      },
+      {
+        "id": 7,
+        "label": "Forecase Order"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "label": "accounts",
+    "children": [{ "id": 9, "label": "test1" }]
+  },
+  {
+    "id": 10,
+    "label": "setting",
+    "children": [{ "id": 11, "label": "test1" }]
+  }
+]

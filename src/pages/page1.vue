@@ -12,7 +12,7 @@ import { Layout } from '../core/decorator'
 @Component({
   components: {}
 })
-export default class Home extends Vue {
+export default class Page1 extends Vue {
   public aaa = 1
 }
 </script>

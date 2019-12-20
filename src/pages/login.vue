@@ -8,11 +8,11 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Layout } from '../core/decorator'
 
-@Layout('workspace')
+@Layout('empty')
 @Component({
   components: {}
 })
-export default class Home extends Vue {
+export default class Login extends Vue {
   public aaa = 1
 }
 </script>
