@@ -1,11 +1,17 @@
-.full,
-.fill {
+.full {
   height: 100%;
   width: 100%;
 }
 
-.full-absolute,
-.fill-absolute {
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-absolute {
   position: absolute !important;
   top: 0;
   left: 0;
@@ -13,30 +19,16 @@
   right: 0;
 }
 
-.fill-height {
-  height: 100%;
-}
-
-.fill-width {
-  width: 100%;
-}
-
 .text-right {
-  text-align: right
+  text-align: right;
 }
 
 .text-left {
-  text-align: left
+  text-align: left;
 }
 
 .text-center {
-  text-align: center
-}
-
-
-.form-title {
-  font-size: 16px;
-  font-weight: bold;
+  text-align: center;
 }
 
 .no-padding {
@@ -70,7 +62,6 @@
 .item-right {
   .base-item;
   justify-content: center;
-
 }
 
 .item-sum {
@@ -78,16 +69,16 @@
   font-weight: bold;
 }
 
-@media screen and (max-width:1366px) {
-  .set-text-area-width(180px)
+@media screen and (max-width: 1366px) {
+  .set-text-area-width(180px);
 }
 
-@media screen and (min-width:1367px) and (max-width:1920px) {
-  .set-text-area-width(470px)
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+  .set-text-area-width(470px);
 }
 
-@media screen and (min-width:1921px) and (max-width:2560px) {
-  .set-text-area-width(470px)
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .set-text-area-width(470px);
 }
 
 .set-text-area-width(@size) {
@@ -118,15 +109,13 @@
 
 // 未完成功能提示
 .working {
-  .empty-block("功能正在开发中,即将为您呈现!")
+  .empty-block('功能正在开发中,即将为您呈现!');
 }
 
 // 未完成功能提示
 .no-data {
-  .empty-block("暂无数据")
+  .empty-block('暂无数据');
 }
-
-
 
 .layout-header-operate-block {
   -webkit-app-region: no-drag;
@@ -135,13 +124,13 @@
   right: 10px;
 }
 
-.pointer{
-  &:hover{
+.pointer {
+  &:hover {
     cursor: pointer;
   }
 }
 
-.container-full-page{
+.container-full-page {
   position: absolute;
   top: 50px;
   left: 10px;
@@ -151,6 +140,6 @@
 }
 
 // 无border-bottom
-.no-border-bottom{
-  border-bottom: none!important
+.no-border-bottom {
+  border-bottom: none !important;
 }
