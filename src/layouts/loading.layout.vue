@@ -1,5 +1,5 @@
 <template>
-  <div class="layout fill row center-span middle-span" style="overflow:hidden;">
+  <div class="layout full flex-row justify-content-center align-items-center" style="overflow:hidden;">
     <div class="sk-cube-grid">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>

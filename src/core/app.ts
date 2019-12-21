@@ -1,6 +1,25 @@
 // 实现动态入口
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { LocaleProvider } from 'ant-design-vue'
+import moment from 'moment'
+import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
+import en_US from 'ant-design-vue/lib/locale-provider/en_US'
+
+// import 'moment/locale/zh-cn'
+// import 'moment/locale/en'
+
+const locale = {
+  zh_CN: {
+    antd: zh_CN,
+    moment: 'zh-cn'
+  },
+  en_US: {
+    antd: en_US,
+    moment: 'en'
+  }
+}
+
 @Component({
   components: {},
   beforeCreate() {
@@ -64,6 +83,18 @@ export default class App extends Vue {
       [templateEl]
     )
 
+    const localeProviderEl = h(
+      LocaleProvider,
+      {
+        props: {
+          locale: locale[this.$app.state.locale].antd
+        }
+      },
+      [transitionEl]
+    )
+
+    moment.locale(locale[this.$app.state.locale].monent)
+
     return h(
       'div',
       {
@@ -72,7 +103,7 @@ export default class App extends Vue {
         },
         class: [`theme-${this.$app.state.theme}`]
       },
-      [transitionEl]
+      [localeProviderEl]
     )
   }
 

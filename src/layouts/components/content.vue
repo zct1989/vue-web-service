@@ -1,5 +1,7 @@
 <template>
-  <section class="layout-component content full-absolute">2</section>
+  <section class="layout-component content full-absolute">
+    <router-view />
+  </section>
 </template>
 
 <script lang="ts">

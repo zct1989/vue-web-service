@@ -22,7 +22,9 @@ export class ApplicationStore {
         // 当前布局
         layout: 'loading',
         // 当前主题
-        theme: 'default'
+        theme: 'default',
+        // 当前语言
+        locale: 'zh_CN'
       },
       getters: {
         layout(state) {
@@ -44,6 +46,22 @@ export class ApplicationStore {
          */
         updateLayout(state, layout) {
           state.layout = layout
+        },
+        /**
+         * 更新当前主题
+         * @param state
+         * @param theme
+         */
+        updateTheme(state, theme) {
+          state.theme = theme
+        },
+        /**
+         * 更新当前语言
+         * @param state
+         * @param locale
+         */
+        updateLocale(state, locale) {
+          state.locale = locale
         }
       }
     })
