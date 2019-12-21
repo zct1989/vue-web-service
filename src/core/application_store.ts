@@ -24,7 +24,9 @@ export class ApplicationStore {
         // 当前主题
         theme: 'default',
         // 当前语言
-        locale: 'zh_CN'
+        locale: 'zh_CN',
+        // 菜单折叠状态
+        collapsed: false
       },
       getters: {
         layout(state) {
@@ -62,6 +64,9 @@ export class ApplicationStore {
          */
         updateLocale(state, locale) {
           state.locale = locale
+        },
+        updateCollapsed(state){
+          state.collapsed = !state.collapsed
         }
       }
     })

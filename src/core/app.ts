@@ -6,9 +6,6 @@ import moment from 'moment'
 import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import en_US from 'ant-design-vue/lib/locale-provider/en_US'
 
-// import 'moment/locale/zh-cn'
-// import 'moment/locale/en'
-
 const locale = {
   zh_CN: {
     antd: zh_CN,

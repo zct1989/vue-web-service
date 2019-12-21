@@ -1,6 +1,6 @@
 <template>
   <!-- <a-locale-provider :locale="zh_CN"> -->
-  <div class="layout layout-container full-absolute">
+  <div class="layout layout-container full-absolute" :class="layoutClass">
     <div class="logo-wrap wrap">
       <Logo></Logo>
     </div>
@@ -32,7 +32,11 @@ import Content from './components/content.vue'
   components: { Header, SideMenu, Logo, Tabs, Content }
 })
 export default class WorkspaceLayout extends Vue {
-  // private zh_CN = zh_CN
+  private get layoutClass(){
+    return {
+      collapsed:this.$app.state.collapsed
+    }
+  }
 }
 </script>
 
