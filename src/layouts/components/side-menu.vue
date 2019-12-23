@@ -6,10 +6,10 @@
       :inlineCollapsed="collapsed"
       @select="onMenuSelect($event)"
     >
-      <a-menu-item :key="item.id" v-for="item in menuResource">
+      <a-menu-item :key="item.name" v-for="item in menuResource">
         <div class="flex-row justify-content-start align-items-center">
           <a-icon :type="item.icon"></a-icon>
-          <span>{{ item.label }}</span>
+          <span>{{ $t(`menu.${item.name}`) }}</span>
         </div>
       </a-menu-item>
     </a-menu>
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 import { Mutation, State } from 'vuex-class'
 
 @Component({
@@ -30,7 +30,13 @@ export default class SideMenu extends Vue {
   @State('menuActive')
   private menuActive
 
-  private current = []
+  private current: any[] = []
+
+  created() {
+    if (this.$route && this.$route.name) {
+      this.current = [this.$route.name]
+    }
+  }
 
   private get collapsed() {
     return this.$app.state.collapsed
@@ -44,11 +50,16 @@ export default class SideMenu extends Vue {
     }
   }
 
-  private onMenuSelect({ key }) {
-    const menu = this.menuActive.children.find(x => x.id === key)
+  @Watch('$route')
+  onRouteChange(newRoute, oldRoute) {
+    this.current = [newRoute.name]
+  }
 
-    if (menu && menu.path) {
-      this.$router.push(menu.path)
+  private onMenuSelect({ key }) {
+    if (!this.current.includes(key)) {
+      this.$router.push({
+        name: key
+      })
     }
   }
 }

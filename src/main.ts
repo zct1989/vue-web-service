@@ -19,7 +19,6 @@ import { boot, launch } from '~/bootstrap/boots'
 
 // 全局注册其他基础组件
 import { registerComponent } from '~/bootstrap/global-components'
-import VueI18n from 'vue-i18n'
 
 Vue.config.productionTip = false
 

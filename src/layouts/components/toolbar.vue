@@ -2,7 +2,10 @@
   <section
     class="layout-component toolbar full-absolute flex-row justify-content-end align-items-center padding-x"
   >
-    <a-icon :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'" @click="onUpdateFullscreen" />
+    <a-icon
+      :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'"
+      @click="onUpdateFullscreen"
+    />
     <a-dropdown :trigger="['click']">
       <a class="ant-dropdown-link">
         {{ $t('lang') }}
@@ -36,7 +39,6 @@ export default class Toolbar extends Vue {
   }
 
   private onSelectLangage({ key }) {
-    this.$i18n.locale = key
     this.$app.store.commit('updateLocale', key)
   }
 }
@@ -54,7 +56,6 @@ export default class Toolbar extends Vue {
 }
 </style>
 
-<i18n src="~/assets/json/locale.json"></i18n>
 <i18n>
 {
   "en-us": {

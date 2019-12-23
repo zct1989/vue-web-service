@@ -1,13 +1,15 @@
 <template>
   <section
-    class="layout-component logo full-absolute flex-row align-items-center"
-    :class="logoClass"
+    class="layout-component logo full-absolute flex-row align-items-center padding-x"
+    :class="{
+      'justify-content-start': !this.$app.state.collapsed,
+      'justify-content-center': this.$app.state.collapsed
+    }"
   >
-    <div class="logo-wrap" v-if="!collapsed">LOGO</div>
-    <div class="collapse-wrap" @click="onCollapseMenu">
-      <a-icon v-if="collapsed" type="menu-unfold" />
-      <a-icon v-else type="menu-fold" />
-    </div>
+    <a href="/" class="logo-icon-wrap padding-x">
+      <a-icon type="cloud" />
+    </a>
+    <div class="logo-text-wrap padding-x" v-if="!collapsed">LOGO</div>
   </section>
 </template>
 
@@ -18,18 +20,17 @@ import { Vue, Component } from 'vue-property-decorator'
   components: {}
 })
 export default class Logo extends Vue {
-  private get logoClass() {
-    return {
-      'justify-content-between': !this.$app.state.collapsed,
-      'justify-content-center': this.$app.state.collapsed
-    }
-  }
   private get collapsed() {
     return this.$app.state.collapsed
   }
-
-  private onCollapseMenu() {
-    this.$app.store.commit('updateCollapsed')
-  }
 }
 </script>
+
+<style lang="less" scoped>
+.logo-icon-wrap {
+  font-size: 2rem;
+}
+.logo-text-wrap {
+  font-size: 1.5rem;
+}
+</style>

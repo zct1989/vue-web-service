@@ -1,18 +1,23 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>This is an about page11111</h1>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { Layout } from '../core/decorator'
+import { Page } from '../core/decorators'
 
-@Layout('workspace')
+@Page({
+  name: 'page1',
+  layout: 'workspace'
+})
 @Component({
   components: {}
 })
 export default class Page1 extends Vue {
   public aaa = 1
+
+  mounted() {}
 }
 </script>

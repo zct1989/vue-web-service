@@ -136,9 +136,14 @@ export class ApplicationRouter {
   private importAutoRoutes() {
     if (process.env.ROUTERS) {
       const routes = process.env.ROUTERS as any
+
       routes.map(route => {
+        const { default: component } = require('~/pages/' + route.componentPath)
+        const { $name: name, $meta: meta } = component
         this.router.addRoutes([
           {
+            name,
+            meta,
             path: route.routePath,
             component: () => import('~/pages/' + route.componentPath)
           }

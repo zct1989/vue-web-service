@@ -6,9 +6,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { Layout } from '../core/decorator'
+import { Page } from '../core/decorators'
 
-@Layout('empty')
+@Page({
+  name: 'login',
+  layout: 'workspace'
+})
 @Component({
   components: {}
 })

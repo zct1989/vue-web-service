@@ -1,49 +1,49 @@
 [
   {
     "id": 1,
-    "label": "Dashboard",
+    "name": "dashboard",
     "children": [
       {
         "id": 2,
         "icon": "code",
-        "label": "test1"
+        "name": "home"
       },
       {
         "id": 3,
         "icon": "cloud",
-        "label": "test2"
+        "name": "page1"
       }
     ]
   },
   {
     "id": 4,
-    "label": "orders",
+    "name": "order",
     "children": [
       {
         "id": 5,
         "icon": "mobile",
-        "label": "Orders"
+        "name": "orderList"
       },
       {
         "id": 6,
         "icon": "tags",
-        "label": "Upload Order"
+        "name": "uploadOrder"
       },
       {
         "id": 7,
         "icon": "heart",
-        "label": "Forecase Order"
+        "name": "forecaseOrder"
       }
     ]
   },
   {
     "id": 8,
-    "label": "accounts",
-    "children": [{ "id": 9, "icon": "star", "label": "test1" }]
+    "name": "accounts",
+    "children": [{ "id": 9, "icon": "star", "name": "accountList" }]
   },
   {
     "id": 10,
-    "label": "setting",
-    "children": [{ "id": 11, "icon": "camera", "label": "test1" }]
+    "name": "setting",
+    "children": [{ "id": 11, "icon": "camera", "name": "userSetting" }]
   }
 ]

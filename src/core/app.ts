@@ -6,6 +6,9 @@ import moment from 'moment'
 import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import en_US from 'ant-design-vue/lib/locale-provider/en_US'
 
+/**
+ * 支持语言
+ */
 const locale = {
   'zh-cn': {
     antd: zh_CN,
@@ -91,6 +94,8 @@ export default class App extends Vue {
     )
 
     moment.locale(locale[this.$app.state.locale].monent)
+
+    this.$i18n.locale = this.$app.state.locale
 
     return h(
       'div',

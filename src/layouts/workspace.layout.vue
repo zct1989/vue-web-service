@@ -1,21 +1,27 @@
 <template>
-  <div ref="layout" class="layout layout-container full-absolute" :class="layoutClass">
-    <div class="logo-wrap wrap">
-      <Logo></Logo>
+  <a-config-provider :getPopupContainer="getPopupContainer">
+    <div
+      ref="layout"
+      class="layout layout-container full-absolute"
+      :class="layoutClass"
+    >
+      <div class="logo-wrap wrap">
+        <Logo></Logo>
+      </div>
+      <div class="header-wrap wrap">
+        <Header></Header>
+      </div>
+      <div class="side-wrap wrap">
+        <SideMenu></SideMenu>
+      </div>
+      <div class="tabs-wrap wrap">
+        <Tabs></Tabs>
+      </div>
+      <div class="content-wrap wrap">
+        <Content></Content>
+      </div>
     </div>
-    <div class="header-wrap wrap">
-      <Header></Header>
-    </div>
-    <div class="side-wrap wrap">
-      <SideMenu></SideMenu>
-    </div>
-    <div class="tabs-wrap wrap">
-      <Tabs></Tabs>
-    </div>
-    <div class="content-wrap wrap">
-      <Content></Content>
-    </div>
-  </div>
+  </a-config-provider>
 </template>
 
 <script lang="ts">
@@ -48,6 +54,10 @@ export default class WorkspaceLayout extends Vue {
     const updateFullscreen = value ? layout.request : layout.release
     // 更新全屏状态
     updateFullscreen && updateFullscreen()
+  }
+
+  private getPopupContainer(el, dialogContext) {
+    return this.$refs['layout']
   }
 }
 </script>
