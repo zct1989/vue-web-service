@@ -3,7 +3,7 @@
 const aliasExtned = require('./extends/alias.extend')
 const routeExtend = require('./extends/route.extend')
 const svgExtend = require('./extends/svg.extend')
-
+const i18nExtend = require('./extends/i18n.extend')
 module.exports = {
   // 修改webpack配置
   chainWebpack: config => {
@@ -13,6 +13,8 @@ module.exports = {
     routeExtend(config)
     // svg扩展
     svgExtend(config)
+    // i18n扩展
+    i18nExtend(config)
   },
   configureWebpack: {
     module: {

@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 import { IApplicationOption } from './interfaces'
 import { ApplicationRouter } from './application_router'
 import { ApplicationStore } from './application_store'
+import VueI18n from 'vue-i18n'
 
 export default class Application {
   private router: ApplicationRouter
@@ -19,15 +20,28 @@ export default class Application {
 
     // 安装基础插件
     Vue.use(VueRouter)
-
+    // application store
+    const store = ApplicationStore.getStore()
     // 注册路由扩展
-    this.router = new ApplicationRouter(options, ApplicationStore.getStore())
+    this.router = new ApplicationRouter(options, store)
 
+    const i18n = new VueI18n({
+      locale: store.state.locale,
+      messages: {
+        'zh-cn': {
+          xxx: 'hello world'
+        },
+        'en-us': {
+          xxx: 'hello 12312world'
+        }
+      }
+    })
     // 初始化框架
     this.bootstrap(options, () => {
       new Vue({
         router: options.router,
         store: options.store,
+        i18n,
         render: h => h(App)
       }).$mount('#app')
     })

@@ -7,11 +7,11 @@ import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import en_US from 'ant-design-vue/lib/locale-provider/en_US'
 
 const locale = {
-  zh_CN: {
+  'zh-cn': {
     antd: zh_CN,
     moment: 'zh-cn'
   },
-  en_US: {
+  'en-us': {
     antd: en_US,
     moment: 'en'
   }

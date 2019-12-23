@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import { Store } from 'vuex'
+import { IVueI18n } from 'vue-i18n'
 
 /**
  * 初始配置参数接口

@@ -24,7 +24,7 @@ export class ApplicationStore {
         // 当前主题
         theme: 'default',
         // 当前语言
-        locale: 'zh_CN',
+        locale: 'zh-cn',
         // 菜单折叠状态
         collapsed: false,
         // 页面全屏标识
