@@ -5,10 +5,12 @@
     "children": [
       {
         "id": 2,
+        "icon": "code",
         "label": "test1"
       },
       {
         "id": 3,
+        "icon": "cloud",
         "label": "test2"
       }
     ]
@@ -19,14 +21,17 @@
     "children": [
       {
         "id": 5,
+        "icon": "mobile",
         "label": "Orders"
       },
       {
         "id": 6,
+        "icon": "tags",
         "label": "Upload Order"
       },
       {
         "id": 7,
+        "icon": "heart",
         "label": "Forecase Order"
       }
     ]
@@ -34,11 +39,11 @@
   {
     "id": 8,
     "label": "accounts",
-    "children": [{ "id": 9, "label": "test1" }]
+    "children": [{ "id": 9, "icon": "star", "label": "test1" }]
   },
   {
     "id": 10,
     "label": "setting",
-    "children": [{ "id": 11, "label": "test1" }]
+    "children": [{ "id": 11, "icon": "camera", "label": "test1" }]
   }
 ]

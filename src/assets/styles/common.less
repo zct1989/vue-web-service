@@ -43,103 +43,28 @@
   flex-wrap: nowrap;
 }
 
-/*
-* 报表中用到的样式，使用flex布局
-*/
-.base-item {
-  height: 40px;
-  border-bottom: 1px solid rgb(223, 230, 236);
-  line-height: 20px;
-  align-items: center;
-  display: flex;
+/* padding样式*/
+@padding: padding;
+@padding-value: 12px;
+
+.@{padding} {
+  padding: @padding-value;
 }
-
-.item {
-  .base-item;
-  justify-content: center;
+.@{padding}-x {
+  padding: 0 @padding-value;
 }
-
-.item-right {
-  .base-item;
-  justify-content: center;
+.@{padding}-y {
+  padding: @padding-value 0;
 }
-
-.item-sum {
-  .item-right;
-  font-weight: bold;
+.@{padding}-left {
+  padding-left: @padding-value;
 }
-
-@media screen and (max-width: 1366px) {
-  .set-text-area-width(180px);
+.@{padding}-right {
+  padding-right: @padding-value;
 }
-
-@media screen and (min-width: 1367px) and (max-width: 1920px) {
-  .set-text-area-width(470px);
+.@{padding}-top {
+  padding-top: @padding-value;
 }
-
-@media screen and (min-width: 1921px) and (max-width: 2560px) {
-  .set-text-area-width(470px);
-}
-
-.set-text-area-width(@size) {
-  .input-text-area-inline {
-    width: @size;
-  }
-}
-
-/*
- * dialog 操作按钮框
-*/
-.operate-buttons {
-  .text-right;
-  padding-right: 20px;
-  margin-top: 40px;
-}
-
-.empty-block(@text) {
-  text-align: center;
-  margin-top: 25%;
-
-  &::after {
-    content: @text;
-    font-size: 30px;
-    color: #cccccc;
-  }
-}
-
-// 未完成功能提示
-.working {
-  .empty-block('功能正在开发中,即将为您呈现!');
-}
-
-// 未完成功能提示
-.no-data {
-  .empty-block('暂无数据');
-}
-
-.layout-header-operate-block {
-  -webkit-app-region: no-drag;
-  position: absolute;
-  top: 0;
-  right: 10px;
-}
-
-.pointer {
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.container-full-page {
-  position: absolute;
-  top: 50px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  overflow: auto;
-}
-
-// 无border-bottom
-.no-border-bottom {
-  border-bottom: none !important;
+.@{padding}-bottom {
+  padding-bottom: @padding-value;
 }

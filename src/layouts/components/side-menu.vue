@@ -1,8 +1,16 @@
 <template>
   <section class="layout-component side-menu full-absolute">
-    <a-menu v-model="current" mode="vertical" @select="onMenuSelect($event)">
+    <a-menu
+      v-model="current"
+      mode="inline"
+      :inlineCollapsed="collapsed"
+      @select="onMenuSelect($event)"
+    >
       <a-menu-item :key="item.id" v-for="item in menuResource">
-        <span>{{ item.label }}</span>
+        <div class="flex-row justify-content-start align-items-center">
+          <a-icon :type="item.icon"></a-icon>
+          <span>{{ item.label }}</span>
+        </div>
       </a-menu-item>
     </a-menu>
   </section>
@@ -23,6 +31,10 @@ export default class SideMenu extends Vue {
   private menuActive
 
   private current = []
+
+  private get collapsed() {
+    return this.$app.state.collapsed
+  }
 
   private get menuResource() {
     if (this.menuActive) {
@@ -47,6 +59,12 @@ export default class SideMenu extends Vue {
   .ant-menu {
     background: transparent;
     border-right: none;
+
+    .ant-menu-item {
+      i {
+        font-size: 21px;
+      }
+    }
   }
 }
 </style>
