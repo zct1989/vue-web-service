@@ -25,7 +25,6 @@ export default class App extends Vue {
   }
 
   private get locale() {
-    console.log(antdLocale[this.$app.state.locale].antd)
     return antdLocale[this.$app.state.locale].antd
   }
 }
