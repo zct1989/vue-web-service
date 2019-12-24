@@ -1,19 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page2222</h1>
-  </div>
+  <page-container>AccountPage1</page-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { Page } from '../core/decorators'
+import { Page } from '~/core/decorators'
 
 @Page({
-  name: 'page2',
+  name: 'account-page1',
   layout: 'workspace'
 })
 @Component({
   components: {}
 })
-export default class Page2 extends Vue {}
+export default class AccountPage1 extends Vue {}
 </script>

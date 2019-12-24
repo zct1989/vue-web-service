@@ -1,17 +1,15 @@
 module.exports = {
   menu: {
     dashboard: '仪表盘',
-    home: '主页',
-    login: '登录',
-    page1: '页面1',
-    page2: '页面2',
-    order: '订单',
-    orderList: '订单列表',
-    uploadOrder: '上传订单',
-    forecaseOrder: '订单预测',
+    workspace: '工作区',
+    orders: '订单',
+    'order-page1': '订单页面1',
+    'order-page2': '订单页面2',
+    'order-page3': '订单页面3',
     accounts: '账户',
-    accountList: '账户列表',
+    'account-page1': '账户页面1',
+    'account-page2': '账户页面2',
     setting: '设置',
-    userSetting: '用户设置'
+    'user-setting': '用户设置'
   }
 }

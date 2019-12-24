@@ -1,17 +1,15 @@
 module.exports = {
   menu: {
     dashboard: 'dashboard',
-    order: 'order',
-    orderList: 'Order List',
-    uploadOrder: 'Upload Order',
-    forecaseOrder: 'Forecase Order',
-    accounts: 'accounts',
-    accountList: 'Account List',
-    setting: 'setting',
-    userSetting: 'User Seting',
-    home: 'home',
-    login: 'login',
-    page1: 'page1',
-    page2: 'page2'
+    workspace: 'workspace',
+    orders: 'Order',
+    'order-page1': 'Order Page1',
+    'order-page2': 'Order Page2',
+    'order-page3': 'Order Page3',
+    accounts: 'Account',
+    'account-page1': 'Account Page1',
+    'account-page2': 'Account Page2',
+    setting: 'Setting',
+    'user-setting': 'User Setting'
   }
 }
