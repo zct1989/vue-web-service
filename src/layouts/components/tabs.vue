@@ -1,5 +1,5 @@
 <template>
-  <section class="layout-component tabs full-absolute ">
+  <section class="layout-component tabs full-absolute">
     <a-tabs
       :active-key="activePage"
       :hide-add="true"
@@ -8,9 +8,7 @@
       @edit="editPage"
     >
       <a-tab-pane :id="page.name" :key="page.name" v-for="page in pageList">
-        <span slot="tab" :pagekey="page.name">{{
-          $t(`menu.${page.name}`)
-        }}</span>
+        <span slot="tab" :pagekey="page.name">{{ $t(`menu.${page.name}`) }}</span>
       </a-tab-pane>
     </a-tabs>
   </section>
@@ -91,3 +89,8 @@ export default class Tabs extends Vue {
   }
 }
 </script>
+<style lang="less" scoped>
+.layout-component.tabs {
+  padding: 5px 2px;
+}
+</style>

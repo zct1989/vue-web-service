@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './app.vue'
 import router from './router'
 import store from './store'
 import Application from './core/application'
@@ -37,6 +37,7 @@ new Application({
   store,
   // 业务数据初始化
   launch,
+  app: App,
   bootstrap: {
     provides,
     plugins,

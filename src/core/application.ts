@@ -7,8 +7,7 @@ import { IApplicationOption } from './interfaces/application-option.interface'
 import { ApplicationRouter } from './application_router'
 import { ApplicationStore } from './application_store'
 import VueI18n from 'vue-i18n'
-
-const i18nLocale = require('~/assets/locale')
+import { i18nLocale } from '~/assets/locale'
 
 export default class Application {
   private router: ApplicationRouter
@@ -38,7 +37,7 @@ export default class Application {
         router: options.router,
         store: options.store,
         i18n,
-        render: h => h(App)
+        render: h => h(options.app, {}, [h(App)])
       }).$mount('#app')
     })
   }

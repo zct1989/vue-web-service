@@ -1,7 +1,22 @@
-const zhCN = require('./zh-cn')
-const enUS = require('./en-us')
+// andt语言包
+import antd_zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
+import antd_en_US from 'ant-design-vue/lib/locale-provider/en_US'
+// 本地语言包
+import zh_CN from './zh-cn'
+import en_US from './en-us'
 
-module.exports = {
-  'zh-cn': zhCN,
-  'en-us': enUS
+export const i18nLocale = {
+  'zh-cn': zh_CN,
+  'en-us': en_US
+}
+
+export const antdLocale = {
+  'zh-cn': {
+    antd: zh_CN,
+    moment: 'zh-cn'
+  },
+  'en-us': {
+    antd: en_US,
+    moment: 'en'
+  }
 }

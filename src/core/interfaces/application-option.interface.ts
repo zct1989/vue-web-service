@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import { Store } from 'vuex'
+import { VueConstructor } from 'vue'
 
 /**
  * 初始配置参数接口
@@ -22,6 +23,7 @@ export interface IApplicationOption {
     // 注册指令
     directives: (store) => any
   }
+  app: VueConstructor<Vue>
   // 启动逻辑，用于实现初始化数据
   launch: ({ store, router }) => Promise<any>
 }
