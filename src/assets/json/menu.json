@@ -6,44 +6,51 @@
       {
         "id": 2,
         "icon": "code",
-        "name": "home"
-      },
-      {
-        "id": 3,
-        "icon": "cloud",
-        "name": "page1"
+        "name": "workspace"
       }
     ]
   },
   {
     "id": 4,
-    "name": "order",
+    "name": "orders",
     "children": [
       {
         "id": 5,
         "icon": "mobile",
-        "name": "orderList"
+        "name": "order-page1"
       },
       {
         "id": 6,
-        "icon": "tags",
-        "name": "uploadOrder"
+        "icon": "mobile",
+        "name": "order-page2"
       },
       {
         "id": 7,
-        "icon": "heart",
-        "name": "forecaseOrder"
+        "icon": "mobile",
+        "name": "order-page3"
       }
     ]
   },
   {
     "id": 8,
     "name": "accounts",
-    "children": [{ "id": 9, "icon": "star", "name": "accountList" }]
+    "children": [
+      {
+        "id": 9,
+        "icon": "mobile",
+        "name": "account-page1"
+      }
+    ]
   },
   {
     "id": 10,
     "name": "setting",
-    "children": [{ "id": 11, "icon": "camera", "name": "userSetting" }]
+    "children": [
+      {
+        "id": 11,
+        "icon": "mobile",
+        "name": "user-setting"
+      }
+    ]
   }
 ]

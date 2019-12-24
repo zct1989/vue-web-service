@@ -19,7 +19,7 @@ import { antdLocale } from '@/assets/locale'
           component: layout.default
         }))
       } catch (ex) {
-        console.error(ex, 'load layout has error')
+        // console.error(ex, 'load layout has error')
       }
       return result
     }

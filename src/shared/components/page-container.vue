@@ -19,7 +19,6 @@ import PageHeader from './page-header.vue'
 })
 export default class PageContainer extends Vue {
   private get breadcrumb() {
-    console.log(this.$route.matched)
     return this.$route.matched
   }
 }
