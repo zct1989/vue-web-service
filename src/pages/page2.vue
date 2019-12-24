@@ -16,10 +16,5 @@ import { Page } from '../core/decorators'
   components: {}
 })
 export default class Page2 extends Vue {
-  public aaa = 1
-
-  mounted() {
-    console.log(this.$i18n)
-  }
 }
 </script>
