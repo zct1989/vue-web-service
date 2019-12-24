@@ -60,7 +60,7 @@ export default class WorkspaceLayout extends Vue {
 .layout-container {
   display: grid;
   grid-template-columns: 200px auto;
-  grid-template-rows: 60px 60px auto;
+  grid-template-rows: 60px 50px auto;
   grid-template-areas:
     'logo header header'
     'side tabs tabs'

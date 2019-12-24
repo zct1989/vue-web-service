@@ -7,7 +7,7 @@
       <a-icon v-if="collapsed" type="menu-unfold" />
       <a-icon v-else type="menu-fold" />
     </div>
-    <div class="menu-wrap flex-span">
+    <div class="menu-wrap flex-auto">
       <HeaderMenu></HeaderMenu>
     </div>
     <div class="toolbar-wrap">

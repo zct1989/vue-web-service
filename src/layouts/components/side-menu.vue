@@ -67,6 +67,8 @@ export default class SideMenu extends Vue {
 
 <style lang="less">
 .layout-component.side-menu {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
   .ant-menu {
     background: transparent;
     border-right: none;

@@ -93,6 +93,7 @@ export default class Tabs extends Vue {
 </script>
 <style lang="less" scoped>
 .layout-component.tabs {
-  padding: 5px 2px;
+  padding: 10px 2px 0;
+  margin: 0 10px;
 }
 </style>

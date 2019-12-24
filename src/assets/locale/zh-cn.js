@@ -1,5 +1,6 @@
 module.exports = {
   menu: {
+    home: '首页',
     dashboard: '仪表盘',
     workspace: '工作区',
     orders: '订单',
@@ -9,7 +10,7 @@ module.exports = {
     accounts: '账户',
     'account-page1': '账户页面1',
     'account-page2': '账户页面2',
-    setting: '设置',
+    settings: '设置',
     'user-setting': '用户设置'
   }
 }

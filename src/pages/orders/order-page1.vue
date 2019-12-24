@@ -1,5 +1,5 @@
 <template>
-  <page-container>OrderPage1</page-container>
+  <page-container :desc="$t('desc')">OrderPage1</page-container>
 </template>
 
 <script lang="ts">
@@ -15,3 +15,14 @@ import { Page } from '~/core/decorators'
 })
 export default class OrderPage1 extends Vue {}
 </script>
+
+<i18n>
+{
+  "en-us": {
+    "desc": "this is a Order Page1"
+  },
+  "zh-cn": {
+    "desc": "这是订单页面1"
+  }
+}
+</i18n>
