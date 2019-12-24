@@ -1,6 +1,4 @@
-
-export default (store) => {
-
+export default store => {
   /**
    * v-auth 按钮权限控制
    */
@@ -9,17 +7,19 @@ export default (store) => {
     const authCode = binding.value
     // 验证权限码
     if (!authCode) {
-      console.error('未传入权限')
+      // console.error('未传入权限')
       return
     }
     if (authCode === -1) {
       return
     }
-    const hasAuth: boolean = store.getters.hasControlAuthority(authCode.toString()) || store.getters.hasMenuAuthority(authCode.toString())
+    const hasAuth: boolean =
+      store.getters.hasControlAuthority(authCode.toString()) ||
+      store.getters.hasMenuAuthority(authCode.toString())
 
     // 验证权限
     if (!hasAuth) {
       el.style.display = 'none'
     }
   }
-} 
+}

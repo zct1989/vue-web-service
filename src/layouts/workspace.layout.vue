@@ -1,5 +1,9 @@
 <template>
-  <section ref="layout" class="layout layout-container full-absolute" :class="layoutClass">
+  <section
+    ref="layout"
+    class="layout layout-container full-absolute"
+    :class="layoutClass"
+  >
     <div class="logo-wrap wrap">
       <Logo></Logo>
     </div>

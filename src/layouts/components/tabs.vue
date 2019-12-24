@@ -8,7 +8,9 @@
       @edit="editPage"
     >
       <a-tab-pane :id="page.name" :key="page.name" v-for="page in pageList">
-        <span slot="tab" :pagekey="page.name">{{ $t(`menu.${page.name}`) }}</span>
+        <span slot="tab" :pagekey="page.name">{{
+          $t(`menu.${page.name}`)
+        }}</span>
       </a-tab-pane>
     </a-tabs>
   </section>
