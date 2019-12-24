@@ -12,11 +12,11 @@ export const i18nLocale = {
 
 export const antdLocale = {
   'zh-cn': {
-    antd: zh_CN,
+    antd: antd_zh_CN,
     moment: 'zh-cn'
   },
   'en-us': {
-    antd: en_US,
+    antd: antd_en_US,
     moment: 'en'
   }
 }

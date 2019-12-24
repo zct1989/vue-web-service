@@ -15,6 +15,5 @@ import { Page } from '../core/decorators'
 @Component({
   components: {}
 })
-export default class Page2 extends Vue {
-}
+export default class Page2 extends Vue {}
 </script>
