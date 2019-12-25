@@ -43,4 +43,10 @@ body {
     @import './themes/@{theme}.less';
     .generateTheme(@theme);
   }
+
+  #app.theme-light {
+    @theme: light;
+    @import './themes/@{theme}.less';
+    .generateTheme(@theme);
+  }
 }

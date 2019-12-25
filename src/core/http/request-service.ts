@@ -3,9 +3,20 @@ import { RequestOption } from './request-option'
 import { RequestInterceptor } from './request-interceptor'
 import { ExtendService } from './extend-service'
 export class RequestService {
+  // 基础服务配置
+  private static config = {
+    server: '',
+    timeout: 1000 * 60 * 15
+  }
+
+  // 通讯服务单例
+  private static instance: RequestService
+
   // 拦截器
   public static interceptors = {
+    // 前置拦截器
     before: [],
+    // 后置拦截器
     after: [],
     // 状态拦截器
     status: new RequestInterceptor<boolean>(),
@@ -14,6 +25,7 @@ export class RequestService {
     // 失败状态拦截器
     error: new RequestInterceptor()
   }
+
   // 生成URL地址拦截处理
   public static getRequestUrl: (option: RequestOption) => string
 
@@ -22,8 +34,10 @@ export class RequestService {
 
   // 通讯异常处理
   public static requestCatchHandle: (respone: AxiosResponse) => void
+
   // 全局扩展服务数组
   public static extendServices: ExtendService[] = []
+
   /**
    * 设置网络请求基础配置
    * @param param
@@ -33,6 +47,10 @@ export class RequestService {
     RequestService.config.timeout = timeout
   }
 
+  /**
+   * 安装通讯扩展服务
+   * @param service
+   */
   public static installExtendService(service: ExtendService) {
     RequestService.extendServices.push(service)
   }
@@ -47,14 +65,6 @@ export class RequestService {
 
     return new RequestService()
   }
-
-  private static config = {
-    server: '',
-    timeout: 1000 * 60 * 15
-  }
-
-  // 通讯服务单例
-  private static instance: RequestService
 
   // axios单例
   private axiosInstance: AxiosInstance

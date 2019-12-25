@@ -1,6 +1,6 @@
-import { RequestObject } from './request-object'
-import { RequestParams } from './request-params'
-import { IRequestServerConfig } from './interfaces'
+import { RequestObject } from '../http/request-object'
+import { RequestParams } from '../http/request-params'
+import { IRequestServerConfig } from '../http/interfaces'
 import { Model } from '../model'
 /**
  * 网络请求行为装饰器

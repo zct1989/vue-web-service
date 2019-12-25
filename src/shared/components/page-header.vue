@@ -3,7 +3,9 @@
     <div class="breadcrumb">
       <a-breadcrumb>
         <a-breadcrumb-item key="/dashboard/workspace">
-          <a href="#/">{{ $t(`menu.home`) }}</a>
+          <a href="#/">
+            <a-icon type="home" />
+          </a>
         </a-breadcrumb-item>
         <a-breadcrumb-item :key="item" v-for="item in breadcrumb">
           <span>{{ $t(`menu.${item}`) }}</span>

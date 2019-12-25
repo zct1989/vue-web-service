@@ -2,16 +2,29 @@
   <section
     class="layout-component toolbar full-absolute flex-row justify-content-end align-items-center padding-x"
   >
-    <a-icon
-      :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'"
-      @click="onUpdateFullscreen"
-    />
+    <a-icon :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'" @click="onUpdateFullscreen" />
+    <a-popover tar placement="bottom" trigger="click">
+      <template slot="content">
+        <div class="flex-row theme-panel">
+          <div
+            class="theme-item margin-right"
+            v-for="theme of themeList"
+            :key="theme.name"
+            :style="{'background-color':theme.color}"
+            @click="onUpdateTheme(theme.name)"
+          >
+            <a-icon v-if="$app.state.theme === theme.name" type="check" />
+          </div>
+        </div>
+      </template>
+      <a-icon type="bg-colors" />
+    </a-popover>
     <a-dropdown :trigger="['click']">
       <a class="ant-dropdown-link">
         {{ $t('lang') }}
         <a-icon type="down" />
       </a>
-      <a-menu selectable slot="overlay" @select="onSelectLangage($event)">
+      <a-menu v-model="locale" selectable slot="overlay" @select="onSelectLangage($event)">
         <a-menu-item key="zh-cn">
           <a>中文</a>
         </a-menu-item>
@@ -30,6 +43,23 @@ import { Mutation } from 'vuex-class'
   components: {}
 })
 export default class Toolbar extends Vue {
+  private locale
+
+  private themeList = [
+    {
+      name: 'default',
+      color: '#3a5899'
+    },
+    {
+      name: 'light',
+      color: '#6db89b'
+    }
+  ]
+
+  created() {
+    this.locale = [this.$app.state.locale]
+  }
+
   private get fullscreen() {
     return this.$app.state.fullscreen
   }
@@ -41,9 +71,29 @@ export default class Toolbar extends Vue {
   private onSelectLangage({ key }) {
     this.$app.store.commit('updateLocale', key)
   }
+
+  private onUpdateTheme(theme) {
+    this.$app.store.commit('updateTheme', theme)
+  }
 }
 </script>
 
+<style lang="less">
+.theme-panel {
+  min-width: 100px;
+
+  .theme-item {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+  }
+}
+</style>
 <style lang="less" scoped>
 .layout-component.toolbar {
   & > * {
