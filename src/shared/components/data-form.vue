@@ -2,9 +2,19 @@
   <section class="component data-form">
     <a-card>
       <div class="flex-row">
-        <a-form layout="inline" class="flex-auto" :labelCol="labelCol" :wrapperCol="wrapperCol">
+        <a-form
+          ref="form"
+          layout="inline"
+          class="flex-auto"
+          :labelCol="labelCol"
+          :wrapperCol="wrapperCol"
+        >
           <a-row :gutter="24">
-            <a-col span="6" v-for="(node, index) of defaultFormItems" :key="`default-${index}`">
+            <a-col
+              span="6"
+              v-for="(node, index) of defaultFormItems"
+              :key="`default-${index}`"
+            >
               <vnodes :vnodes="node" />
             </a-col>
             <a-col
@@ -19,8 +29,17 @@
         </a-form>
         <div class="form-side">
           <a @click="toggle" v-if="$slots.collapse">
-            <a-icon :type="collapsed ?  'down' : 'up' " />
+            <a-icon :type="collapsed ? 'down' : 'up'" />
           </a>
+        </div>
+      </div>
+      <div class="flex-row justify-content-between margin-top">
+        <div class="form-action">
+          <slot name="action"></slot>
+        </div>
+        <div class="form-button">
+          <a-button type="primary" icon="search">查询</a-button>
+          <a-button icon="undo">重置</a-button>
         </div>
       </div>
     </a-card>
@@ -50,6 +69,10 @@ export default class DataForm extends Vue {
     offset: 2
   }
 
+  public get form() {
+    return this.$refs['form']
+  }
+
   private get defaultFormItems() {
     return this.$slots.default || []
   }
@@ -73,10 +96,18 @@ export default class DataForm extends Vue {
   }
 
   .form-side {
-    flex: 0 1 80px;
+    flex: 0 1 180px;
     text-align: center;
     padding-top: 5px;
     font-size: 18px;
+  }
+
+  & /deep/ .form-button,
+  & /deep/ .form-action {
+    & > * {
+      margin-right: 16px;
+      width: 80px;
+    }
   }
 }
 </style>
