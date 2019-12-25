@@ -1,6 +1,8 @@
 <template>
   <section class="layout-component content full-absolute">
-    <router-view />
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
   </section>
 </template>
 
@@ -12,3 +14,25 @@ import { Vue, Component } from 'vue-property-decorator'
 })
 export default class Content extends Vue {}
 </script>
+
+<style lang="less">
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-enter-active {
+  animation-name: fade;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
