@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 /**
  * 应用内部数据存储
@@ -16,9 +17,14 @@ export class ApplicationStore {
 
   private static createStore() {
     return new Vuex.Store({
+      plugins: [
+        // 持久化存储插件
+        createPersistedState({
+          key: 'core-vuex',
+          storage: localStorage
+        })
+      ],
       state: {
-        // 系统准备状态
-        ready: false,
         // 当前布局
         layout: 'loading',
         // 当前主题
@@ -36,13 +42,6 @@ export class ApplicationStore {
         }
       },
       mutations: {
-        /**
-         * 更新系统启动状态
-         * @param state
-         */
-        ready(state) {
-          state.ready = true
-        },
         /**
          * 更新当前布局
          * @param state
