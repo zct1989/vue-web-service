@@ -39,7 +39,7 @@ export function MockService({
       }
 
       Mock.mock(
-        `${baseUrl}/${requestUrl}`,
+        RegExp(`${baseUrl}/${requestUrl}.*`),
         service.type.toLowerCase(),
         getMockData()
       )

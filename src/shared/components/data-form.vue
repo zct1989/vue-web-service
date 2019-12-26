@@ -2,6 +2,7 @@
   <section class="component data-form">
     <a-card>
       <a-form
+        :form="formInstance"
         ref="form"
         layout="inline"
         @submit="onSumbit"
@@ -12,6 +13,7 @@
           <a-row :gutter="24" class="flex-auto">
             <!--基础表单项-->
             <a-col
+              class="form-item-wrapper"
               span="6"
               v-for="(node, index) of defaultFormItems"
               :key="`default-${index}`"
@@ -45,7 +47,7 @@
             <a-button type="primary" htmlType="submit" icon="search">{{
               $t('search')
             }}</a-button>
-            <a-button icon="undo">{{ $t('reset') }}</a-button>
+            <a-button icon="undo" @click="onReset">{{ $t('reset') }}</a-button>
           </div>
         </div>
       </a-form>
@@ -64,6 +66,13 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
   }
 })
 export default class DataForm extends Vue {
+  // Form对象实例
+  public formInstance
+
+  public beforeCreate() {
+    this.formInstance = this.$form.createForm(this)
+  }
+
   // 输入栏折叠状态
   private collapsed = true
 
@@ -76,13 +85,6 @@ export default class DataForm extends Vue {
   private wrapperCol = {
     span: 16,
     offset: 2
-  }
-
-  /**
-   * 表单对象
-   */
-  public get form() {
-    return this.$refs['form']
   }
 
   /**
@@ -104,6 +106,7 @@ export default class DataForm extends Vue {
    */
   @Emit('submit')
   onSumbit(e) {
+    e.preventDefault()
     return e.target.value
   }
 
@@ -113,15 +116,58 @@ export default class DataForm extends Vue {
   private onToggle() {
     this.collapsed = !this.collapsed
   }
+
+  /**
+   * 重置表单状态
+   */
+  private onReset() {
+    this.formInstance.resetFields()
+  }
+
+  /**
+   * 获取Form表单值
+   */
+  public get values() {
+    return this.formInstance.fieldsStore.getAllValues()
+  }
+
+  /**
+   * 验证Form表单
+   */
+  public validateFields(option?) {
+    return new Promise((resolve, reject) => {
+      this.formInstance.validateFields(option, (err, values) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(values)
+        }
+      })
+    })
+  }
+
+  /**
+   * 操作Form表单
+   */
+  public form(callback?: (form) => void) {
+    if (callback) {
+      return callback(this.formInstance)
+    } else {
+      return this.formInstance
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
 .data-form.component {
+  .form-item-wrapper {
+    max-height: 64px;
+  }
   & /deep/ .ant-form-item {
     width: 100%;
     margin-right: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
 
   .form-side {

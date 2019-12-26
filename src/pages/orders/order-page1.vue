@@ -1,19 +1,22 @@
 <template>
   <page-container :desc="$t('desc')">
-    <data-form @submit="getOrderList">
+    <data-form ref="dataForm" @submit="getOrderList">
       <!--默认显示项-->
       <template #default>
         <a-form-item :label="$t('form.username')">
           <a-input
             :placeholder="$t('form.username')"
-            v-decorator="['note']"
+            v-decorator="['username', { rules: rules.username }]"
           ></a-input>
         </a-form-item>
         <a-form-item :label="$t('form.age')">
-          <a-input :placeholder="$t('form.age')"></a-input>
+          <a-input
+            :placeholder="$t('form.age')"
+            v-decorator="['age']"
+          ></a-input>
         </a-form-item>
         <a-form-item :label="$t('form.sex')">
-          <a-select defaultValue="0">
+          <a-select v-decorator="['sex']">
             <a-select-option value="0">{{ $t('form.male') }}</a-select-option>
             <a-select-option value="1">{{ $t('form.female') }}</a-select-option>
           </a-select>
@@ -22,13 +25,22 @@
       <!--折叠显示项-->
       <template #collapse>
         <a-form-item :label="`${$t('form.field')}1`">
-          <a-input :placeholder="`${$t('form.field')}1`"></a-input>
+          <a-input
+            v-decorator="['field1']"
+            :placeholder="`${$t('form.field')}1`"
+          ></a-input>
         </a-form-item>
         <a-form-item :label="`${$t('form.field')}2`">
-          <a-input :placeholder="`${$t('form.field')}2`"></a-input>
+          <a-input
+            v-decorator="['field2']"
+            :placeholder="`${$t('form.field')}2`"
+          ></a-input>
         </a-form-item>
         <a-form-item :label="`${$t('form.field')}3`">
-          <a-input :placeholder="`${$t('form.field')}3`"></a-input>
+          <a-input
+            v-decorator="['field3']"
+            :placeholder="`${$t('form.field')}3`"
+          ></a-input>
         </a-form-item>
       </template>
       <!--操作行为项-->
@@ -42,12 +54,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Ref } from 'vue-property-decorator'
 import { Page } from '~/core/decorators'
 import { Inject } from 'typescript-ioc'
 import { OrderService } from '~/services/order.service'
 import { RequestParams } from '../../core/http'
 import { PageService } from '../../bootstrap/services/page.service'
+import DataForm from '../../shared/components/data-form.vue'
 
 @Page({
   name: 'order-page1',
@@ -57,10 +70,21 @@ import { PageService } from '../../bootstrap/services/page.service'
   components: {}
 })
 export default class OrderPage1 extends Vue {
+  @Ref()
+  readonly dataForm!: DataForm
+
   // 订单服务
   private orderService = new OrderService()
 
   private data: any[] = []
+
+  // 校验规则
+  // Tip: 校验提示无法实时更新语言
+  private get rules() {
+    return {
+      username: [{ required: true, message: this.$t('rules.username_require') }]
+    }
+  }
 
   private get columns() {
     return [
@@ -91,18 +115,19 @@ export default class OrderPage1 extends Vue {
     ]
   }
 
-  private get form() {
-    return this.$form.createForm(this, { props: {} })
-  }
-
-  mounted() {
-    this.getOrderList()
-  }
+  private mounted() {}
 
   private getOrderList() {
-    this.orderService.getOrderList(new RequestParams()).subscribe(data => {
-      this.data = data
-    })
+    this.dataForm
+      .validateFields()
+      .then(values => {
+        this.orderService
+          .getOrderList(new RequestParams(values))
+          .subscribe(data => {
+            this.data = data
+          })
+      })
+      .catch(err => {})
   }
 }
 </script>
@@ -129,6 +154,9 @@ export default class OrderPage1 extends Vue {
     "action":{
       "create":"Create",
       "delete":"Delete"
+    },
+    "rules":{
+      "username_require":"please input username"
     }
   },
   "zh-cn": {
@@ -151,6 +179,9 @@ export default class OrderPage1 extends Vue {
     "action":{
       "create":"创建",
       "delete":"删除"
+    },
+    "rules":{
+      "username_require":"请输入用户名"
     }
   }
 }
