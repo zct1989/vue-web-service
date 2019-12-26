@@ -80,4 +80,3 @@ export default class PageHeader extends Vue {
   }
 }
 </style>
-

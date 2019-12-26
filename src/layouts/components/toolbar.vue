@@ -2,7 +2,10 @@
   <section
     class="layout-component toolbar full-absolute flex-row justify-content-end align-items-center padding-x"
   >
-    <a-icon :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'" @click="onUpdateFullscreen" />
+    <a-icon
+      :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'"
+      @click="onUpdateFullscreen"
+    />
     <a-popover tar placement="bottom" trigger="click">
       <template v-slot:content>
         <div class="flex-row theme-panel">
@@ -10,7 +13,7 @@
             class="theme-item margin-right"
             v-for="theme of themeList"
             :key="theme.name"
-            :style="{'background-color':theme.color}"
+            :style="{ 'background-color': theme.color }"
             @click="onUpdateTheme(theme.name)"
           >
             <a-icon v-if="$app.state.theme === theme.name" type="check" />

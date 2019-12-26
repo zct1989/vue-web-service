@@ -12,9 +12,20 @@
     <!-- 信息区 -->
     <template v-slot:extra>
       <div class="flex-row">
-        <HeaderInfo :title="$t('day-order-number')" content="934" :bordered="true"></HeaderInfo>
-        <HeaderInfo :title="$t('week-order-number')" content="3534" :bordered="true"></HeaderInfo>
-        <HeaderInfo :title="$t('month-order-number')" content="9334"></HeaderInfo>
+        <HeaderInfo
+          :title="$t('day-order-number')"
+          content="934"
+          :bordered="true"
+        ></HeaderInfo>
+        <HeaderInfo
+          :title="$t('week-order-number')"
+          content="3534"
+          :bordered="true"
+        ></HeaderInfo>
+        <HeaderInfo
+          :title="$t('month-order-number')"
+          content="9334"
+        ></HeaderInfo>
       </div>
     </template>
     <a-card class="margin">

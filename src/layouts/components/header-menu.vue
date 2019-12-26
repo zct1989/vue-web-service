@@ -2,7 +2,9 @@
   <section class="layout-component header-menu full-absolute">
     <a-menu v-model="current" mode="horizontal" @select="onMenuSelect($event)">
       <a-menu-item :key="item.name" v-for="item in menuResource">
-        <div class="full flex-row align-items-center">{{ $t(`menu.${item.name}`) }}</div>
+        <div class="full flex-row align-items-center">
+          {{ $t(`menu.${item.name}`) }}
+        </div>
       </a-menu-item>
     </a-menu>
   </section>

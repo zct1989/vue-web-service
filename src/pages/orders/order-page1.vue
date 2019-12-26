@@ -4,7 +4,10 @@
       <!--默认显示项-->
       <template #default>
         <a-form-item :label="$t('form.username')">
-          <a-input :placeholder="$t('form.username')" v-decorator="['note']"></a-input>
+          <a-input
+            :placeholder="$t('form.username')"
+            v-decorator="['note']"
+          ></a-input>
         </a-form-item>
         <a-form-item :label="$t('form.age')">
           <a-input :placeholder="$t('form.age')"></a-input>

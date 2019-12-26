@@ -11,7 +11,11 @@
         <div class="flex-row">
           <a-row :gutter="24" class="flex-auto">
             <!--基础表单项-->
-            <a-col span="6" v-for="(node, index) of defaultFormItems" :key="`default-${index}`">
+            <a-col
+              span="6"
+              v-for="(node, index) of defaultFormItems"
+              :key="`default-${index}`"
+            >
               <vnodes :vnodes="node" />
             </a-col>
             <!--折叠表单项-->
@@ -38,7 +42,9 @@
           </div>
           <!--基础按钮区-->
           <div class="form-button">
-            <a-button type="primary" htmlType="submit" icon="search">{{ $t('search') }}</a-button>
+            <a-button type="primary" htmlType="submit" icon="search">{{
+              $t('search')
+            }}</a-button>
             <a-button icon="undo">{{ $t('reset') }}</a-button>
           </div>
         </div>

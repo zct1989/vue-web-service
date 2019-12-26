@@ -1,5 +1,10 @@
 <template>
-  <a-icon class="svg-icon" v-if="svgFile" :component="svgComponent" :style="iconStyle" />
+  <a-icon
+    class="svg-icon"
+    v-if="svgFile"
+    :component="svgComponent"
+    :style="iconStyle"
+  />
 </template>
 
 <script lang="tsx">
