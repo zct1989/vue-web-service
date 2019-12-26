@@ -1,46 +1,50 @@
 <template>
   <page-container :desc="$t('desc')">
-    <data-form>
-      <template slot="collapse">
-        <a-form-item label="高级">
-          <a-input placeholder="Username"></a-input>
+    <data-form @submit="getOrderList">
+      <!--默认显示项-->
+      <template #default>
+        <a-form-item :label="$t('form.username')">
+          <a-input :placeholder="$t('form.username')" v-decorator="['note']"></a-input>
         </a-form-item>
-        <a-form-item label="用户名">
-          <a-input placeholder="Username"></a-input>
+        <a-form-item :label="$t('form.age')">
+          <a-input :placeholder="$t('form.age')"></a-input>
         </a-form-item>
-        <a-form-item label="密码">
-          <a-input type="password" placeholder="Password"></a-input>
-        </a-form-item>
-        <a-form-item label="用户名">
-          <a-input placeholder="Username"></a-input>
-        </a-form-item>
-        <a-form-item label="密码">
-          <a-input type="password" placeholder="Password"></a-input>
+        <a-form-item :label="$t('form.sex')">
+          <a-select defaultValue="0">
+            <a-select-option value="0">{{ $t('form.male') }}</a-select-option>
+            <a-select-option value="1">{{ $t('form.female') }}</a-select-option>
+          </a-select>
         </a-form-item>
       </template>
-      <template slot="action">
-        <a-button type="primary">新建</a-button>
-        <a-button>删除</a-button>
+      <!--折叠显示项-->
+      <template #collapse>
+        <a-form-item :label="`${$t('form.field')}1`">
+          <a-input :placeholder="`${$t('form.field')}1`"></a-input>
+        </a-form-item>
+        <a-form-item :label="`${$t('form.field')}2`">
+          <a-input :placeholder="`${$t('form.field')}2`"></a-input>
+        </a-form-item>
+        <a-form-item :label="`${$t('form.field')}3`">
+          <a-input :placeholder="`${$t('form.field')}3`"></a-input>
+        </a-form-item>
       </template>
-      <a-form-item label="用户名">
-        <a-input placeholder="Username"></a-input>
-      </a-form-item>
-      <a-form-item label="密码123">
-        <a-select defaultValue="lucy">
-          <a-select-option value="jack">Jack</a-select-option>
-          <a-select-option value="lucy">Lucy</a-select-option>
-          <a-select-option value="disabled" disabled>Disabled</a-select-option>
-          <a-select-option value="Yiminghe">yiminghe</a-select-option>
-        </a-select>
-      </a-form-item>
+      <!--操作行为项-->
+      <template #action>
+        <a-button type="primary">{{ $t('action.create') }}</a-button>
+        <a-button>{{ $t('action.delete') }}</a-button>
+      </template>
     </data-form>
-    <data-table :data="data" :columns="columns"> </data-table>
+    <data-table :data="data" :columns="columns" rowKey="id"></data-table>
   </page-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Page } from '~/core/decorators'
+import { Inject } from 'typescript-ioc'
+import { OrderService } from '~/services/order.service'
+import { RequestParams } from '../../core/http'
+import { PageService } from '../../bootstrap/services/page.service'
 
 @Page({
   name: 'order-page1',
@@ -50,6 +54,11 @@ import { Page } from '~/core/decorators'
   components: {}
 })
 export default class OrderPage1 extends Vue {
+  // 订单服务
+  private orderService = new OrderService()
+
+  private data: any[] = []
+
   private get columns() {
     return [
       {
@@ -79,18 +88,18 @@ export default class OrderPage1 extends Vue {
     ]
   }
 
-  private data: any[] = []
+  private get form() {
+    return this.$form.createForm(this, { props: {} })
+  }
 
-  created() {
-    this.data = Array.from(Array(50), (item, index) => ({
-      key: index,
-      name: `JIM${index}`,
-      age: 20 + index,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher', 'nice', 'developer'].sort(
-        () => 0.5 - Math.random()
-      )
-    }))
+  mounted() {
+    this.getOrderList()
+  }
+
+  private getOrderList() {
+    this.orderService.getOrderList(new RequestParams()).subscribe(data => {
+      this.data = data
+    })
   }
 }
 </script>
@@ -105,16 +114,40 @@ export default class OrderPage1 extends Vue {
       "address":"Address",
       "tags":"Tag",
       "action":"Action"
+    },
+    "form":{
+       "username":"Name",
+       "age":"Age",
+       "sex":"Sex",
+       "male":"Male",
+       "female":"Female",
+       "field":"Field"
+    },
+    "action":{
+      "create":"Create",
+      "delete":"Delete"
     }
   },
   "zh-cn": {
     "desc": "这是订单页面1",
-     "columns":{
+    "columns":{
       "name":"姓名",
       "age":"年龄",
       "address":"地址",
       "tags":"标签",
       "action":"操作"
+    },
+    "form":{
+       "username":"姓名",
+       "age":"年龄",
+       "sex":"性别",
+       "male":"男性",
+       "female":"女性",
+       "field":"字段"
+    },
+    "action":{
+      "create":"创建",
+      "delete":"删除"
     }
   }
 }

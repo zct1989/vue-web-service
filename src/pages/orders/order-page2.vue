@@ -1,5 +1,7 @@
 <template>
-  <page-container>OrderPage2</page-container>
+  <page-container>
+    <svg-icon name="test1" class="padding" :size="28"></svg-icon>自定义图标
+  </page-container>
 </template>
 
 <script lang="ts">

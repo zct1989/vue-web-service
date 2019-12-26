@@ -4,7 +4,7 @@ import { RequestInterceptor } from './request-interceptor'
 import { ExtendService } from './extend-service'
 export class RequestService {
   // 基础服务配置
-  private static config = {
+  public static config = {
     server: '',
     timeout: 1000 * 60 * 15
   }

@@ -2,7 +2,8 @@
   <section class="page-container">
     <PageHeader :title="pageTitle">
       <slot name="header-action" slot="action"></slot>
-      <slot name="header-content" slot="content"> </slot>
+      <slot name="header-content" slot="content"></slot>
+      <template></template>
       <div slot="content" v-if="!$slots['header-content'] && desc">
         <div class="content-desc">{{ desc }}</div>
       </div>
@@ -46,6 +47,8 @@ export default class PageContainer extends Vue {
   right: 0;
   top: 0;
   bottom: 0;
+  overflow: auto;
+  padding-bottom: 25px;
 }
 
 .content-desc {

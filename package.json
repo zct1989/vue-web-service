@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "@kazupon/vue-i18n-loader": "^0.4.1",
@@ -40,8 +42,11 @@
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
     "typescript": "~3.5.3",
-    "vue-template-compiler": "^2.6.10"
+    "vue-svg-loader": "^0.15.0",
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.2.0"
   }
 }

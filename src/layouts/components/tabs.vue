@@ -8,9 +8,9 @@
       @edit="editPage"
     >
       <a-tab-pane :id="page.name" :key="page.name" v-for="page in pageList">
-        <span slot="tab" :pagekey="page.name">{{
-          $t(`menu.${page.name}`)
-        }}</span>
+        <template v-slot:tab>
+          <span :pagekey="page.name">{{ $t(`menu.${page.name}`) }}</span>
+        </template>
       </a-tab-pane>
     </a-tabs>
   </section>
@@ -33,6 +33,17 @@ export default class Tabs extends Vue {
       this.pageList.push(this.$route)
       this.activePage = this.$route.name
     }
+  }
+
+  /**
+   * 更新tabs列表
+   */
+  @Watch('pageList')
+  private onPageListChange(list) {
+    this.$app.store.commit(
+      'updateTabs',
+      list.map(x => x.name)
+    )
   }
 
   /**

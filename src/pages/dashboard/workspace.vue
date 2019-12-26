@@ -1,7 +1,7 @@
 <template>
   <page-container :desc="$t('desc')">
     <!-- 操作区 -->
-    <template slot="header-action">
+    <template v-slot:header-action>
       <a-button-group style="margin-right: 4px;">
         <a-button>{{ $t('operator1') }}</a-button>
         <a-button>{{ $t('operator2') }}</a-button>
@@ -10,22 +10,11 @@
     </template>
 
     <!-- 信息区 -->
-    <template slot="extra">
+    <template v-slot:extra>
       <div class="flex-row">
-        <HeaderInfo
-          :title="$t('day-order-number')"
-          content="934"
-          :bordered="true"
-        ></HeaderInfo>
-        <HeaderInfo
-          :title="$t('week-order-number')"
-          content="3534"
-          :bordered="true"
-        ></HeaderInfo>
-        <HeaderInfo
-          :title="$t('month-order-number')"
-          content="9334"
-        ></HeaderInfo>
+        <HeaderInfo :title="$t('day-order-number')" content="934" :bordered="true"></HeaderInfo>
+        <HeaderInfo :title="$t('week-order-number')" content="3534" :bordered="true"></HeaderInfo>
+        <HeaderInfo :title="$t('month-order-number')" content="9334"></HeaderInfo>
       </div>
     </template>
     <a-card class="margin">

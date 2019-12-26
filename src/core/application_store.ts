@@ -25,6 +25,7 @@ export class ApplicationStore {
         })
       ],
       state: {
+        tabs: [],
         // 当前布局
         layout: 'loading',
         // 当前主题
@@ -42,6 +43,14 @@ export class ApplicationStore {
         }
       },
       mutations: {
+        /**
+         * 更新Tabs列表
+         * @param state
+         * @param tabs
+         */
+        updateTabs(state, tabs) {
+          state.tabs = tabs
+        },
         /**
          * 更新当前布局
          * @param state

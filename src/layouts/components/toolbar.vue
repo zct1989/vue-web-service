@@ -4,7 +4,7 @@
   >
     <a-icon :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'" @click="onUpdateFullscreen" />
     <a-popover tar placement="bottom" trigger="click">
-      <template slot="content">
+      <template v-slot:content>
         <div class="flex-row theme-panel">
           <div
             class="theme-item margin-right"
@@ -24,14 +24,16 @@
         {{ $t('lang') }}
         <a-icon type="down" />
       </a>
-      <a-menu v-model="locale" selectable slot="overlay" @select="onSelectLangage($event)">
-        <a-menu-item key="zh-cn">
-          <a>中文</a>
-        </a-menu-item>
-        <a-menu-item key="en-us">
-          <a>English</a>
-        </a-menu-item>
-      </a-menu>
+      <template v-slot:overlay>
+        <a-menu v-model="locale" selectable @select="onSelectLangage($event)">
+          <a-menu-item key="zh-cn">
+            <a>中文</a>
+          </a-menu-item>
+          <a-menu-item key="en-us">
+            <a>English</a>
+          </a-menu-item>
+        </a-menu>
+      </template>
     </a-dropdown>
   </section>
 </template>
