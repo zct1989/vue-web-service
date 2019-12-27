@@ -48,7 +48,7 @@
       </a-tooltip>
     </router-link>
 
-    <a :href="`${location.origin}${location.pathname}doc`" target="_blank">
+    <a :href="`${location.origin}${location.pathname}docs`" target="_blank">
       <a-tooltip placement="topLeft">
         <template slot="title">
           <span>文档</span>
