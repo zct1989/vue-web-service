@@ -48,6 +48,6 @@ export default class Header extends Vue {
 }
 
 .toolbar-wrap {
-  flex-basis: 250px;
+  flex-basis: 300px;
 }
 </style>
