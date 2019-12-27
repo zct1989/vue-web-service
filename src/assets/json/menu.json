@@ -50,6 +50,11 @@
         "id": 11,
         "icon": "mobile",
         "name": "user-setting"
+      },
+      {
+        "id": 12,
+        "icon": "info-circle",
+        "name": "change-log"
       }
     ]
   }

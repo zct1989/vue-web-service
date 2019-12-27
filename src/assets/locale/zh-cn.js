@@ -11,6 +11,7 @@ module.exports = {
     'account-page1': '账户页面1',
     'account-page2': '账户页面2',
     settings: '设置',
-    'user-setting': '用户设置'
+    'user-setting': '用户设置',
+    'change-log': '更新日志'
   }
 }

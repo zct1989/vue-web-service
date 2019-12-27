@@ -38,6 +38,24 @@
         </a-menu>
       </template>
     </a-dropdown>
+
+    <router-link :to="{ name: 'change-log' }">
+      <a-tooltip placement="topLeft">
+        <template slot="title">
+          <span>更新日志</span>
+        </template>
+        <a-icon type="info-circle"></a-icon>
+      </a-tooltip>
+    </router-link>
+
+    <a :href="`${location.origin}${location.pathname}doc`" target="_blank">
+      <a-tooltip placement="topLeft">
+        <template slot="title">
+          <span>文档</span>
+        </template>
+        <a-icon type="book"></a-icon>
+      </a-tooltip>
+    </a>
   </section>
 </template>
 
@@ -63,6 +81,10 @@ export default class Toolbar extends Vue {
 
   created() {
     this.locale = [this.$app.state.locale]
+  }
+
+  private get location() {
+    return window.location
   }
 
   private get fullscreen() {

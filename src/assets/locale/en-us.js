@@ -11,6 +11,7 @@ module.exports = {
     'account-page1': 'Account Page1',
     'account-page2': 'Account Page2',
     settings: 'Setting',
-    'user-setting': 'User Setting'
+    'user-setting': 'User Setting',
+    'change-log': 'Change Log'
   }
 }

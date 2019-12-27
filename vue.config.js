@@ -3,6 +3,7 @@ const aliasExtned = require('./extends/alias.extend')
 const routeExtend = require('./extends/route.extend')
 const svgExtend = require('./extends/svg.extend')
 const i18nExtend = require('./extends/i18n.extend')
+const markdownExtend = require('./extends/markdown.extend')
 
 module.exports = {
   // 资源根路径
@@ -17,6 +18,8 @@ module.exports = {
     svgExtend(config)
     // i18n扩展
     i18nExtend(config)
+    // Markdown扩展
+    markdownExtend(config)
   },
   configureWebpack: {
     module: {
