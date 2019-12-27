@@ -1,7 +1,19 @@
 <template>
   <section class="component data-table">
     <a-card>
-      <a-table :columns="columns" :dataSource="data" :rowKey="rowKey"></a-table>
+      <a-table
+        :columns="columns"
+        :dataSource="data"
+        :rowKey="rowKey"
+        :rowSelection="rowSelection"
+      >
+        <vnodes
+          :slot="key"
+          v-for="[key, node] of Object.entries($slots)"
+          :vnodes="node"
+          :key="key"
+        />
+      </a-table>
     </a-card>
   </section>
 </template>
@@ -11,7 +23,12 @@ import { Vue, Component, Prop, Ref } from 'vue-property-decorator'
 import { Table } from 'ant-design-vue'
 
 @Component({
-  components: {}
+  components: {
+    Vnodes: {
+      functional: true,
+      render: (h, ctx) => ctx.props.vnodes
+    }
+  }
 })
 export default class DataTable extends Vue {
   @Ref('table')
@@ -25,5 +42,8 @@ export default class DataTable extends Vue {
 
   @Prop()
   public rowKey
+
+  @Prop()
+  public rowSelection
 }
 </script>

@@ -3,8 +3,7 @@
 ---
 
 - [ ] vue-web-serivce - 添加日志服务
-- [ ] vue-web-service - 添加工作台示例⻚面
-- [ ] vue-web-service - 添加列表详情示例⻚面
+- [ ] vue-web-service - 添加工作台示例页面
 - [ ] vue-web-service - 添加项目文档
 - [ ] vue-web-service - 添加导出 excel 功能
 - [ ] vue-web-service - 添加富文本编辑器 quill-editor
@@ -24,6 +23,7 @@
 
 ---
 
+- [x] vue-web-service - 添加列表详情示例页面
 - [x] vue-web-service - 添加更新日志文档
 - [x] vue-web-service - 添加 data-form 组件
 - [x] vue-web-service - 添加 data-table 组件
@@ -33,14 +33,14 @@
 - [x] vue-web-service - 添加通信服务支持
 - [x] vue-web-service - 添加 mock 支持
 - [x] vue-web-service - 添加 svg-icon 组件
-- [x] vue-web-service - 添加⻚面缓存功能
+- [x] vue-web-service - 添加页面缓存功能
 - [x] vue-web-service - 添加 content 添加过渡动画
 - [x] vue-web-service - 添加主题切换功能
 - [x] vue-web-service - 添加 pagecontainer 组件
 - [x] vue-web-service - 添加 pageheader 组件
 - [x] vue-web-service - 添加 github action 部署功能
 - [x] vue-web-service - 整理已有基础模块结构
-- [x] vue-web-service - ⻚面名称支持
+- [x] vue-web-service - 添加页面名称支持
 - [x] vue-web-service - 添加多语言模块
 - [x] vue-web-service - 添加全屏支持
 - [x] vue-web-service - 添加菜单模块

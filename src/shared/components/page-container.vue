@@ -37,6 +37,10 @@ export default class PageContainer extends Vue {
     const name = this.$parent.$options.name
     return this.title || this.$t(`menu.${name}`)
   }
+
+  public scrollToBottom() {
+    this.$el.scrollTo(0, this.$el.scrollHeight)
+  }
 }
 </script>
 

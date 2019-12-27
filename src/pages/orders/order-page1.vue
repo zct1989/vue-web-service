@@ -1,5 +1,5 @@
 <template>
-  <page-container :desc="$t('desc')">
+  <page-container ref="pageContainer" :desc="$t('desc')">
     <data-form ref="dataForm" @submit="getOrderList">
       <!--默认显示项-->
       <template #default>
@@ -49,7 +49,51 @@
         <a-button>{{ $t('action.delete') }}</a-button>
       </template>
     </data-form>
-    <data-table :data="data" :columns="columns" rowKey="id"></data-table>
+    <data-table
+      :data="data"
+      rowKey="id"
+      :rowSelection="{
+        selectedRowKeys: selectedRowKeys,
+        onChange: keys => (selectedRowKeys = keys)
+      }"
+    >
+      <a-table-column
+        :title="$t('columns.name')"
+        dataIndex="name"
+        key="name"
+      ></a-table-column>
+      <a-table-column
+        :title="$t('columns.age')"
+        dataIndex="age"
+        key="age"
+      ></a-table-column>
+      <a-table-column
+        :title="$t('columns.address')"
+        dataIndex="address"
+        key="address"
+      ></a-table-column>
+      <a-table-column :title="$t('columns.tags')" dataIndex="tags" key="tags">
+        <template slot-scope="tags">
+          <span>
+            <a-tag v-for="tag in tags" color="blue" :key="tag">{{ tag }}</a-tag>
+          </span>
+        </template>
+      </a-table-column>
+      <a-table-column :title="$t('columns.action')" key="action">
+        <template slot-scope="detail">
+          <a class="margin-right" @click="onDetail(detail)">
+            {{ $t('action.detail') }}</a
+          >
+
+          <a-popconfirm :title="$t('delete')" @confirm="onDelete(detail.id)">
+            <a class="margin-right"> {{ $t('action.delete') }}</a>
+          </a-popconfirm>
+        </template>
+      </a-table-column>
+    </data-table>
+    <a-card class="margin-y" v-if="detail">
+      <OrderDetail :detail="detail"></OrderDetail>
+    </a-card>
   </page-container>
 </template>
 
@@ -58,65 +102,53 @@ import { Component, Vue, Ref } from 'vue-property-decorator'
 import { Page } from '~/core/decorators'
 import { Inject } from 'typescript-ioc'
 import { OrderService } from '~/services/order.service'
-import { RequestParams } from '../../core/http'
-import { PageService } from '../../bootstrap/services/page.service'
-import DataForm from '../../shared/components/data-form.vue'
+import { RequestParams } from '~/core/http'
+import { PageService } from '~/bootstrap/services/page.service'
+import DataForm from '~/shared/components/data-form.vue'
+import OrderDetail from '~/components/orders/order-detail.vue'
+import PageContainer from '../../shared/components/page-container.vue'
 
 @Page({
   name: 'order-page1',
   layout: 'workspace'
 })
 @Component({
-  components: {}
+  components: {
+    OrderDetail
+  }
 })
 export default class OrderPage1 extends Vue {
+  // 表格组件
   @Ref()
   readonly dataForm!: DataForm
+
+  @Ref()
+  readonly pageContainer!: PageContainer
 
   // 订单服务
   private orderService = new OrderService()
 
+  // 表格数据源
   private data: any[] = []
 
+  // 表格选择项
+  private selectedRowKeys: any[] = []
+
+  // 详情项
+  private detail = null
+
   // 校验规则
-  // Tip: 校验提示无法实时更新语言
   private get rules() {
     return {
       username: [{ required: true, message: this.$t('rules.username_require') }]
     }
   }
 
-  private get columns() {
-    return [
-      {
-        title: this.$t('columns.name'),
-        dataIndex: 'name',
-        key: 'name'
-      },
-      {
-        title: this.$t('columns.age'),
-        dataIndex: 'age',
-        key: 'age'
-      },
-      {
-        title: this.$t('columns.address'),
-        dataIndex: 'address',
-        key: 'address'
-      },
-      {
-        title: this.$t('columns.tags'),
-        key: 'tags',
-        dataIndex: 'tags'
-      },
-      {
-        title: this.$t('columns.action'),
-        key: 'action'
-      }
-    ]
-  }
-
   private mounted() {}
 
+  /**
+   * 获取订单数据
+   */
   private getOrderList() {
     this.dataForm
       .validateFields()
@@ -129,6 +161,19 @@ export default class OrderPage1 extends Vue {
       })
       .catch(err => {})
   }
+
+  /**
+   * 查看订单详情
+   */
+  private onDetail(detail) {
+    this.detail = detail
+    this.$nextTick(() => this.pageContainer.scrollToBottom())
+  }
+
+  /**
+   * 删除订单操作
+   */
+  private onDelete(id) {}
 }
 </script>
 
@@ -153,11 +198,13 @@ export default class OrderPage1 extends Vue {
     },
     "action":{
       "create":"Create",
-      "delete":"Delete"
+      "delete":"Delete",
+      "detail":"Detail"
     },
     "rules":{
       "username_require":"please input username"
-    }
+    },
+    "delete":"Are you sure delete?"
   },
   "zh-cn": {
     "desc": "这是订单页面1",
@@ -178,11 +225,13 @@ export default class OrderPage1 extends Vue {
     },
     "action":{
       "create":"创建",
-      "delete":"删除"
+      "delete":"删除",
+      "detail":"详情"
     },
     "rules":{
       "username_require":"请输入用户名"
-    }
+    },
+    "delete":"是否确认删除?"
   }
 }
 </i18n>

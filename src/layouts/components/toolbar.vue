@@ -40,18 +40,18 @@
     </a-dropdown>
 
     <router-link :to="{ name: 'change-log' }">
-      <a-tooltip placement="topLeft">
+      <a-tooltip placement="bottom">
         <template slot="title">
-          <span>更新日志</span>
+          <span>{{ $t('change-log') }}</span>
         </template>
         <a-icon type="info-circle"></a-icon>
       </a-tooltip>
     </router-link>
 
     <a :href="`${location.origin}${location.pathname}docs`" target="_blank">
-      <a-tooltip placement="topLeft">
+      <a-tooltip placement="bottom">
         <template slot="title">
-          <span>文档</span>
+          <span>{{ $t('docs') }}</span>
         </template>
         <a-icon type="book"></a-icon>
       </a-tooltip>
@@ -136,10 +136,14 @@ export default class Toolbar extends Vue {
 <i18n>
 {
   "en-us": {
-    "lang": "Language"
+    "lang": "Language",
+    "change-log":"Change Log",
+    "docs": "Document"
   },
   "zh-cn": {
-    "lang": "语言"
+    "lang": "语言",
+    "change-log":"更新日志",
+    "docs": "文档"
   }
 }
 </i18n>
