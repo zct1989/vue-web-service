@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "cz": "npm run log && git add . && git cz",
+    "dev": "vue-cli-service serve",
+    "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0"
   },
   "dependencies": {
     "@kazupon/vue-i18n-loader": "^0.4.1",
@@ -38,19 +40,34 @@
     "@vue/cli-service": "^4.1.0",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/eslint-config-typescript": "^4.0.0",
+    "commitizen": "^4.0.3",
+    "commitlint": "^8.2.0",
+    "conventional-changelog-cli": "^2.0.28",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "github-markdown-css": "^3.0.1",
     "html-loader": "^0.5.5",
+    "husky": "^3.0.9",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "markdown-loader": "^5.1.0",
     "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
     "typescript": "~3.5.3",
+    "vue-cli-plugin-commitlint": "^1.0.12",
     "vue-svg-loader": "^0.15.0",
     "vue-template-compiler": "^2.6.10",
     "vuepress": "^1.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/vue-cli-plugin-commitlint/lib/cz"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
