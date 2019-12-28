@@ -5,6 +5,7 @@
         :columns="columns"
         :dataSource="data"
         :rowKey="rowKey"
+        :loading="loadingState"
         :rowSelection="rowSelection"
       >
         <vnodes
@@ -21,6 +22,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Ref } from 'vue-property-decorator'
 import { Table } from 'ant-design-vue'
+import { LoadingService } from '../../bootstrap/services/loading.service'
 
 @Component({
   components: {
@@ -38,6 +40,9 @@ export default class DataTable extends Vue {
   public data
 
   @Prop()
+  public loading!: LoadingService
+
+  @Prop()
   public columns
 
   @Prop()
@@ -45,5 +50,13 @@ export default class DataTable extends Vue {
 
   @Prop()
   public rowSelection
+
+  private loadingState = false
+
+  mounted() {
+    if (this.loading) {
+      this.loading.status.subscribe(value => (this.loadingState = value))
+    }
+  }
 }
 </script>

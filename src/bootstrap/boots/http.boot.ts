@@ -48,6 +48,6 @@ export default function() {
     }
   }
 
-  // 安装服务扩展
+  // 安装全局服务扩展
   // RequestService.installExtendService(new TokenService())
 }

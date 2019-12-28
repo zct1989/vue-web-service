@@ -22,6 +22,7 @@
 
 ---
 
+- [x] vue-web-service - 添加Loading服务
 - [x] vue-web-service - 添加代码提交自动验证
 - [x] vue-web-service - 添加列表详情示例页面
 - [x] vue-web-service - 添加更新日志文档

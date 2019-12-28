@@ -104,6 +104,7 @@ import { Inject } from 'typescript-ioc'
 import { OrderService } from '~/services/order.service'
 import { RequestParams } from '~/core/http'
 import { PageService } from '~/bootstrap/services/page.service'
+import { LoadingService } from '~/bootstrap/services/loading.service'
 import DataForm from '~/shared/components/data-form.vue'
 import OrderDetail from '~/components/orders/order-detail.vue'
 import PageContainer from '../../shared/components/page-container.vue'
@@ -127,7 +128,8 @@ export default class OrderPage1 extends Vue {
 
   // 订单服务
   private orderService = new OrderService()
-
+  // Loading服务
+  private loadingService = new LoadingService()
   // 表格数据源
   private data: any[] = []
 
@@ -154,7 +156,11 @@ export default class OrderPage1 extends Vue {
       .validateFields()
       .then(values => {
         this.orderService
-          .getOrderList(new RequestParams(values))
+          .getOrderList(
+            new RequestParams(values, {
+              loading: this.loadingService
+            })
+          )
           .subscribe(data => {
             this.data = data
           })
