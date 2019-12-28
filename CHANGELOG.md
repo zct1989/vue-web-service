@@ -3,7 +3,7 @@
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
- - | 添加commitlint&change-log'支持 | [e758fd6](https://github.com/zct1989/vue-web-service/commit/e758fd6)
+ - | 添加commitlint&change-log'支持 | [801c43c](https://github.com/zct1989/vue-web-service/commit/801c43c)
 
 
 范围|描述|commitId
