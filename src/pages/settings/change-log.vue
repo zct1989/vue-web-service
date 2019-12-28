@@ -1,8 +1,16 @@
 <template>
   <page-container>
     <a-card>
-      <VueMarkdown class="markdown-body" :source="markdownContent">
-      </VueMarkdown>
+      <a-tabs defaultActiveKey="change">
+        <a-tab-pane :tab="$t('task-log')" key="change">
+          <VueMarkdown class="markdown-body" :source="changeContent">
+          </VueMarkdown>
+        </a-tab-pane>
+        <a-tab-pane :tab="$t('commit-log')" key="commit">
+          <VueMarkdown class="markdown-body" :source="commitContent">
+          </VueMarkdown>
+        </a-tab-pane>
+      </a-tabs>
     </a-card>
   </page-container>
 </template>
@@ -22,7 +30,8 @@ import VueMarkdown from 'vue-markdown'
   }
 })
 export default class ChangeLog extends Vue {
-  private markdownContent = require('~/assets/change-log/README.md')
+  private changeContent = require('~/assets/change-log/README.md')
+  private commitContent = require('../../../CHANGELOG.md')
 }
 </script>
 <style lang="less" scoped>
@@ -34,3 +43,15 @@ export default class ChangeLog extends Vue {
   }
 }
 </style>
+<i18n>
+{
+  "en-us": {
+    "task-log":"Task Log",
+    "commit-log":"Commit Log"
+  },
+  "zh-cn":{
+    "task-log":"任务日志",
+    "commit-log":"提交日志"
+  }
+}
+</i18n>
