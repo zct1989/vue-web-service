@@ -1,6 +1,6 @@
 <template>
   <section
-    class="layout-component toolbar full-absolute flex-row justify-content-end align-items-center padding-x"
+    class="layout-component toolbar full-absolute flex-row flex-nowrap justify-content-end align-items-center padding-x"
   >
     <a-icon
       :type="fullscreen ? 'fullscreen-exit' : 'fullscreen'"
@@ -22,6 +22,7 @@
       </template>
       <a-icon type="bg-colors" />
     </a-popover>
+
     <a-dropdown :trigger="['click']">
       <a class="ant-dropdown-link">
         {{ $t('lang') }}
@@ -56,16 +57,43 @@
         <a-icon type="book"></a-icon>
       </a-tooltip>
     </a>
+
+    <div>
+      <a-dropdown>
+        <div>
+          <a-avatar icon="user"></a-avatar>
+          <span class="padding-left">{{ username }}</span>
+        </div>
+        <template #overlay>
+          <a-menu>
+            <a-menu-item>
+              <a class="padding-x">{{ $t('user-info') }}</a>
+            </a-menu-item>
+            <a-menu-divider />
+            <a-menu-item @click="onLogout">
+              <a class="padding-x">{{ $t('logout') }}</a>
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
+    </div>
   </section>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Mutation } from 'vuex-class'
+import { Mutation, namespace } from 'vuex-class'
+const userModule = namespace('userModule')
 @Component({
   components: {}
 })
 export default class Toolbar extends Vue {
+  @userModule.State
+  private username
+
+  @userModule.Mutation
+  logout
+
   private locale
 
   private themeList = [
@@ -102,6 +130,16 @@ export default class Toolbar extends Vue {
   private onUpdateTheme(theme) {
     this.$app.store.commit('updateTheme', theme)
   }
+
+  /**
+   * 用户注销
+   */
+  private onLogout() {
+    this.logout()
+    this.$router.push({
+      name: 'login'
+    })
+  }
 }
 </script>
 
@@ -123,9 +161,12 @@ export default class Toolbar extends Vue {
 </style>
 <style lang="less" scoped>
 .layout-component.toolbar {
+  white-space: nowrap;
+
   & > * {
     padding: 0 10px;
   }
+
   i {
     font-size: 18px;
     color: #ffffff;
@@ -138,12 +179,16 @@ export default class Toolbar extends Vue {
   "en-us": {
     "lang": "Language",
     "change-log":"Change Log",
-    "docs": "Document"
+    "docs": "Document",
+    "user-info": "User Info",
+    "logout": "Logout"
   },
   "zh-cn": {
     "lang": "语言",
     "change-log":"更新日志",
-    "docs": "文档"
+    "docs": "文档",
+    "user-info": "用户信息",
+    "logout": "注销"
   }
 }
 </i18n>

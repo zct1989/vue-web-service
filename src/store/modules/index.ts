@@ -1,1 +1,5 @@
-export default {}
+import userModule from './user.module'
+
+export default {
+  userModule
+}

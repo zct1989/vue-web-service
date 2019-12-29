@@ -40,7 +40,6 @@ export default class HeaderMenu extends Vue {
     }
 
     this.current = [target.name]
-
     if (target.name !== this.menuActive.name) {
       this.updateMenuActive(target)
     }

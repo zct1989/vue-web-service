@@ -44,11 +44,14 @@ export class ApplicationRouter {
    * 负责登陆认证检测
    */
   private async routerBeforeEach(to, from, next) {
-    if (this.applicationStore.state.ready !== true && this.launch) {
-      await this.launch({
-        store: this.store,
-        router: this.router
-      })
+    if (this.applicationStore.state.ready !== true) {
+      this.launch &&
+        (await this.launch({
+          store: this.store,
+          router: this.router
+        }))
+
+      this.applicationStore.commit('updateReady', true)
     }
 
     next()

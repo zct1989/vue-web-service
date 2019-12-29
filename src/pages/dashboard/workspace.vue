@@ -28,10 +28,14 @@
         ></HeaderInfo>
       </div>
     </template>
-    <a-card class="margin">
-      <div class="padding">{{ $t('desc') }}</div>
-      <a-pagination :defaultCurrent="1" :total="50" showSizeChanger />
-    </a-card>
+
+    <a-row>
+      <a-col :span="24">
+        <a-card title="工作日历">
+          <WorkCalender></WorkCalender>
+        </a-card>
+      </a-col>
+    </a-row>
   </page-container>
 </template>
 
@@ -39,13 +43,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Page } from '~/core/decorators'
 import HeaderInfo from '~/shared/components/header-info.vue'
-
+import WorkCalender from '~/components/dashboard/work-calendar.vue'
 @Page({
   name: 'workspace',
   layout: 'workspace'
 })
 @Component({
-  components: { HeaderInfo }
+  components: { HeaderInfo, WorkCalender }
 })
 export default class Workspace extends Vue {}
 </script>

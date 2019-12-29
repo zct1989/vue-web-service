@@ -4,11 +4,7 @@ import router from './router'
 import store from './store'
 import Application from './core/application'
 
-import 'normalize-css/normalize.css'
-import '@/assets/styles/default.less'
-import '@/assets/styles/layout.less'
-import '@/assets/styles/common.less'
-import '@/assets/styles/theme.less'
+import '@/assets/styles/index.less'
 
 import libs from '~/bootstrap/libs'
 import filters from '~/bootstrap/filters'

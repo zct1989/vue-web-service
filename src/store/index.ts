@@ -4,14 +4,14 @@ import state from './state'
 import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
-import Modules from './modules'
+import modules from './modules'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   // 子模块
-  modules: { ...Modules },
+  modules: { ...modules },
   state,
   getters,
   mutations,

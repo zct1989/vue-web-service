@@ -8,6 +8,7 @@ export class ApplicationStore {
   public static getStore() {
     if (!this._store) {
       this._store = this.createStore()
+      this._store.commit('updateReady', false)
     }
 
     return this._store
@@ -25,6 +26,9 @@ export class ApplicationStore {
         })
       ],
       state: {
+        // 初始化状态
+        ready: false,
+        // 选项卡标签
         tabs: [],
         // 当前布局
         layout: 'loading',
@@ -43,6 +47,14 @@ export class ApplicationStore {
         }
       },
       mutations: {
+        /**
+         * 更新系统准备状态
+         * @param state
+         *
+         */
+        updateReady(state, value: boolean) {
+          state.ready = value
+        },
         /**
          * 更新Tabs列表
          * @param state

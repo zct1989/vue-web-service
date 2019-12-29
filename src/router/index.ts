@@ -38,6 +38,10 @@ export default new Router({
     {
       path: '/',
       redirect: '/dashboard/workspace'
+    },
+    {
+      path: '*',
+      redirect: '/exception/404'
     }
   ]
 })
