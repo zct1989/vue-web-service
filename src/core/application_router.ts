@@ -64,33 +64,39 @@ export class ApplicationRouter {
     const guards = ApplicationRouter.guards as Array<
       (option, state) => Promise<boolean>
     >
+
     // 无路由守卫直接通过
     if (!guards && ApplicationRouter.guards.length === 0) {
       return next()
     }
 
-    // 执行所有守卫
-    for (const guard of guards) {
-      // 执行守卫
-      const result: any = await guard(
-        {
-          store: this.store,
-          router: this.router
-        },
-        {
-          to,
-          from,
-          next
+    try {
+      // 执行所有守卫
+      for (const guard of guards) {
+        // 执行守卫
+        const result: any = await guard(
+          {
+            store: this.store,
+            router: this.router
+          },
+          {
+            to,
+            from,
+            next
+          }
+        )
+
+        // 检测守卫执行状态
+        if (result !== undefined || result !== true) {
+          throw result
         }
-      )
-
-      if (result !== undefined || result !== true) {
-        next(result)
-        break
       }
-    }
 
-    return next()
+      return next()
+    } catch (path) {
+      // 被守卫拦截执行守卫返回地址
+      next(path)
+    }
   }
 
   /**

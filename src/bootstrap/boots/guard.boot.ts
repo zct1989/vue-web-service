@@ -8,21 +8,26 @@ const authCheck = store => {
   return !!store.state.userModule.username
 }
 
-export default function() {
-  // 安装认证守卫
+/**
+ * 安装认证守卫
+ */
+function installAuthGuard() {
   ApplicationRouter.registerGuard(({ store, router }, { to, from, next }) => {
     // 认证白名单
     if (authWhiteList.includes(to.name)) {
-      return next()
+      return true
     }
 
     // 认证检测
-    if (authCheck(store)) {
-      next()
-    } else {
-      next({
+    if (!authCheck(store)) {
+      return {
         name: 'login'
-      })
+      }
     }
   })
+}
+
+export default function() {
+  // 安装认证守卫
+  installAuthGuard()
 }

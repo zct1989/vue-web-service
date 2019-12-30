@@ -36,6 +36,7 @@
             v-decorator="[
               'username',
               {
+                initialValue: 'admin',
                 rules: rules.username
               }
             ]"
