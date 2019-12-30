@@ -15,6 +15,7 @@
 范围|描述|commitId
 --|--|--
  - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
+ - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)
 
 
 范围|描述|commitId

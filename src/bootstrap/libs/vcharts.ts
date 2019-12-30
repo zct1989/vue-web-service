@@ -1,8 +1,8 @@
 import Vue from 'vue'
-// import VueI18n from 'vue-i18n'
+import VCharts from 'v-charts'
 
 export default {
   install() {
-    // Vue.use(VueI18n)
+    Vue.use(VCharts)
   }
 }
