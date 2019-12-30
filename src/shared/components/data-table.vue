@@ -1,21 +1,19 @@
 <template>
   <section class="component data-table">
-    <a-card>
-      <a-table
-        :columns="columns"
-        :dataSource="data"
-        :rowKey="rowKey"
-        :loading="loadingState"
-        :rowSelection="rowSelection"
-      >
-        <vnodes
-          :slot="key"
-          v-for="[key, node] of Object.entries($slots)"
-          :vnodes="node"
-          :key="key"
-        />
-      </a-table>
-    </a-card>
+    <a-table
+      :columns="columns"
+      :dataSource="data"
+      :rowKey="rowKey"
+      :loading="loadingState"
+      :rowSelection="rowSelection"
+    >
+      <vnodes
+        :slot="key"
+        v-for="[key, node] of Object.entries($slots)"
+        :vnodes="node"
+        :key="key"
+      />
+    </a-table>
   </section>
 </template>
 

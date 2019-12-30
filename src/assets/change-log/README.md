@@ -3,12 +3,11 @@
 ---
 
 - [ ] vue-web-serivce - 添加日志服务
-- [ ] vue-web-service - 添加工作台示例页面
+
 - [ ] vue-web-service - 添加项目文档
 - [ ] vue-web-service - 添加导出 excel 功能
 - [ ] vue-web-service - 添加富文本编辑器 quill-editor
 - [ ] vue-web-service - 添加地图支持示例
-- [ ] vue-web-service - 添加 v-chart 示例
 - [ ] vue-web-service - 添加权限控制
 - [ ] vue-web-service - 添加 PageService 支持
 - [ ] vue-web-service - 重构依赖注入功能
@@ -21,9 +20,11 @@
 
 ---
 
+- [x] vue-web-service - 添加工作台示例页面
+- [x] vue-web-service - 添加 v-chart 示例
 - [x] vue-web-service - 添加登录模块
 - [x] vue-web-service - 添加日历示例
-- [x] vue-web-service - 添加Loading服务
+- [x] vue-web-service - 添加 Loading 服务
 - [x] vue-web-service - 添加代码提交自动验证
 - [x] vue-web-service - 添加列表详情示例页面
 - [x] vue-web-service - 添加更新日志文档

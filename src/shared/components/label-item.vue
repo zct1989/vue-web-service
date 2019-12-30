@@ -88,6 +88,7 @@ export default class extends Vue {
 .label-item {
   line-height: 24px;
   display: inline-block;
+  padding: 10px;
   &-label {
     text-align: right;
     display: inline-block;

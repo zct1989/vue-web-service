@@ -49,48 +49,52 @@
         <a-button>{{ $t('action.delete') }}</a-button>
       </template>
     </data-form>
-    <data-table
-      :data="data"
-      rowKey="id"
-      :rowSelection="{
-        selectedRowKeys: selectedRowKeys,
-        onChange: keys => (selectedRowKeys = keys)
-      }"
-    >
-      <a-table-column
-        :title="$t('columns.name')"
-        dataIndex="name"
-        key="name"
-      ></a-table-column>
-      <a-table-column
-        :title="$t('columns.age')"
-        dataIndex="age"
-        key="age"
-      ></a-table-column>
-      <a-table-column
-        :title="$t('columns.address')"
-        dataIndex="address"
-        key="address"
-      ></a-table-column>
-      <a-table-column :title="$t('columns.tags')" dataIndex="tags" key="tags">
-        <template slot-scope="tags">
-          <span>
-            <a-tag v-for="tag in tags" color="blue" :key="tag">{{ tag }}</a-tag>
-          </span>
-        </template>
-      </a-table-column>
-      <a-table-column :title="$t('columns.action')" key="action">
-        <template slot-scope="detail">
-          <a class="margin-right" @click="onDetail(detail)">
-            {{ $t('action.detail') }}</a
-          >
+    <a-card class="margin-y">
+      <data-table
+        :data="data"
+        rowKey="id"
+        :rowSelection="{
+          selectedRowKeys: selectedRowKeys,
+          onChange: keys => (selectedRowKeys = keys)
+        }"
+      >
+        <a-table-column
+          :title="$t('columns.name')"
+          dataIndex="name"
+          key="name"
+        ></a-table-column>
+        <a-table-column
+          :title="$t('columns.age')"
+          dataIndex="age"
+          key="age"
+        ></a-table-column>
+        <a-table-column
+          :title="$t('columns.address')"
+          dataIndex="address"
+          key="address"
+        ></a-table-column>
+        <a-table-column :title="$t('columns.tags')" dataIndex="tags" key="tags">
+          <template slot-scope="tags">
+            <span>
+              <a-tag v-for="tag in tags" color="blue" :key="tag">{{
+                tag
+              }}</a-tag>
+            </span>
+          </template>
+        </a-table-column>
+        <a-table-column :title="$t('columns.action')" key="action">
+          <template slot-scope="detail">
+            <a class="margin-right" @click="onDetail(detail)">
+              {{ $t('action.detail') }}</a
+            >
 
-          <a-popconfirm :title="$t('delete')" @confirm="onDelete(detail.id)">
-            <a class="margin-right"> {{ $t('action.delete') }}</a>
-          </a-popconfirm>
-        </template>
-      </a-table-column>
-    </data-table>
+            <a-popconfirm :title="$t('delete')" @confirm="onDelete(detail.id)">
+              <a class="margin-right"> {{ $t('action.delete') }}</a>
+            </a-popconfirm>
+          </template>
+        </a-table-column>
+      </data-table>
+    </a-card>
     <a-card class="margin-y" v-if="detail">
       <OrderDetail :detail="detail"></OrderDetail>
     </a-card>

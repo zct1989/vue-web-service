@@ -1,6 +1,9 @@
 <template>
   <div class="label-container">
-    <slot></slot>
+    <div v-if="title" class="title">{{ title }}</div>
+    <div class="label-content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -19,5 +22,16 @@ export default class LabelContainer extends Vue {
 
   @Prop({ default: false, type: Boolean })
   private border!: number
+
+  @Prop({ type: String })
+  private title!: string
 }
 </script>
+<style lang="less" scoped>
+.title {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 16px;
+  margin-bottom: 16px;
+  font-weight: bolder;
+}
+</style>

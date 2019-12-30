@@ -1,6 +1,6 @@
 <template>
   <section class="component order-detail">
-    <a-tabs defaultActiveKey="base" :style="{ height: '200px' }">
+    <a-tabs defaultActiveKey="base">
       <a-tab-pane :tab="$t('base')" key="base">
         <OrderBaseDetail :detail="detail"></OrderBaseDetail>
       </a-tab-pane>
