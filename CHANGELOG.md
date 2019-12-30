@@ -11,6 +11,12 @@
  - | 添加日历示例&&添加登录模块 | [21665df](https://github.com/zct1989/vue-web-service/commit/21665df)
 
 
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
+
+
 范围|描述|commitId
 --|--|--
  - | 完成data-table组件&添加列表详情页面 | [a378161](https://github.com/zct1989/vue-web-service/commit/a378161)

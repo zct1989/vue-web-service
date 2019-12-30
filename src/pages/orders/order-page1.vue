@@ -156,16 +156,14 @@ export default class OrderPage1 extends Vue {
       .validateFields()
       .then(values => {
         this.orderService
-          .getOrderList(
-            new RequestParams(values, {
-              loading: this.loadingService
-            })
-          )
+          .getOrderList(new RequestParams(values))
           .subscribe(data => {
             this.data = data
           })
       })
-      .catch(err => {})
+      .catch(err => {
+        // 异常处理
+      })
   }
 
   /**
