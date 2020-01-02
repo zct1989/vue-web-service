@@ -5,6 +5,7 @@ import { ControllerConfig } from '~/config/type.config'
 const controller = 'order'
 
 /**
+ * API接口配置
  * 订单服务配置
  */
 export const OrderController: ControllerConfig = {

@@ -3,7 +3,7 @@
 ---
 
 - [ ] vue-web-serivce - 添加日志服务
-
+- [ ] vue-web-service - 添加google-map实例
 - [ ] vue-web-service - 添加项目文档
 - [ ] vue-web-service - 添加导出 excel 功能
 - [ ] vue-web-service - 添加富文本编辑器 quill-editor

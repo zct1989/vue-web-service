@@ -10,6 +10,11 @@ module.exports = {
     accounts: '账户',
     'account-page1': '账户页面1',
     'account-page2': '账户页面2',
+    demos: '示例',
+    calender: '日历',
+    chart: '图表',
+    order: '订单',
+    map: '地图',
     settings: '设置',
     'user-setting': '用户设置',
     'change-log': '更新日志'

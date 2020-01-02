@@ -43,6 +43,32 @@
     ]
   },
   {
+    "id": 20,
+    "name": "demos",
+    "children": [
+      {
+        "id": 21,
+        "icon": "mobile",
+        "name": "calender"
+      },
+      {
+        "id": 22,
+        "icon": "mobile",
+        "name": "chart"
+      },
+      {
+        "id": 23,
+        "icon": "mobile",
+        "name": "order"
+      },
+      {
+        "id": 24,
+        "icon": "mobile",
+        "name": "map"
+      }
+    ]
+  },
+  {
     "id": 10,
     "name": "settings",
     "children": [
