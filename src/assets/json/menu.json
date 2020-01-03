@@ -80,6 +80,11 @@
         "id": 27,
         "icon": "mobile",
         "name": "data-table"
+      },
+      {
+        "id": 28,
+        "icon": "mobile",
+        "name": "editor"
       }
     ]
   },

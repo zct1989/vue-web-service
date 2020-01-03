@@ -18,6 +18,7 @@ module.exports = {
     'page-header': '页面头部',
     'data-form': '搜索表单',
     'data-table': '数据表格',
+    editor: '编辑器',
     settings: '设置',
     'user-setting': '用户设置',
     'change-log': '更新日志'

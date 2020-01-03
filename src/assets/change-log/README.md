@@ -2,24 +2,25 @@
 
 ---
 
-- [ ] vue-web-serivce - 添加日志服务
-- [ ] vue-web-service - 添加google-map实例
+
 - [ ] vue-web-service - 添加项目文档
-- [ ] vue-web-service - 添加导出 excel 功能
-- [ ] vue-web-service - 添加富文本编辑器 quill-editor
-- [ ] vue-web-service - 添加地图支持示例
 - [ ] vue-web-service - 添加权限控制
 - [ ] vue-web-service - 添加 PageService 支持
 - [ ] vue-web-service - 重构依赖注入功能
 - [ ] vue-web-service - 添加 PageHeader 锚定支持
 - [ ] vue-web-service - 添加 ModelService 模块
-- [ ] vue-web-service - 添加复制粘贴功能
 - [ ] vue-web-service - 添加系统常量配置
 
 ## 已完成
 
 ---
 
+- [x] vue-web-serivce - 添加日志服务
+- [x] vue-web-service - 添加复制粘贴功能
+- [x] vue-web-service - 添加google-map实例
+- [x] vue-web-service - 添加导出 excel 功能
+- [x] vue-web-service - 添加富文本编辑器 quill-editor
+- [x] vue-web-service - 添加地图支持示例
 - [x] vue-web-service - 添加工作台示例页面
 - [x] vue-web-service - 添加 v-chart 示例
 - [x] vue-web-service - 添加登录模块

@@ -8,6 +8,7 @@ declare module 'vue/types/vue' {
     $dict: any
     $layout: string
     $filter: any
+    $logger: any
     $common: any
     $window: any
   }
