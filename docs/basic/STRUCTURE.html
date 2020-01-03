@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>结构说明</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/vue-web-service/docs/assets/css/0.styles.8066b923.css" as="style"><link rel="preload" href="/vue-web-service/docs/assets/js/app.03a518fd.js" as="script"><link rel="preload" href="/vue-web-service/docs/assets/js/2.486a9c61.js" as="script"><link rel="preload" href="/vue-web-service/docs/assets/js/8.f973b636.js" as="script"><link rel="prefetch" href="/vue-web-service/docs/assets/js/3.f8dce282.js"><link rel="prefetch" href="/vue-web-service/docs/assets/js/4.9631fdff.js"><link rel="prefetch" href="/vue-web-service/docs/assets/js/5.22aa8c4e.js"><link rel="prefetch" href="/vue-web-service/docs/assets/js/6.a84bb1fc.js"><link rel="prefetch" href="/vue-web-service/docs/assets/js/7.a90871b4.js"><link rel="prefetch" href="/vue-web-service/docs/assets/js/9.0cc5bf5a.js">
+    <link rel="stylesheet" href="/vue-web-service/docs/assets/css/0.styles.8066b923.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-web-service/docs/" class="home-link router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>基础</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-web-service/docs/basic/STRUCTURE.html" class="active sidebar-link">代码结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-web-service/docs/basic/STRUCTURE.html#结构说明" class="sidebar-link">结构说明</a></li></ul></li><li><a href="/vue-web-service/docs/basic/PAGE.html" class="sidebar-link">业务页面</a></li><li><a href="/vue-web-service/docs/basic/I18N.html" class="sidebar-link">多语言</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="结构说明"><a href="#结构说明" class="header-anchor">#</a> 结构说明</h2> <p>以下为项目代码结构说明：</p> <div class="language- extra-class"><pre class="language-text"><code>├── babel.config.js                 // babel配置文件
+├── CHANGELOG.md                    // 自动生成的commit日志
+├── commitlint.config.js            // commitlint配置文件
+├── docs                            // 项目文档目录
+├── extends                         // 编译支持扩展
+│ ├── alias.extend.js               // 路径别名扩展
+│ ├── i18n.extend.js                // i18n多语言扩展
+│ ├── markdown.extend.js            // markdown支持扩展
+│ ├── route.extend.js               // 自动路由支持扩展
+│ └── svg.extend.js                 // svg文件支持扩展
+├── package.json
+├── public                          // 静态资源目录
+│ ├── favicon.ico
+│ └── index.html
+├── README.md
+├── src                             // 代码目录
+│ ├── app.vue                       // 项目页面容器  配置全局config
+│ ├── assets                        // 资源目录
+│ ├── bootstrap                     // 项目基础功能目录
+│ ├── components                    // 业务组件目录
+│ ├── config                        // 相关配置目录
+│ ├── core                          // 核心框架目录
+│ ├── layouts                       // 布局文件目录
+│ ├── main.ts                       // 项目入口文件
+│ ├── mock                          // mock服务目录
+│ ├── pages                         // 业务页面目录
+│ ├── router                        // 路由扩展配置目录
+│ ├── services                      // 请求服务目录
+│ ├── shared                        // 公共模块目录
+│ └── store                         // 全局数据存储目录
+├── tsconfig.json                   // typescript配置
+├── typings                         // d.ts目录
+│ ├── markdown.d.ts
+│ ├── shims-tsx.d.ts
+│ ├── shims-vue.d.ts
+│ └── vue.d.ts
+└──vue.config.js                    // webpack扩展支持
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/vue-web-service/docs/basic/PAGE.html">业务页面</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vue-web-service/docs/assets/js/app.03a518fd.js" defer></script><script src="/vue-web-service/docs/assets/js/2.486a9c61.js" defer></script><script src="/vue-web-service/docs/assets/js/8.f973b636.js" defer></script>
+  </body>
+</html>
