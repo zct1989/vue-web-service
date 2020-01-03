@@ -65,6 +65,21 @@
         "id": 24,
         "icon": "mobile",
         "name": "map"
+      },
+      {
+        "id": 25,
+        "icon": "mobile",
+        "name": "page-header"
+      },
+      {
+        "id": 26,
+        "icon": "mobile",
+        "name": "data-form"
+      },
+      {
+        "id": 27,
+        "icon": "mobile",
+        "name": "data-table"
       }
     ]
   },

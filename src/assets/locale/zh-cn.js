@@ -15,6 +15,9 @@ module.exports = {
     chart: '图表',
     order: '订单',
     map: '地图',
+    'page-header': '页面头部',
+    'data-form': '搜索表单',
+    'data-table': '数据表格',
     settings: '设置',
     'user-setting': '用户设置',
     'change-log': '更新日志'

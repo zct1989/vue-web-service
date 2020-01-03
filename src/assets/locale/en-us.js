@@ -15,6 +15,9 @@ module.exports = {
     chart: 'Charts',
     order: 'Order',
     map: 'Map',
+    'page-header': 'PageHeader',
+    'data-form': 'DataForm',
+    'data-table': 'DataTable',
     settings: 'Setting',
     'user-setting': 'User Setting',
     'change-log': 'Change Log'

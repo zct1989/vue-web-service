@@ -7,14 +7,6 @@
         map-type-id="terrain"
         style="height:600px;"
       >
-        <!-- <GmapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
-          :clickable="true"
-          :draggable="true"
-          @click="center = m.position"
-        /> -->
       </GmapMap>
     </a-card>
   </page-container>
