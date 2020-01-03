@@ -28,8 +28,8 @@ module.exports = {
     optimization: {
       minimize: false,
       splitChunks: {
-        minSize: 10000,
-        maxSize: 200000
+        minSize: 20000,
+        maxSize: 500000
       }
     }
   }
