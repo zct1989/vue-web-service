@@ -19,6 +19,7 @@ module.exports = {
     'data-form': '搜索表单',
     'data-table': '数据表格',
     editor: '编辑器',
+    http: '网络请求',
     settings: '设置',
     'user-setting': '用户设置',
     'change-log': '更新日志'

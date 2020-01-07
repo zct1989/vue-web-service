@@ -69,9 +69,9 @@ export class RequestObject {
           let data
 
           if (this.responseModel) {
-            data = plainToClass(this.responseModel, response.data)
+            data = plainToClass(this.responseModel, response)
           } else {
-            data = response.data
+            data = response
           }
 
           // 应用扩展

@@ -1,21 +1,22 @@
-# 0.1.0 (2020-01-03)
+# 0.1.0 (2020-01-07)
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
- - | 添加部分页面示例 | [94fef2c](https://github.com/zct1989/vue-web-service/commit/94fef2c)
+ - | 添加commitlint&change-log'支持 | [801c43c](https://github.com/zct1989/vue-web-service/commit/801c43c)
+ - | 添加Loading服务 | [1ba898b](https://github.com/zct1989/vue-web-service/commit/1ba898b)
+ - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
+ - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
+ - | 添加提交前代码校验 | [51b46ff](https://github.com/zct1989/vue-web-service/commit/51b46ff)
+ - | 添加提交前代码校验 | [2c0cba8](https://github.com/zct1989/vue-web-service/commit/2c0cba8)
+ - | 添加提交日志显示 | [71b646b](https://github.com/zct1989/vue-web-service/commit/71b646b)
+ - | 添加文档内容 | [0a14132](https://github.com/zct1989/vue-web-service/commit/0a14132)
  - | 添加日历示例&&添加登录模块 | [21665df](https://github.com/zct1989/vue-web-service/commit/21665df)
  - | 添加日志文档 | [0945ed9](https://github.com/zct1989/vue-web-service/commit/0945ed9)
  - | 添加示例模块 | [061b592](https://github.com/zct1989/vue-web-service/commit/061b592)
  - | 添加示例模块 | [510d3bb](https://github.com/zct1989/vue-web-service/commit/510d3bb)
  - | 添加示例页面 | [fe574ab](https://github.com/zct1989/vue-web-service/commit/fe574ab)
- - | 添加提交前代码校验 | [51b46ff](https://github.com/zct1989/vue-web-service/commit/51b46ff)
- - | 添加提交前代码校验 | [2c0cba8](https://github.com/zct1989/vue-web-service/commit/2c0cba8)
- - | 添加提交日志显示 | [71b646b](https://github.com/zct1989/vue-web-service/commit/71b646b)
- - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
- - | 添加commitlint&change-log'支持 | [801c43c](https://github.com/zct1989/vue-web-service/commit/801c43c)
- - | 添加Loading服务 | [1ba898b](https://github.com/zct1989/vue-web-service/commit/1ba898b)
- - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
+ - | 添加部分页面示例 | [94fef2c](https://github.com/zct1989/vue-web-service/commit/94fef2c)
 
 
 ### 🐛 Bug 修复

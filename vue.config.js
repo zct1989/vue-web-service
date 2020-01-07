@@ -4,7 +4,7 @@ const routeExtend = require('./extends/route.extend')
 const svgExtend = require('./extends/svg.extend')
 const i18nExtend = require('./extends/i18n.extend')
 const markdownExtend = require('./extends/markdown.extend')
-
+const proxyConfig = require('./proxy.config')
 module.exports = {
   // 资源根路径
   publicPath: process.env.NODE_ENV === 'production' ? '/vue-web-service/' : '/',
@@ -32,5 +32,8 @@ module.exports = {
         maxSize: 500000
       }
     }
+  },
+  devServer: {
+    proxy: proxyConfig
   }
 }

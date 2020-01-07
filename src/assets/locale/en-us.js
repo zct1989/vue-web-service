@@ -19,6 +19,7 @@ module.exports = {
     'data-form': 'DataForm',
     'data-table': 'DataTable',
     editor: 'Editor',
+    http: 'Http Request',
     settings: 'Setting',
     'user-setting': 'User Setting',
     'change-log': 'Change Log'

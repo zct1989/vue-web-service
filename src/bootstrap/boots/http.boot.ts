@@ -16,6 +16,11 @@ export default function() {
     return true
   })
 
+  // 添加成功拦截器
+  RequestService.interceptors.success.use(respone => {
+    return respone.data.result
+  })
+
   // 添加失败拦截器
   RequestService.interceptors.error.use(respone => {
     // Notification.error({

@@ -85,6 +85,11 @@
         "id": 28,
         "icon": "mobile",
         "name": "editor"
+      },
+      {
+        "id": 29,
+        "icon": "mobile",
+        "name": "http"
       }
     ]
   },

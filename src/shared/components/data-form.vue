@@ -14,7 +14,7 @@
             <!--基础表单项-->
             <a-col
               class="form-item-wrapper"
-              span="6"
+              :span="(node.data.attrs && node.data.attrs.span) || 6"
               v-for="(node, index) of defaultFormItems"
               :key="`default-${index}`"
             >

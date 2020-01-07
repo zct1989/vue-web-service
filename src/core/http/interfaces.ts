@@ -10,7 +10,7 @@ import { LoadingService } from '@/bootstrap/services/loading.service'
 export interface IRequestServerConfig {
   service?: string
   controller: string
-  action: string
+  action?: string
   type: RequestMethod
 }
 
