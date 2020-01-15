@@ -21,7 +21,7 @@ export class ModalService {
    * 创建Modal组件
    * @param options 
    */
-  private renderModelComponent(options) {
+  private renderModelComponent(Component, data, options) {
     const { container, el } = this.createModalContainer()
 
     const modalInstance = new Vue({
@@ -29,9 +29,11 @@ export class ModalService {
       render(h) {
         return h(Modal, {
           props: {
+            centered: true,
+            header: false,
             ...options,
             visible: true,
-            footer: false
+            footer: false,
           },
           on: {
             cancel: () => {
@@ -41,19 +43,19 @@ export class ModalService {
               }
             }
           }
-        }, [h(options.component, {
-          props: options.data
+        }, [h(Component, {
+          props: data
         })])
       },
-    });
+    })
   }
 
   /**
    * 弹出组件页面
    * @param options
    */
-  public open(options) {
-    const instance = this.renderModelComponent(options)
+  public open(Component, data, options) {
+    const instance = this.renderModelComponent(Component, data, options)
     return instance
   }
 }

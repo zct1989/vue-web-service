@@ -1,4 +1,5 @@
-import { FilterService } from '~/shared/utils/filter.service'
-export default function({ store }): any {
-  return FilterService
+import filters from '~/shared/filters'
+
+export default function ({ store }): any {
+  return filters
 }
