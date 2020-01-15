@@ -1,6 +1,7 @@
 <template>
   <page-container>
     <a-card>
+      <a-button @click="onClick">123</a-button>
       <FullCalendar
         defaultView="dayGridMonth"
         :plugins="calendarPlugins"
@@ -18,6 +19,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import FullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { Page } from '@/core/decorators'
+import CalenderDetail from '@/components/demos/calender-detail.vue'
 
 @Page({
   layout: 'workspace',
@@ -46,6 +48,12 @@ export default class Calender extends Vue {
       day: 'day',
       list: 'list'
     }
+  }
+
+  private onClick() {
+    this.$modal.open({
+      component: CalenderDetail
+    })
   }
 }
 </script>
