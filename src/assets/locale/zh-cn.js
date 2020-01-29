@@ -2,6 +2,7 @@ module.exports = {
   menu: {
     home: '首页',
     dashboard: '仪表盘',
+    'dashboard-mobile': '仪表盘',
     workspace: '工作区',
     orders: '订单',
     'order-page1': '订单页面1',
@@ -22,6 +23,7 @@ module.exports = {
     http: '网络请求',
     settings: '设置',
     'user-setting': '用户设置',
-    'change-log': '更新日志'
+    'change-log': '更新日志',
+    'demo-mobile': '示例'
   }
 }

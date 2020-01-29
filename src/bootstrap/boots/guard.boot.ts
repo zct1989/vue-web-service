@@ -1,7 +1,8 @@
 import { ApplicationRouter } from '@/core/application_router'
+import MobileDetect from 'mobile-detect'
 
 // 认证白名单
-const authWhiteList = ['login']
+const authWhiteList = ['login','login-mobile']
 
 // 认证状态检测
 const authCheck = store => {
@@ -20,8 +21,10 @@ function installAuthGuard() {
 
     // 认证检测
     if (!authCheck(store)) {
+      const detect = new MobileDetect(navigator.userAgent)
+      const isMobile = !!detect.mobile()
       return {
-        name: 'login'
+        name: isMobile ? 'login-mobile' : 'login'
       }
     }
   })

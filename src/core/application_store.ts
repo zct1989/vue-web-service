@@ -1,6 +1,8 @@
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import MobileDetect from 'mobile-detect'
 
+const detect = new MobileDetect(navigator.userAgent)
 /**
  * 应用内部数据存储
  */
@@ -39,7 +41,9 @@ export class ApplicationStore {
         // 菜单折叠状态
         collapsed: false,
         // 页面全屏标识
-        fullscreen: false
+        fullscreen: false,
+        // 移动端标识
+        mobile: !!detect.mobile() 
       },
       getters: {
         layout(state) {

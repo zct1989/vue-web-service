@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "dashboard-mobile",
+    "icon": "code"
+  },
+  {
+    "id": 2,
+    "name": "demo-mobile",
+    "icon": "mobile"
+  }
+]

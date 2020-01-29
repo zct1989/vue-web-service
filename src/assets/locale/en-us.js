@@ -2,6 +2,7 @@ module.exports = {
   menu: {
     home: 'Home',
     dashboard: 'Dashboard',
+    'dashboard-mobile': 'Dashboard',
     workspace: 'Workspace',
     orders: 'Order',
     'order-page1': 'Order Page1',
@@ -22,6 +23,7 @@ module.exports = {
     http: 'Http Request',
     settings: 'Setting',
     'user-setting': 'User Setting',
-    'change-log': 'Change Log'
+    'change-log': 'Change Log',
+    'demo-mobile': 'Demo'
   }
 }

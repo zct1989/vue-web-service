@@ -11,6 +11,12 @@
   </section>
 </template>
 
+<style lang="less" scoped>
+.order-base-detail /deep/ .fc-scroller {
+  height: 100% !important;
+}
+</style>
+
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import FullCalendar from '@fullcalendar/vue'

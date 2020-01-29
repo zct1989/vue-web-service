@@ -1,4 +1,4 @@
-# 0.1.0 (2020-01-15)
+# 0.1.0 (2020-01-29)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -13,6 +13,7 @@
  - | 添加提交日志显示 | [71b646b](https://github.com/zct1989/vue-web-service/commit/71b646b)
  - | 添加文档内容 | [0a14132](https://github.com/zct1989/vue-web-service/commit/0a14132)
  - | 添加日历示例&&添加登录模块 | [21665df](https://github.com/zct1989/vue-web-service/commit/21665df)
+ - | 添加日历详情页面 | [bf0e8c8](https://github.com/zct1989/vue-web-service/commit/bf0e8c8)
  - | 添加日志文档 | [0945ed9](https://github.com/zct1989/vue-web-service/commit/0945ed9)
  - | 添加示例模块 | [061b592](https://github.com/zct1989/vue-web-service/commit/061b592)
  - | 添加示例模块 | [510d3bb](https://github.com/zct1989/vue-web-service/commit/510d3bb)

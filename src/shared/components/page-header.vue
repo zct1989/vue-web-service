@@ -1,6 +1,6 @@
 <template>
   <section class="component page-header">
-    <div class="breadcrumb">
+    <div class="breadcrumb" v-if="!mobile">
       <a-breadcrumb>
         <a-breadcrumb-item key="/dashboard/workspace">
           <a href="#/">
@@ -45,6 +45,10 @@ export default class PageHeader extends Vue {
   private get breadcrumb() {
     return this.$route.path.split('/').filter(x => x)
   }
+
+  private get mobile() {
+    return this.$app.state.mobile
+  }
 }
 </script>
 
@@ -52,7 +56,7 @@ export default class PageHeader extends Vue {
 .component.page-header {
   padding: 16px 32px 0;
   border-bottom: 1px solid #e8e8e8;
-  min-height: 100px;
+  min-height: 60px;
 
   .breadcrumb {
     margin-bottom: 16px;
