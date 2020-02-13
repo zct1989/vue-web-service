@@ -8,6 +8,10 @@ const proxyConfig = require('./proxy.config')
 module.exports = {
   // 资源根路径
   publicPath: process.env.NODE_ENV === 'production' ? '/vue-web-service/' : '/',
+  // 静态资源路径
+  assetsDir: process.env.NODE_ENV === 'production' ? 'static' : '',
+  // 生产环境下sourcemap
+  productionSourceMap: false,
   // 修改webpack配置
   chainWebpack: config => {
     // 别名扩展
