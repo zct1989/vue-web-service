@@ -12,8 +12,8 @@ export default function() {
 
     // 添加状态拦截器
     RequestService.interceptors.status.use(respone => {
-        // return respone.data.status == "success"
-        return true
+        const result = respone.data.result
+        return result.code === 0
     })
 
     // 添加成功拦截器

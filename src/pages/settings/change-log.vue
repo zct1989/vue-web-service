@@ -1,18 +1,18 @@
 <template>
-  <page-container>
-    <a-card>
-      <a-tabs defaultActiveKey="change">
-        <a-tab-pane :tab="$t('task-log')" key="change">
-          <VueMarkdown class="markdown-body" :source="changeContent">
-          </VueMarkdown>
-        </a-tab-pane>
-        <a-tab-pane :tab="$t('commit-log')" key="commit">
-          <VueMarkdown class="markdown-body" :source="commitContent">
-          </VueMarkdown>
-        </a-tab-pane>
-      </a-tabs>
-    </a-card>
-  </page-container>
+    <page-container>
+        <a-card>
+            <a-tabs defaultActiveKey="change">
+                <a-tab-pane :tab="$t('task-log')" key="change">
+                    <VueMarkdown class="markdown-body" :source="changeContent">
+                    </VueMarkdown>
+                </a-tab-pane>
+                <a-tab-pane :tab="$t('commit-log')" key="commit">
+                    <VueMarkdown class="markdown-body" :source="commitContent">
+                    </VueMarkdown>
+                </a-tab-pane>
+            </a-tabs>
+        </a-card>
+    </page-container>
 </template>
 
 <script lang="ts">
@@ -21,26 +21,26 @@ import { Page } from '~/core/decorators'
 import VueMarkdown from 'vue-markdown'
 
 @Page({
-  name: 'change-log',
-  layout: 'workspace'
+    name: 'change-log',
+    layout: 'workspace'
 })
 @Component({
-  components: {
-    VueMarkdown
-  }
+    components: {
+        VueMarkdown
+    }
 })
 export default class ChangeLog extends Vue {
-  private changeContent = require('~/assets/change-log/README.md')
-  private commitContent = require('../../../CHANGELOG.md')
+    private changeContent = require('~/assets/change-log/README.md')
+    private commitContent = require('../../../CHANGELOG.md')
 }
 </script>
 <style lang="less" scoped>
 .markdown-body {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 
-  & /deep/ li {
-    line-height: 2;
-  }
+    & /deep/ li {
+        line-height: 2;
+    }
 }
 </style>
 <i18n>

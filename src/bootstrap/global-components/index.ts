@@ -9,10 +9,10 @@ import LabelItem from '~/shared/components/label-item.vue'
  * 注册全局自定义组件
  */
 export const registerComponent = Vue => {
-  Vue.component('page-container', PageContainer)
-  Vue.component('data-form', DataForm)
-  Vue.component('data-table', DataTable)
-  Vue.component('svg-icon', SvgIcon)
-  Vue.component('label-container', LabelContainer)
-  Vue.component('label-item', LabelItem)
+    Vue.component('page-container', PageContainer)
+    Vue.component('data-form', DataForm)
+    Vue.component('data-table', DataTable)
+    Vue.component('svg-icon', SvgIcon)
+    Vue.component('label-container', LabelContainer)
+    Vue.component('label-item', LabelItem)
 }

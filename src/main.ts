@@ -29,15 +29,15 @@ registerComponent(Vue)
 
 // 初始化应用
 new Application({
-  router,
-  store,
-  // 业务数据初始化
-  launch,
-  app: App,
-  bootstrap: {
-    provides,
-    plugins,
-    directives,
-    filters
-  }
+    router,
+    store,
+    // 业务数据初始化
+    launch,
+    app: App,
+    bootstrap: {
+        provides,
+        plugins,
+        directives,
+        filters
+    }
 })

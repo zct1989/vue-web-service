@@ -6,17 +6,17 @@ import zh_CN from './zh-cn'
 import en_US from './en-us'
 
 export const i18nLocale = {
-  'zh-cn': zh_CN,
-  'en-us': en_US
+    'zh-cn': zh_CN,
+    'en-us': en_US
 }
 
 export const antdLocale = {
-  'zh-cn': {
-    antd: antd_zh_CN,
-    moment: 'zh-cn'
-  },
-  'en-us': {
-    antd: antd_en_US,
-    moment: 'en'
-  }
+    'zh-cn': {
+        antd: antd_zh_CN,
+        moment: 'zh-cn'
+    },
+    'en-us': {
+        antd: antd_en_US,
+        moment: 'en'
+    }
 }

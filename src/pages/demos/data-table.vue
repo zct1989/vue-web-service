@@ -1,51 +1,63 @@
 <template>
-  <page-container>
-    <a-card>
-      <data-table
-        :data="data"
-        rowKey="id"
-        :rowSelection="{
-          selectedRowKeys: selectedRowKeys,
-          onChange: keys => (selectedRowKeys = keys)
-        }"
-      >
-        <template #action>
-          <a-button>操作一</a-button>
-        </template>
-        <a-table-column
-          :title="$t('columns.name')"
-          dataIndex="name"
-          key="name"
-        ></a-table-column>
-        <a-table-column
-          :title="$t('columns.age')"
-          dataIndex="age"
-          key="age"
-        ></a-table-column>
-        <a-table-column
-          :title="$t('columns.address')"
-          dataIndex="address"
-          key="address"
-        ></a-table-column>
-        <a-table-column :title="$t('columns.tags')" dataIndex="tags" key="tags">
-          <template slot-scope="tags">
-            <span>
-              <a-tag v-for="tag in tags" color="blue" :key="tag">{{
-                tag
-              }}</a-tag>
-            </span>
-          </template>
-        </a-table-column>
-        <a-table-column :title="$t('columns.action')" key="action">
-          <template slot-scope="detail">
-            <a-popconfirm :title="$t('delete')" @confirm="onDelete(detail.id)">
-              <a class="margin-right"> {{ $t('action.delete') }}</a>
-            </a-popconfirm>
-          </template>
-        </a-table-column>
-      </data-table>
-    </a-card>
-  </page-container>
+    <page-container>
+        <a-card>
+            <data-table
+                :data="data"
+                rowKey="id"
+                :rowSelection="{
+                    selectedRowKeys: selectedRowKeys,
+                    onChange: keys => (selectedRowKeys = keys)
+                }"
+            >
+                <template #action>
+                    <a-button>操作一</a-button>
+                </template>
+                <a-table-column
+                    :title="$t('columns.name')"
+                    dataIndex="name"
+                    key="name"
+                ></a-table-column>
+                <a-table-column
+                    :title="$t('columns.age')"
+                    dataIndex="age"
+                    key="age"
+                ></a-table-column>
+                <a-table-column
+                    :title="$t('columns.address')"
+                    dataIndex="address"
+                    key="address"
+                ></a-table-column>
+                <a-table-column
+                    :title="$t('columns.tags')"
+                    dataIndex="tags"
+                    key="tags"
+                >
+                    <template slot-scope="tags">
+                        <span>
+                            <a-tag
+                                v-for="tag in tags"
+                                color="blue"
+                                :key="tag"
+                                >{{ tag }}</a-tag
+                            >
+                        </span>
+                    </template>
+                </a-table-column>
+                <a-table-column :title="$t('columns.action')" key="action">
+                    <template slot-scope="detail">
+                        <a-popconfirm
+                            :title="$t('delete')"
+                            @confirm="onDelete(detail.id)"
+                        >
+                            <a class="margin-right">
+                                {{ $t('action.delete') }}</a
+                            >
+                        </a-popconfirm>
+                    </template>
+                </a-table-column>
+            </data-table>
+        </a-card>
+    </page-container>
 </template>
 
 <script lang="ts">
@@ -57,36 +69,36 @@ import { OrderService } from '@/services/order.service'
 import { RequestParams } from '@/core/http'
 
 @Page({
-  name: 'data-table',
-  layout: 'workspace'
+    name: 'data-table',
+    layout: 'workspace'
 })
 @Component({
-  components: {
-    FullCalendar
-  }
+    components: {
+        FullCalendar
+    }
 })
 export default class DataTableDemo extends Vue {
-  private readonly calendarPlugins = [dayGridPlugin]
+    private readonly calendarPlugins = [dayGridPlugin]
 
-  private data = []
-  // 表格选择项
-  private selectedRowKeys: any[] = []
+    private data = []
+    // 表格选择项
+    private selectedRowKeys: any[] = []
 
-  // 订单服务
-  private orderService = new OrderService()
+    // 订单服务
+    private orderService = new OrderService()
 
-  private mounted() {
-    this.getOrderList()
-  }
+    private mounted() {
+        this.getOrderList()
+    }
 
-  /**
-   * 获取订单数据
-   */
-  private getOrderList() {
-    this.orderService.getOrderList(new RequestParams()).subscribe(data => {
-      this.data = data
-    })
-  }
+    /**
+     * 获取订单数据
+     */
+    private getOrderList() {
+        this.orderService.getOrderList(new RequestParams()).subscribe(data => {
+            this.data = data
+        })
+    }
 }
 </script>
 

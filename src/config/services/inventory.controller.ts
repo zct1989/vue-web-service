@@ -9,9 +9,9 @@ const controller = 'inventory'
  * 库存服务配置
  */
 export const InventoryController: ControllerConfig = {
-  // 获取库存信息
-  inventory: {
-    controller,
-    type: RequestMethod.Post
-  }
+    // 获取库存信息
+    inventory: {
+        controller,
+        type: RequestMethod.Post
+    }
 }

@@ -6,12 +6,12 @@ import quillEditor from './quill-editor'
 import clipboard from './clipboard'
 
 export default {
-  install() {
-    antv.install()
-    fullcalender.install()
-    vcharts.install()
-    googleMap.install()
-    quillEditor.install()
-    clipboard.install()
-  }
+    install() {
+        antv.install()
+        fullcalender.install()
+        vcharts.install()
+        googleMap.install()
+        quillEditor.install()
+        clipboard.install()
+    }
 }

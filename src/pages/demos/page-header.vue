@@ -1,38 +1,38 @@
 <template>
-  <page-container :desc="desc">
-    <!-- 操作区 -->
-    <template v-slot:header-action>
-      <a-button-group style="margin-right: 4px;">
-        <a-button>{{ $t('operator1') }}</a-button>
-        <a-button>{{ $t('operator2') }}</a-button>
-      </a-button-group>
-      <a-button type="primary">{{ $t('main-operator') }}</a-button>
-    </template>
+    <page-container :desc="desc">
+        <!-- 操作区 -->
+        <template v-slot:header-action>
+            <a-button-group style="margin-right: 4px;">
+                <a-button>{{ $t('operator1') }}</a-button>
+                <a-button>{{ $t('operator2') }}</a-button>
+            </a-button-group>
+            <a-button type="primary">{{ $t('main-operator') }}</a-button>
+        </template>
 
-    <!-- 信息区 -->
-    <template v-slot:extra>
-      <div class="flex-row">
-        <HeaderInfo
-          :title="$t('day-order-number')"
-          content="934"
-          :bordered="true"
-        ></HeaderInfo>
-        <HeaderInfo
-          :title="$t('week-order-number')"
-          content="3534"
-          :bordered="true"
-        ></HeaderInfo>
-        <HeaderInfo
-          :title="$t('month-order-number')"
-          content="9334"
-        ></HeaderInfo>
-      </div>
-    </template>
+        <!-- 信息区 -->
+        <template v-slot:extra>
+            <div class="flex-row">
+                <HeaderInfo
+                    :title="$t('day-order-number')"
+                    content="934"
+                    :bordered="true"
+                ></HeaderInfo>
+                <HeaderInfo
+                    :title="$t('week-order-number')"
+                    content="3534"
+                    :bordered="true"
+                ></HeaderInfo>
+                <HeaderInfo
+                    :title="$t('month-order-number')"
+                    content="9334"
+                ></HeaderInfo>
+            </div>
+        </template>
 
-    <a-card>
-      {{ $t('info') }}
-    </a-card>
-  </page-container>
+        <a-card>
+            {{ $t('info') }}
+        </a-card>
+    </page-container>
 </template>
 
 <script lang="ts">
@@ -44,19 +44,19 @@ import { namespace } from 'vuex-class'
 
 const userModule = namespace('userModule')
 @Page({
-  name: 'page-header',
-  layout: 'workspace'
+    name: 'page-header',
+    layout: 'workspace'
 })
 @Component({
-  components: { HeaderInfo, WorkCalender }
+    components: { HeaderInfo, WorkCalender }
 })
 export default class PageHeader extends Vue {
-  @userModule.State
-  private username
+    @userModule.State
+    private username
 
-  private get desc() {
-    return ` ${this.$t('hello')}, ${this.username}`
-  }
+    private get desc() {
+        return ` ${this.$t('hello')}, ${this.username}`
+    }
 }
 </script>
 

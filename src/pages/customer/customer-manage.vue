@@ -78,11 +78,13 @@
         <a-card class="margin-y">
             <data-table
                 :data="data"
+                :page="pageService"
                 rowKey="customer_code"
                 :rowSelection="{
                     selectedRowKeys: selectedRowKeys,
                     onChange: keys => (selectedRowKeys = keys)
                 }"
+                @on-page-change="getCustomerList"
             >
                 <a-table-column
                     :title="$t('columns.customer_code')"
@@ -209,7 +211,6 @@ export default class CustomerManage extends Vue {
      * 获取订单数据
      */
     private getCustomerList() {
-        this.pageService.pageSize = 2
         this.dataForm
             .validateFields()
             .then(values => {
@@ -221,7 +222,6 @@ export default class CustomerManage extends Vue {
                     )
                     .subscribe(data => {
                         this.data = data
-                        console.log(data)
                     })
             })
             .catch(err => {

@@ -1,17 +1,17 @@
 <template>
-  <section class="component order-product-detail">
-    {{ $t('info') }} : {{ id }}
-  </section>
+    <section class="component order-product-detail">
+        {{ $t('info') }} : {{ id }}
+    </section>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component({
-  components: {}
+    components: {}
 })
 export default class OrderProductDetail extends Vue {
-  @Prop()
-  id: any
+    @Prop()
+    id: any
 }
 </script>
 
