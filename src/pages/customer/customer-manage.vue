@@ -8,7 +8,10 @@
             <!--默认显示项-->
             <template #default>
                 <a-form-item :label="$t('form.status')">
-                    <a-select v-decorator="['status']">
+                    <a-select v-decorator="['status', { initialValue: '' }]">
+                        <a-select-option value="">
+                            全部
+                        </a-select-option>
                         <a-select-option
                             :value="item.value"
                             v-for="item of $dict.CustomerStatus"
@@ -159,7 +162,6 @@
 <script lang="ts">
 import { Component, Vue, Ref } from 'vue-property-decorator'
 import { Page } from '~/core/decorators'
-import { Inject } from 'typescript-ioc'
 import { CustomerService } from '~/services/customer.service'
 import { RequestParams } from '~/core/http'
 import { PageService } from '~/bootstrap/services/page.service'

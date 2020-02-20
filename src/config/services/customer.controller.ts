@@ -9,10 +9,10 @@ const controller = 'customer'
  * 客户服务配置
  */
 export const CustomerController: ControllerConfig = {
-  // 客户查询
-  query: {
-    controller,
-    action: 'query_all',
-    type: RequestMethod.Post
-  }
+    // 客户查询
+    query: {
+        controller,
+        action: 'query_all',
+        type: RequestMethod.Post
+    }
 }

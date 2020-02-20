@@ -4,7 +4,7 @@ import * as dictData from '@/config/dict.config'
  * @param value
  * @param code 字典名称
  */
-export default function (value, code): string {
+export default function(value, code): string {
     try {
         const target = dictData[code] as any[]
         const { label } = target.find(x => x.value === value)

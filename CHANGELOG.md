@@ -8,6 +8,7 @@
  - | 添加modal-service | [908bc36](https://github.com/zct1989/vue-web-service/commit/908bc36)
  - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
  - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
+ - | 添加客户示例 | [b04f7bd](https://github.com/zct1989/vue-web-service/commit/b04f7bd)
  - | 添加提交前代码校验 | [51b46ff](https://github.com/zct1989/vue-web-service/commit/51b46ff)
  - | 添加提交前代码校验 | [2c0cba8](https://github.com/zct1989/vue-web-service/commit/2c0cba8)
  - | 添加提交日志显示 | [71b646b](https://github.com/zct1989/vue-web-service/commit/71b646b)
