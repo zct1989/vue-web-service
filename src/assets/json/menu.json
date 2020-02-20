@@ -32,6 +32,17 @@
     ]
   },
   {
+    "id": 13,
+    "name": "customer",
+    "children": [
+      {
+        "id": 14,
+        "icon": "mobile",
+        "name": "customer-manage"
+      }
+    ]
+  },
+  {
     "id": 8,
     "name": "accounts",
     "children": [

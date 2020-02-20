@@ -28,13 +28,13 @@ export class PageService extends ExtendService {
   public before = params => {
     params.data = {
       ...params.data,
-      size: this.pageSize,
-      page: this.pageIndex - 1
+      page_size: this.pageSize,
+      page_index: this.pageIndex - 1
     }
   }
 
   public after = (data: any, params) => {
-    this.total = data.totalElements
+    this.total = data.length
   }
 
   public reset() {

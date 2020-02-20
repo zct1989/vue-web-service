@@ -24,6 +24,8 @@ module.exports = {
     settings: '设置',
     'user-setting': '用户设置',
     'change-log': '更新日志',
-    'demo-mobile': '示例'
+    'demo-mobile': '示例',
+    customer: '客户',
+    'customer-manage': '客户管理'
   }
 }

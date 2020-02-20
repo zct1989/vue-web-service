@@ -24,6 +24,8 @@ module.exports = {
     settings: 'Setting',
     'user-setting': 'User Setting',
     'change-log': 'Change Log',
-    'demo-mobile': 'Demo'
+    'demo-mobile': 'Demo',
+    customer: ' Customer',
+    'customer-manage': 'Customer Manage'
   }
 }

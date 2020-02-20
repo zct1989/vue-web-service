@@ -3,7 +3,7 @@ import appConfig from '~/config/app.config'
 import store from '~/store'
 // import { TokenService } from '~/extension/services/token.service'
 
-export default function() {
+export default function () {
   // 配置服务端信息
   RequestService.setConfig({
     server: appConfig.server,
@@ -18,7 +18,13 @@ export default function() {
 
   // 添加成功拦截器
   RequestService.interceptors.success.use(respone => {
-    return respone.data.result
+    const result = respone.data.result
+
+    if (result.page_index !== undefined && result.length !== undefined) {
+      return result.results
+    } else {
+      return result
+    }
   })
 
   // 添加失败拦截器
