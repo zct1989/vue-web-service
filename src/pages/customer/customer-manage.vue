@@ -157,14 +157,6 @@
                                 更多操作 <a-icon type="down" />
                             </a-button>
                         </a-dropdown>
-                        <!-- <a-popconfirm
-                            :title="$t('delete')"
-                            @confirm="onDelete(detail.id)"
-                        >
-                            <a class="margin-right">
-                                {{ $t('action.delete') }}</a
-                            >
-                        </a-popconfirm> -->
                     </template>
                 </a-table-column>
             </data-table>
@@ -227,7 +219,7 @@ export default class CustomerManage extends Vue {
                     validator: (rule, value, callback) => {
                         const { getFieldValue } = this.dataForm.formInstance
                         const contractEnd = getFieldValue('contract_end')
-                        if (!contractEnd || contractEnd - value > 0) {
+                        if (!contractEnd || !value || contractEnd - value > 0) {
                             callback()
                         } else {
                             callback(this.$t('rules.date_range_error'))
@@ -240,7 +232,11 @@ export default class CustomerManage extends Vue {
                     validator: (rule, value, callback) => {
                         const { getFieldValue } = this.dataForm.formInstance
                         const contractStart = getFieldValue('contract_start')
-                        if (!contractStart || value - contractStart > 0) {
+                        if (
+                            !contractStart ||
+                            !value ||
+                            value - contractStart > 0
+                        ) {
                             callback()
                         } else {
                             callback(this.$t('rules.date_range_error'))

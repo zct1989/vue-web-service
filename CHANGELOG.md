@@ -9,6 +9,7 @@
  - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
  - | 添加分页功能 | [ec1674f](https://github.com/zct1989/vue-web-service/commit/ec1674f)
  - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
+ - | 添加字典多语言翻译支持&添加表单校验示例 | [b52ef11](https://github.com/zct1989/vue-web-service/commit/b52ef11)
  - | 添加客户示例 | [b04f7bd](https://github.com/zct1989/vue-web-service/commit/b04f7bd)
  - | 添加提交前代码校验 | [51b46ff](https://github.com/zct1989/vue-web-service/commit/51b46ff)
  - | 添加提交前代码校验 | [2c0cba8](https://github.com/zct1989/vue-web-service/commit/2c0cba8)

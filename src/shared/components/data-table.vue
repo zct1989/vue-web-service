@@ -1,16 +1,18 @@
 <template>
     <section class="component data-table">
         <div
-            v-if="$slots.action || $slots.extra"
+            v-if="$slots.action || $slots.extra || exportable"
             class="flex-row justify-content-between padding-bottom"
         >
             <div class="table-action flex-row align-items-center">
-                <vnodes
-                    :slot="key"
-                    v-for="[key, node] of Object.entries($slots.action)"
-                    :vnodes="node"
-                    :key="key"
-                />
+                <template v-if="$slots.action">
+                    <vnodes
+                        :slot="key"
+                        v-for="[key, node] of Object.entries($slots.action)"
+                        :vnodes="node"
+                        :key="key"
+                    />
+                </template>
             </div>
             <div class="table-extra flex-row align-items-center">
                 <template v-if="$slots.extra">
@@ -21,7 +23,7 @@
                         :key="key"
                     />
                 </template>
-                <a @click="exportExcel">导出Excel</a>
+                <a @click="exportExcel" v-if="exportable">导出Excel</a>
             </div>
         </div>
         <a-table
@@ -86,6 +88,9 @@ export default class DataTable extends Vue {
 
     @Prop()
     public rowSelection
+
+    // @Prop({ default: false })
+    public exportable: boolean = true
 
     @Emit('on-page-change')
     public emitPageChange() {
