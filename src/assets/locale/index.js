@@ -2,8 +2,8 @@
 import antd_zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import antd_en_US from 'ant-design-vue/lib/locale-provider/en_US'
 // 本地语言包
-import zh_CN from './zh-cn'
-import en_US from './en-us'
+import zh_CN from './zh-cn.json'
+import en_US from './en-us.json'
 
 export const i18nLocale = {
     'zh-cn': zh_CN,

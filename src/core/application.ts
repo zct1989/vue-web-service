@@ -6,11 +6,12 @@ Vue.use(VueRouter)
 import { IApplicationOption } from './interfaces/application-option.interface'
 import { ApplicationRouter } from './application_router'
 import { ApplicationStore } from './application_store'
-import VueI18n from 'vue-i18n'
+import VueI18n, { IVueI18n } from 'vue-i18n'
 import { i18nLocale } from '~/assets/locale'
 
 export default class Application {
     private router: ApplicationRouter
+    public static i18n: VueI18n
     /**
      * 构造函数
      * @param options
@@ -29,8 +30,10 @@ export default class Application {
 
         const i18n = new VueI18n({
             locale: store.state.locale,
-            messages: i18nLocale
+            messages: i18nLocale,
+            silentTranslationWarn: true
         })
+        Application.i18n = i18n
         // 初始化框架
         this.bootstrap(options, () => {
             new Vue({

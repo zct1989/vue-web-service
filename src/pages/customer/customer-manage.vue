@@ -4,42 +4,56 @@
             <a-button type="primary">{{ $t('action.create') }}</a-button>
             <a-button type="primary">{{ $t('action.batch-create') }}</a-button>
         </template>
-        <data-form ref="dataForm" @submit="getCustomerList">
+        <data-form ref="dataForm" @submit="getCustomerList" :column="3">
             <!--默认显示项-->
             <template #default>
                 <a-form-item :label="$t('form.status')">
                     <a-select v-decorator="['status', { initialValue: '' }]">
                         <a-select-option value="">
-                            全部
+                            {{ $t('dict.all') }}
                         </a-select-option>
                         <a-select-option
                             :value="item.value"
                             v-for="item of $dict.CustomerStatus"
                             :key="item.value"
                         >
-                            {{ item.label }}
+                            {{ $t(item.label) }}
                         </a-select-option>
                     </a-select>
                 </a-form-item>
-                <a-form-item :label="$t('form.age')">
+                <a-form-item :label="$t('form.customer_code')">
                     <a-input
-                        :placeholder="$t('form.age')"
-                        v-decorator="['age']"
+                        :placeholder="$t('form.customer_code')"
+                        v-decorator="['customer_code']"
                     ></a-input>
                 </a-form-item>
-                <a-form-item :label="$t('form.sex')">
-                    <a-select v-decorator="['sex']">
-                        <a-select-option value="0">{{
-                            $t('form.male')
-                        }}</a-select-option>
-                        <a-select-option value="1">{{
-                            $t('form.female')
-                        }}</a-select-option>
-                    </a-select>
+                <a-form-item :label="$t('form.company_name')">
+                    <a-input
+                        :placeholder="$t('form.company_name')"
+                        v-decorator="['company_name']"
+                    ></a-input>
+                </a-form-item>
+                <a-form-item :label="`${$t('form.contract_start')}`">
+                    <a-date-picker
+                        :placeholder="$t('form.contract_start')"
+                        v-decorator="[
+                            'contract_start',
+                            { rules: rules.contract_start }
+                        ]"
+                    />
+                </a-form-item>
+                <a-form-item :label="`${$t('form.contract_end')}`">
+                    <a-date-picker
+                        :placeholder="$t('form.contract_end')"
+                        v-decorator="[
+                            'contract_end',
+                            { rules: rules.contract_end }
+                        ]"
+                    />
                 </a-form-item>
             </template>
             <!--折叠显示项-->
-            <template #collapse>
+            <!-- <template #collapse>
                 <a-form-item :label="`${$t('form.field')}1`">
                     <a-input
                         v-decorator="['field1']"
@@ -58,7 +72,7 @@
                         :placeholder="`${$t('form.field')}3`"
                     ></a-input>
                 </a-form-item>
-            </template>
+            </template> -->
             <!--操作行为项-->
             <template #action>
                 <a-button type="primary">{{
@@ -119,7 +133,7 @@
                     key="status"
                 >
                     <template slot-scope="status">
-                        {{ status | dict('CustomerStatus') }}
+                        {{ status | dict('CustomerStatus') | translate }}
                     </template>
                 </a-table-column>
                 <a-table-column :title="$t('columns.action')" key="action">
@@ -172,6 +186,7 @@ import DataForm from '~/shared/components/data-form.vue'
 import CustomerDetail from '~/components/customer/customer-detail.vue'
 import PageContainer from '../../shared/components/page-container.vue'
 import { CustomerStatus } from '~/config/dict.config'
+import { CommonService } from '../../shared/utils/common.service'
 
 @Page({
     layout: 'workspace',
@@ -205,6 +220,37 @@ export default class CustomerManage extends Vue {
     // 详情项
     private current = null
 
+    private get rules() {
+        return {
+            contract_start: [
+                {
+                    validator: (rule, value, callback) => {
+                        const { getFieldValue } = this.dataForm.formInstance
+                        const contractEnd = getFieldValue('contract_end')
+                        if (!contractEnd || contractEnd - value > 0) {
+                            callback()
+                        } else {
+                            callback(this.$t('rules.date_range_error'))
+                        }
+                    }
+                }
+            ],
+            contract_end: [
+                {
+                    validator: (rule, value, callback) => {
+                        const { getFieldValue } = this.dataForm.formInstance
+                        const contractStart = getFieldValue('contract_start')
+                        if (!contractStart || value - contractStart > 0) {
+                            callback()
+                        } else {
+                            callback(this.$t('rules.date_range_error'))
+                        }
+                    }
+                }
+            ]
+        }
+    }
+
     private mounted() {}
 
     /**
@@ -216,9 +262,18 @@ export default class CustomerManage extends Vue {
             .then(values => {
                 this.customerService
                     .getCustomerList(
-                        new RequestParams(values, {
-                            page: this.pageService
-                        })
+                        new RequestParams(
+                            CommonService.createQueryCondition(values, {
+                                customer_code: '=',
+                                company_name: 'like',
+                                status: '=',
+                                contract_start: '>=',
+                                contract_end: '<='
+                            }),
+                            {
+                                page: this.pageService
+                            }
+                        )
                     )
                     .subscribe(data => {
                         this.data = data
@@ -269,9 +324,10 @@ export default class CustomerManage extends Vue {
     },
     "form":{
        "status":"Status",
-       "age":"Age",
-       "sex":"Sex",
-       "male":"Male",
+       "customer_code":"Customer Code",
+       "company_name":"Company Name",
+       "contract_start":"Contract Start Date",
+       "contract_end":"Contract End Date",
        "female":"Female",
        "field":"Field"
     },
@@ -286,7 +342,7 @@ export default class CustomerManage extends Vue {
       "export-customer-balance":"Export Balance"
     },
     "rules":{
-      "username_require":"please input username"
+       "date_range_error":"start date can't later start date"
     },
     "delete":"Are you sure delete?"
   },
@@ -302,10 +358,10 @@ export default class CustomerManage extends Vue {
     },
     "form":{
        "status":"状态",
-       "age":"年龄",
-       "sex":"性别",
-       "male":"男性",
-       "female":"女性",
+       "customer_code":"客户编号",
+       "company_name":"公司名称",
+       "contract_start":"合同开始日期",
+       "contract_end":"合同结束日期",
        "field":"字段"
     },
     "action":{
@@ -319,7 +375,7 @@ export default class CustomerManage extends Vue {
       "detail":"详情"
     },
     "rules":{
-      "username_require":"请输入用户名"
+      "date_range_error":"开始日期不能大于结束日期"
     },
     "delete":"是否确认删除?"
   }

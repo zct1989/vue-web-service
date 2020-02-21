@@ -1,4 +1,4 @@
-# 0.1.0 (2020-02-20)
+# 0.1.0 (2020-02-21)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -7,6 +7,7 @@
  - | 添加Loading服务 | [1ba898b](https://github.com/zct1989/vue-web-service/commit/1ba898b)
  - | 添加modal-service | [908bc36](https://github.com/zct1989/vue-web-service/commit/908bc36)
  - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
+ - | 添加分页功能 | [ec1674f](https://github.com/zct1989/vue-web-service/commit/ec1674f)
  - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
  - | 添加客户示例 | [b04f7bd](https://github.com/zct1989/vue-web-service/commit/b04f7bd)
  - | 添加提交前代码校验 | [51b46ff](https://github.com/zct1989/vue-web-service/commit/51b46ff)

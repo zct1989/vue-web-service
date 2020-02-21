@@ -15,7 +15,8 @@
                         <a-col
                             class="form-item-wrapper"
                             :span="
-                                (node.data.attrs && node.data.attrs.span) || 6
+                                (node.data.attrs && node.data.attrs.span) ||
+                                    24 / column
                             "
                             v-for="(node, index) of defaultFormItems"
                             :key="`default-${index}`"
@@ -25,7 +26,10 @@
                         <!--折叠表单项-->
                         <a-col
                             :style="{ display: collapsed ? 'none' : 'block' }"
-                            span="6"
+                            :span="
+                                (node.data.attrs && node.data.attrs.span) ||
+                                    24 / column
+                            "
                             v-for="(node, index) of collapseFormItems"
                             :key="`collapse-${index}`"
                         >
@@ -79,6 +83,9 @@ export default class DataForm extends Vue {
     public beforeCreate() {
         this.formInstance = this.$form.createForm(this)
     }
+
+    @Prop({ default: 4 })
+    public column!: number
 
     // 输入栏折叠状态
     private collapsed = true
