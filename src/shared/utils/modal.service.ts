@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { Modal } from 'ant-design-vue'
-import { destroyFns } from 'ant-design-vue/lib/modal'
+import { Observable } from 'rxjs'
+import Application from '@/core/application'
 
 export class ModalService {
     /**
@@ -23,36 +24,55 @@ export class ModalService {
      */
     private renderModelComponent(Component, data, options) {
         const { container, el } = this.createModalContainer()
+        let modalInstance
+        const modalClose = () => {
+            if (modalInstance && container.parentNode) {
+                modalInstance.$destroy()
+                container.parentNode.removeChild(container)
+            }
+        }
 
-        const modalInstance = new Vue({
-            el,
-            render(h) {
-                return h(
-                    Modal,
-                    {
-                        props: {
-                            centered: true,
-                            header: false,
-                            ...options,
-                            visible: true,
-                            footer: false
-                        },
-                        on: {
-                            cancel: () => {
-                                if (modalInstance && container.parentNode) {
-                                    modalInstance.$destroy()
-                                    container.parentNode.removeChild(container)
+        return new Observable<any>(subject => {
+            modalInstance = new Vue({
+                el,
+                i18n: Application.i18n,
+                render(h) {
+                    return h(
+                        Modal,
+                        {
+                            props: {
+                                centered: true,
+                                header: false,
+                                ...options,
+                                visible: true,
+                                footer: false
+                            },
+                            on: {
+                                cancel: () => {
+                                    subject.complete()
+                                    modalClose()
                                 }
                             }
-                        }
-                    },
-                    [
-                        h(Component, {
-                            props: data
-                        })
-                    ]
-                )
-            }
+                        },
+                        [
+                            h(Component, {
+                                props: data,
+                                on: {
+                                    'modal.submit': data => {
+                                        subject.next(data)
+                                        subject.complete()
+                                        modalClose()
+                                    },
+                                    'modal.cancel': () => {
+                                        subject.complete()
+                                        modalClose()
+                                    }
+                                }
+                            })
+                        ]
+                    )
+                }
+            })
         })
     }
 
@@ -60,8 +80,7 @@ export class ModalService {
      * 弹出组件页面
      * @param options
      */
-    public open(Component, data, options) {
-        const instance = this.renderModelComponent(Component, data, options)
-        return instance
+    public open(Component, data?, options?) {
+        return this.renderModelComponent(Component, data, options)
     }
 }

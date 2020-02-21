@@ -16,4 +16,15 @@ export class CustomerService {
     public getCustomerList(requestParams: RequestParams): Observable<any> {
         return requestParams.request()
     }
+
+    /**
+     * 批量分配仓库
+     * @param requestParams
+     */
+    @Request({
+        server: CustomerController.batchSetWms
+    })
+    public batchSetStorage(requestParams: RequestParams): Observable<any> {
+        return requestParams.request()
+    }
 }

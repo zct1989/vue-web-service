@@ -14,5 +14,11 @@ export const CustomerController: ControllerConfig = {
         controller,
         action: 'query_all',
         type: RequestMethod.Post
+    },
+    // 批量分配仓库
+    batchSetWms: {
+        controller,
+        action: 'batch_set_wms',
+        type: RequestMethod.Post
     }
 }

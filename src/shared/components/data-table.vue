@@ -90,7 +90,7 @@ export default class DataTable extends Vue {
     public rowSelection
 
     // @Prop({ default: false })
-    public exportable: boolean = true
+    public exportable: boolean = false
 
     @Emit('on-page-change')
     public emitPageChange() {

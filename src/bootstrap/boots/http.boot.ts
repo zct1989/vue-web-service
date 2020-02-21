@@ -20,7 +20,7 @@ export default function() {
     RequestService.interceptors.success.use(respone => {
         const result = respone.data.result
 
-        if (result.page_index !== undefined && result.length !== undefined) {
+        if (result.length !== undefined && result.length !== undefined) {
             return result.results
         } else {
             return result

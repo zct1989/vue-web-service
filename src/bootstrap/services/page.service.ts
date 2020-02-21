@@ -4,7 +4,7 @@ import { AutoWired } from 'typescript-ioc'
 @AutoWired
 export class PageService extends ExtendService {
     public default = {
-        pageSize: 20,
+        pageSize: 10,
         pageIndex: 1,
         total: 0,
         pageSizeOpts: [20, 50, 100, 200]

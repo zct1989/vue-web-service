@@ -75,7 +75,7 @@
             </template> -->
             <!--操作行为项-->
             <template #action>
-                <a-button type="primary">{{
+                <a-button type="primary" @click="onBatchAssignStorage()">{{
                     $t('action.batch-assign-storage')
                 }}</a-button>
                 <a-button type="primary">{{
@@ -179,6 +179,7 @@ import CustomerDetail from '~/components/customer/customer-detail.vue'
 import PageContainer from '../../shared/components/page-container.vue'
 import { CustomerStatus } from '~/config/dict.config'
 import { CommonService } from '../../shared/utils/common.service'
+import AvailableWareHouse from '~/components/customer/available-warehouse.vue'
 
 @Page({
     layout: 'workspace',
@@ -186,7 +187,8 @@ import { CommonService } from '../../shared/utils/common.service'
 })
 @Component({
     components: {
-        CustomerDetail
+        CustomerDetail,
+        AvailableWareHouse
     }
 })
 export default class CustomerManage extends Vue {
@@ -277,6 +279,34 @@ export default class CustomerManage extends Vue {
             })
             .catch(err => {
                 // 异常处理
+            })
+    }
+
+    /**
+     * 批量分配仓库
+     */
+    private onBatchAssignStorage() {
+        this.$modal
+            .open(
+                AvailableWareHouse,
+                {},
+                { title: this.$t('action.batch-assign-storage') }
+            )
+            .subscribe((data: any[]) => {
+                const params = this.selectedRowKeys.map(customerCode => ({
+                    customer_code: customerCode,
+                    whs_ids: data.map(x => ({
+                        whs_id: x
+                    }))
+                }))
+                this.customerService
+                    .batchSetStorage(
+                        new RequestParams({ customer_wms: params })
+                    )
+                    .subscribe(data => {
+                        this.$message.success('分配成功')
+                        this.getCustomerList()
+                    })
             })
     }
 
