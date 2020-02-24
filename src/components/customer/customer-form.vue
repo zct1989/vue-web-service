@@ -106,7 +106,6 @@ export default class CustomerForm extends Vue {
     }
 
     public setFormValues() {
-        console.log()
         this.form.setFieldsValue(this.customer)
     }
 
