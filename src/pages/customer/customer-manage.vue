@@ -1,7 +1,9 @@
 <template>
     <page-container ref="pageContainer">
         <template #header-action>
-            <a-button type="primary">{{ $t('action.create') }}</a-button>
+            <a-button type="primary" @click="onCreateCustomer">{{
+                $t('action.create')
+            }}</a-button>
             <a-button type="primary">{{ $t('action.batch-create') }}</a-button>
         </template>
         <data-form ref="dataForm" @submit="getCustomerList" :column="3">
@@ -183,6 +185,7 @@ import PageContainer from '../../shared/components/page-container.vue'
 import { CustomerStatus } from '~/config/dict.config'
 import { CommonService } from '../../shared/utils/common.service'
 import AvailableWareHouse from '~/components/customer/available-warehouse.vue'
+import CustomerForm from '~/components/customer/customer-form.vue'
 
 @Page({
     layout: 'workspace',
@@ -254,6 +257,33 @@ export default class CustomerManage extends Vue {
 
     private mounted() {}
 
+    private onCreateCustomer() {
+        this.$modal
+            .open(
+                CustomerForm,
+                {},
+                {
+                    title: '客户开户',
+                    width: '80%'
+                }
+            )
+            .subscribe(data => {
+                this.saveCustomer(data)
+            })
+    }
+
+    private saveCustomer(data) {
+        this.customerService.save(new RequestParams(data)).subscribe(
+            () => {
+                this.$message.success('操作成功')
+                this.getCustomerList()
+            },
+            () => {
+                this.$message.success('操作失败')
+            }
+        )
+    }
+
     /**
      * 获取订单数据
      */
@@ -324,7 +354,22 @@ export default class CustomerManage extends Vue {
     /**
      * 编辑
      */
-    private onEdit(row) {}
+    private onEdit(row) {
+        this.$modal
+            .open(
+                CustomerForm,
+                {
+                    customer: row
+                },
+                {
+                    title: '客户编辑',
+                    width: '80%'
+                }
+            )
+            .subscribe(data => {
+                this.saveCustomer(data)
+            })
+    }
 
     private onStop(row) {}
 

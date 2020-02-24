@@ -20,5 +20,11 @@ export const CustomerController: ControllerConfig = {
         controller,
         action: 'batch_set_wms',
         type: RequestMethod.Post
+    },
+    // 保存客户
+    save: {
+        controller,
+        action: 'save',
+        type: RequestMethod.Post
     }
 }

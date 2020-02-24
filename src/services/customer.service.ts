@@ -27,4 +27,15 @@ export class CustomerService {
     public batchSetStorage(requestParams: RequestParams): Observable<any> {
         return requestParams.request()
     }
+
+    /**
+     * 保存客户
+     * @param requestParams
+     */
+    @Request({
+        server: CustomerController.save
+    })
+    public save(requestParams: RequestParams): Observable<any> {
+        return requestParams.request()
+    }
 }

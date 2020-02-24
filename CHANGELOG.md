@@ -31,6 +31,7 @@
 ### 🎨 代码样式
 范围|描述|commitId
 --|--|--
+ - | remove console.log | [b524ccb](https://github.com/zct1989/vue-web-service/commit/b524ccb)
  - | 修正代码格式 | [c93bef2](https://github.com/zct1989/vue-web-service/commit/c93bef2)
 
 
