@@ -75,16 +75,19 @@
             </template> -->
             <!--操作行为项-->
             <template #action>
-                <a-button type="primary" @click="onBatchAssignStorage()">{{
-                    $t('action.batch-assign-storage')
-                }}</a-button>
-                <a-button type="primary">{{
+                <a-button
+                    type="primary"
+                    @click="onBatchAssignStorage()"
+                    :disabled="!selectedRowKeys.length"
+                    >{{ $t('action.batch-assign-storage') }}</a-button
+                >
+                <a-button type="primary" disabled>{{
                     $t('action.batch-assign-delegate')
                 }}</a-button>
-                <a-button type="primary">{{
+                <a-button type="primary" disabled>{{
                     $t('action.export-customer-info')
                 }}</a-button>
-                <a-button type="primary">{{
+                <a-button type="primary" disabled>{{
                     $t('action.export-customer-balance')
                 }}</a-button>
             </template>
