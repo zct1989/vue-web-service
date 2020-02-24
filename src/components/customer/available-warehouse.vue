@@ -59,7 +59,6 @@ export default class AvailableWareHouse extends Vue {
         this.wareHouseService
             .getAvailable(new RequestParams())
             .subscribe(data => {
-                console.log(data)
                 this.data = data
             })
     }

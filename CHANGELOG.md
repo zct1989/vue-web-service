@@ -38,6 +38,7 @@
 范围|描述|commitId
 --|--|--
  - | 修改vue.config | [b6d157d](https://github.com/zct1989/vue-web-service/commit/b6d157d)
+ - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
  - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
  - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)
  - | 添加打印标识 | [4c627a3](https://github.com/zct1989/vue-web-service/commit/4c627a3)
