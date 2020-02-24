@@ -2,7 +2,20 @@
     <section class="component customer-detail">
         <a-tabs defaultActiveKey="base">
             <a-tab-pane :tab="$t('base')" key="base">
-                11
+                <label-container :column="2">
+                    <label-item label="客户编号"
+                        >{{ customer.customer_code }}
+                    </label-item>
+                    <label-item label="公司名称"
+                        >{{ customer.company_name }}
+                    </label-item>
+                    <label-item label="联系人"
+                        >{{ customer.contact }}
+                    </label-item>
+                    <label-item label="联系人电话"
+                        >{{ customer.contact_mobile }}
+                    </label-item>
+                </label-container>
             </a-tab-pane>
             <a-tab-pane :tab="$t('customer')" key="customer">
                 22
