@@ -26,10 +26,11 @@
         "change-log": "Change Log",
         "demo-mobile": "Demo",
         "customer": " Customer",
-        "customer-manage": "Customer Manage"
+        "customer-manage": "Customer Manage",
+        "chat-box": "Chat Box"
     },
     "dict": {
-        "all":"ALL",
+        "all": "ALL",
         "customer-status": {
             "pending": "Pending",
             "reject": "Reject",

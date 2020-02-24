@@ -1,4 +1,4 @@
-# 0.1.0 (2020-02-21)
+# 0.1.0 (2020-02-24)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -11,6 +11,7 @@
  - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
  - | 添加字典多语言翻译支持&添加表单校验示例 | [b52ef11](https://github.com/zct1989/vue-web-service/commit/b52ef11)
  - | 添加客户示例 | [b04f7bd](https://github.com/zct1989/vue-web-service/commit/b04f7bd)
+ - | 添加弹窗功能示例 | [d96afec](https://github.com/zct1989/vue-web-service/commit/d96afec)
  - | 添加提交前代码校验 | [51b46ff](https://github.com/zct1989/vue-web-service/commit/51b46ff)
  - | 添加提交前代码校验 | [2c0cba8](https://github.com/zct1989/vue-web-service/commit/2c0cba8)
  - | 添加提交日志显示 | [71b646b](https://github.com/zct1989/vue-web-service/commit/71b646b)

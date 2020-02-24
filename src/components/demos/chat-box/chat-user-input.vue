@@ -1,0 +1,92 @@
+<template>
+    <section class="component chat-user-input padding-x">
+        <a-textarea
+            placeholder="please input message"
+            :rows="4"
+            v-model="content"
+        />
+        <div
+            class="flex-row align-items-center justify-content-between margin-y"
+        >
+            <div>
+                <a-button class="margin-right">Action1</a-button>
+                <a-button class="margin-right">Action2</a-button>
+                <a-button class="margin-right">Action3</a-button>
+            </div>
+            <div>
+                <a-button type="primary" @click="onSendMessage()"
+                    >send</a-button
+                >
+            </div>
+        </div>
+    </section>
+</template>
+
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
+const chatModule = namespace('chatModule')
+const userModule = namespace('userModule')
+
+@Component({
+    components: {}
+})
+export default class ChatUserInput extends Vue {
+    @userModule.State
+    private username
+
+    @userModule.State
+    private id
+
+    @chatModule.State
+    private userList
+
+    @chatModule.State
+    private currentUser
+
+    @chatModule.Mutation('addUserMessage')
+    private addUserMessage
+
+    private get receiverUser() {
+        const receiver = this.userList.find(x => x.id === this.currentUser)
+        return {
+            id: receiver.id,
+            username: receiver.username
+        }
+    }
+
+    private get senderUser() {
+        return {
+            username: this.username,
+            id: this.id
+        }
+    }
+
+    private content = ''
+    private onSendMessage() {
+        if (this.content.trim() === '') {
+            return
+        }
+
+        this.addUserMessage({
+            sender: this.senderUser,
+            receiver: this.receiverUser,
+            message: this.content
+        })
+
+        this.content = ''
+    }
+}
+</script>
+
+<i18n>
+{
+  "en-us":{
+    "today":"Today"
+
+  },
+  "zh-cn":{
+    "today":"今天"
+  }
+}
+</i18n>

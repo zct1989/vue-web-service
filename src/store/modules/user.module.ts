@@ -1,7 +1,8 @@
 export default {
     namespaced: true,
     state: {
-        username: ''
+        id: 0,
+        username: 'admin'
     },
     mutations: {
         login(state, { username }) {

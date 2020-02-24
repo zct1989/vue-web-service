@@ -1,123 +1,128 @@
 [
-  {
-    "id": 1,
-    "name": "dashboard",
-    "children": [
-      {
-        "id": 2,
-        "icon": "code",
-        "name": "workspace"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "orders",
-    "children": [
-      {
-        "id": 5,
-        "icon": "mobile",
-        "name": "order-page1"
-      },
-      {
-        "id": 6,
-        "icon": "mobile",
-        "name": "order-page2"
-      },
-      {
-        "id": 7,
-        "icon": "mobile",
-        "name": "order-page3"
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "name": "customer",
-    "children": [
-      {
-        "id": 14,
-        "icon": "mobile",
-        "name": "customer-manage"
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "accounts",
-    "children": [
-      {
-        "id": 9,
-        "icon": "mobile",
-        "name": "account-page1"
-      }
-    ]
-  },
-  {
-    "id": 20,
-    "name": "demos",
-    "children": [
-      {
-        "id": 21,
-        "icon": "mobile",
-        "name": "calender"
-      },
-      {
-        "id": 22,
-        "icon": "mobile",
-        "name": "chart"
-      },
-      {
-        "id": 23,
-        "icon": "mobile",
-        "name": "order"
-      },
-      {
-        "id": 24,
-        "icon": "mobile",
-        "name": "map"
-      },
-      {
-        "id": 25,
-        "icon": "mobile",
-        "name": "page-header"
-      },
-      {
-        "id": 26,
-        "icon": "mobile",
-        "name": "data-form"
-      },
-      {
-        "id": 27,
-        "icon": "mobile",
-        "name": "data-table"
-      },
-      {
-        "id": 28,
-        "icon": "mobile",
-        "name": "editor"
-      },
-      {
-        "id": 29,
-        "icon": "mobile",
-        "name": "http"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "settings",
-    "children": [
-      {
-        "id": 11,
-        "icon": "mobile",
-        "name": "user-setting"
-      },
-      {
-        "id": 12,
-        "icon": "info-circle",
-        "name": "change-log"
-      }
-    ]
-  }
+    {
+        "id": 1,
+        "name": "dashboard",
+        "children": [
+            {
+                "id": 2,
+                "icon": "code",
+                "name": "workspace"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "orders",
+        "children": [
+            {
+                "id": 5,
+                "icon": "mobile",
+                "name": "order-page1"
+            },
+            {
+                "id": 6,
+                "icon": "mobile",
+                "name": "order-page2"
+            },
+            {
+                "id": 7,
+                "icon": "mobile",
+                "name": "order-page3"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "customer",
+        "children": [
+            {
+                "id": 14,
+                "icon": "mobile",
+                "name": "customer-manage"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "accounts",
+        "children": [
+            {
+                "id": 9,
+                "icon": "mobile",
+                "name": "account-page1"
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "name": "demos",
+        "children": [
+            {
+                "id": 21,
+                "icon": "mobile",
+                "name": "calender"
+            },
+            {
+                "id": 22,
+                "icon": "mobile",
+                "name": "chart"
+            },
+            {
+                "id": 23,
+                "icon": "mobile",
+                "name": "order"
+            },
+            {
+                "id": 24,
+                "icon": "mobile",
+                "name": "map"
+            },
+            {
+                "id": 25,
+                "icon": "mobile",
+                "name": "page-header"
+            },
+            {
+                "id": 26,
+                "icon": "mobile",
+                "name": "data-form"
+            },
+            {
+                "id": 27,
+                "icon": "mobile",
+                "name": "data-table"
+            },
+            {
+                "id": 28,
+                "icon": "mobile",
+                "name": "editor"
+            },
+            {
+                "id": 29,
+                "icon": "mobile",
+                "name": "http"
+            },
+            {
+                "id": 30,
+                "icon": "mobile",
+                "name": "chat-box"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "settings",
+        "children": [
+            {
+                "id": 11,
+                "icon": "mobile",
+                "name": "user-setting"
+            },
+            {
+                "id": 12,
+                "icon": "info-circle",
+                "name": "change-log"
+            }
+        ]
+    }
 ]

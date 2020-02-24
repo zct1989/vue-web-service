@@ -1,0 +1,99 @@
+<template>
+    <div
+        class="flex-row justify-content-center align-items-center background full-absolute"
+    >
+        <div class="chat-box-container">
+            <div class="user-list-wrap wrap">
+                <chat-user-list></chat-user-list>
+            </div>
+            <div class="message-list-wrap wrap">
+                <chat-user-message></chat-user-message>
+            </div>
+            <div class="user-order-wrap wrap">
+                <chat-user-order></chat-user-order>
+            </div>
+            <div class="user-input-wrap wrap">
+                <chat-user-input></chat-user-input>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Page } from '@/core/decorators'
+
+import ChatUserInput from '~/components/demos/chat-box/chat-user-input.vue'
+import ChatUserMessage from '~/components/demos/chat-box/chat-user-message.vue'
+import ChatUserOrder from '~/components/demos/chat-box/chat-user-order.vue'
+import ChatUserList from '~/components/demos/chat-box/chat-user-list.vue'
+import Mock from 'mockjs'
+
+@Page({
+    layout: 'empty',
+    name: 'chat-box'
+})
+@Component({
+    components: {
+        ChatUserInput,
+        ChatUserList,
+        ChatUserMessage,
+        ChatUserOrder
+    }
+})
+export default class ChatBox extends Vue {
+    public mounted() {
+        this.fakeUserList()
+    }
+    private fakeUserList() {}
+}
+</script>
+
+<style lang="less" scoped>
+.chat-box-container {
+    background: #e5e5e5;
+    min-height: 800px;
+    min-width: 1280px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #7a7a7a;
+    display: grid;
+    grid-template-columns: 300px auto 250px;
+    grid-template-rows: auto 150px;
+    grid-template-areas:
+        'user-list chat-message user-order'
+        'user-list chat-input user-order';
+}
+
+.background {
+    background-color: #a7a7a7;
+}
+
+.wrap {
+    position: relative;
+}
+
+.user-list-wrap {
+    grid-area: user-list;
+}
+.user-order-wrap {
+    grid-area: user-order;
+}
+.chat-message-wrap {
+    grid-area: chat-message;
+}
+.chat-input-wrap {
+    grid-area: chat-input;
+}
+</style>
+
+<i18n>
+{
+  "en-us":{
+    "today":"Today"
+
+  },
+  "zh-cn":{
+    "today":"今天"
+  }
+}
+</i18n>

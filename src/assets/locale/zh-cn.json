@@ -26,10 +26,11 @@
         "change-log": "更新日志",
         "demo-mobile": "示例",
         "customer": "客户",
-        "customer-manage": "客户管理"
+        "customer-manage": "客户管理",
+        "chat-box": "聊天"
     },
     "dict": {
-        "all":"全部",
+        "all": "全部",
         "customer-status": {
             "pending": "待审核",
             "reject": "未通过",
