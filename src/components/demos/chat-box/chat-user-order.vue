@@ -1,5 +1,10 @@
 <template>
     <section class="component chat-user-order full-absolute">
+        <div class="margin text-right">
+            <a class="margin-left">查看订单</a>
+            <a class="margin-left">删除订单</a>
+            <a class="margin-left">查看物流</a>
+        </div>
         <div class="order-title text-center padding">
             {{ userChat.username }}'s Order
         </div>
