@@ -1,5 +1,16 @@
 <template>
     <section class="component flex-column chat-user-list full-absolute">
+        <div
+            class="search-header padding flex-row justify-content-between align-items-center"
+        >
+            <a-checkbox @change="onAllCheck"></a-checkbox>
+            <a-select defaultValue="Options" style="width: 120px">
+                <a-select-option value="option1">option1</a-select-option>
+                <a-select-option value="option2">option2</a-select-option>
+                <a-select-option value="option3">option3</a-select-option>
+            </a-select>
+            <a-button @click="$message.info('target action')">Action</a-button>
+        </div>
         <div class="search-box padding">
             <a-input
                 allowClear
@@ -12,11 +23,41 @@
                 v-for="user of chatUserList"
                 :key="user.id"
                 @click="changeUser(user.id)"
-                class="list-item flex-row justify-content-between align-items-center"
+                class="list-item"
                 :class="{ active: user.id === currentUser }"
             >
-                <span> {{ user.username }}</span>
-                <span>{{ user.fromNow }}</span>
+                <div class="flex-row" style="width:100%;margin-bottom:2px;">
+                    <a-checkbox
+                        v-model="user.check"
+                        style="width:20px;text-align:left;"
+                    >
+                    </a-checkbox>
+                    <div
+                        class="flex-auto padding-x"
+                        style="font-weight:bolder;color:black"
+                    >
+                        {{ user.username }}
+                    </div>
+                    <div>
+                        <a-icon class="margin-left item-action" type="delete" />
+                        <a-icon class="margin-left item-action" type="flag" />
+                    </div>
+                </div>
+                <div
+                    class="flex-row align-items-center"
+                    style="margin-bottom:5px"
+                >
+                    <a-icon
+                        type="mail"
+                        style="width:20px;text-align:left;font-size:15px;"
+                    />
+                    <div style="margin-left:10px;font-weight:bolder">
+                        Message Title
+                    </div>
+                </div>
+                <div style="margin-left:30px;">
+                    The Message Description...
+                </div>
             </div>
         </div>
     </section>
@@ -43,6 +84,8 @@ export default class ChatUserList extends Vue {
 
     private searchText = ''
 
+    private checkList = {}
+
     private get chatUserList() {
         return this.userList
             .filter(
@@ -54,23 +97,43 @@ export default class ChatUserList extends Vue {
             )
             .map(x => {
                 x.fromNow = moment(x.latest).fromNow()
+                x.check = false
                 return x
             })
+    }
+
+    private onAllCheck({ target }) {
+        const { checked } = target
+        this.chatUserList.forEach(element => {
+            element.check = checked
+        })
     }
 }
 </script>
 
 <style lang="less" scoped>
+.search-header {
+    background-color: #2f5564;
+}
+
 .list-container {
-    background-color: #cdcdcd;
+    background-color: #f5f5f5;
     overflow: auto;
+}
+
+.item-action {
+    cursor: pointer;
+    font-size: 14px;
+    &:hover {
+        color: black;
+        font-weight: bold;
+    }
 }
 
 .list-item {
     height: 80px;
     padding: 10px;
     border-bottom: solid 1px #afafaf;
-    cursor: pointer;
     &:hover {
         background-color: lightblue;
     }
@@ -81,7 +144,8 @@ export default class ChatUserList extends Vue {
 }
 </style>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+</style>
 
 <i18n>
 {

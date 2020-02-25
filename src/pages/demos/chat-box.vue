@@ -55,6 +55,7 @@ export default class ChatBox extends Vue {
     min-height: 800px;
     min-width: 1280px;
     border-radius: 10px;
+    overflow: hidden;
     box-shadow: 0 0 10px #7a7a7a;
     display: grid;
     grid-template-columns: 300px auto 250px;
