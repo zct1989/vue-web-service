@@ -44,8 +44,8 @@ export default class ChatUserOrder extends Vue {
 
 <style lang="less" scoped>
 .chat-user-order {
-    background-color: #f5f5f5;
-    border-left: solid 1px #c5c5c5;
+    background-color: #fff;
+    border-left: solid 1px rgb(200, 200, 200);
 }
 
 .order-title {

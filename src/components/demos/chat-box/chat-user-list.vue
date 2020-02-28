@@ -1,62 +1,61 @@
 <template>
     <section class="component flex-column chat-user-list full-absolute">
         <div
-            class="search-header padding flex-row justify-content-between align-items-center"
+            class="action-header padding flex-row justify-content-between align-items-center"
         >
-            <a-checkbox @change="onAllCheck"></a-checkbox>
-            <a-select defaultValue="Options" style="width: 120px">
-                <a-select-option value="option1">option1</a-select-option>
-                <a-select-option value="option2">option2</a-select-option>
-                <a-select-option value="option3">option3</a-select-option>
-            </a-select>
-            <a-button @click="$message.info('target action')">Action</a-button>
+            <div style="font-size:16px;color:black;">
+                Message
+            </div>
+            <div class="action">
+                <a-icon type="heart" theme="filled" />
+                <a-icon type="form" @click="edit = !edit" />
+                <a-dropdown :trigger="['click']">
+                    <a class="ant-dropdown-link" href="#">
+                        <a-icon type="ellipsis" :style="iconStyle" />
+                    </a>
+                    <a-menu slot="overlay">
+                        <a-menu-item>
+                            <a-icon type="inbox" :style="iconStyle" />
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a-icon type="link" :style="iconStyle" />
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a-icon type="share-alt" :style="iconStyle" />
+                        </a-menu-item>
+                    </a-menu>
+                </a-dropdown>
+            </div>
         </div>
-        <div class="search-box padding">
-            <a-input
-                allowClear
-                placeholder="用户搜索"
-                v-model="searchText"
-            ></a-input>
-        </div>
+
         <div class="list-container flex-auto">
             <div
                 v-for="user of chatUserList"
                 :key="user.id"
                 @click="changeUser(user.id)"
-                class="list-item"
+                class="list-item flex-row align-items-center"
                 :class="{ active: user.id === currentUser }"
             >
-                <div class="flex-row" style="width:100%;margin-bottom:2px;">
+                <div v-if="edit">
                     <a-checkbox
                         v-model="user.check"
                         style="width:20px;text-align:left;"
                     >
                     </a-checkbox>
-                    <div
-                        class="flex-auto padding-x"
-                        style="font-weight:bolder;color:black"
-                    >
-                        {{ user.username }}
-                    </div>
-                    <div>
-                        <a-icon class="margin-left item-action" type="delete" />
-                        <a-icon class="margin-left item-action" type="flag" />
-                    </div>
                 </div>
-                <div
-                    class="flex-row align-items-center"
-                    style="margin-bottom:5px"
-                >
-                    <a-icon
-                        type="mail"
-                        style="width:20px;text-align:left;font-size:15px;"
-                    />
-                    <div style="margin-left:10px;font-weight:bolder">
-                        Message Title
-                    </div>
+                <div class="padding-x">
+                    <a-avatar :size="48" :src="user.avatar"></a-avatar>
                 </div>
-                <div style="margin-left:30px;">
-                    The Message Description...
+                <div class="flex-auto">
+                    <div class="flex-row justify-content-between">
+                        <div class="username">
+                            {{ user.username }}
+                        </div>
+                        <div>{{ user.fromNow }}</div>
+                    </div>
+                    <div style="color:#7f7f7f;font-weight:500;margin-top:3px">
+                        The Message Description...
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,6 +66,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 import moment from 'moment'
+import faker from 'faker'
 const chatModule = namespace('chatModule')
 const userModule = namespace('userModule')
 @Component({
@@ -82,9 +82,13 @@ export default class ChatUserList extends Vue {
     @chatModule.Mutation('changeChatUser')
     private changeUser
 
+    private edit = false
+
     private searchText = ''
 
     private checkList = {}
+
+    private iconStyle = { fontSize: '16px', color: '#5a5a5a' }
 
     private get chatUserList() {
         return this.userList
@@ -112,13 +116,27 @@ export default class ChatUserList extends Vue {
 </script>
 
 <style lang="less" scoped>
-.search-header {
-    background-color: #2f5564;
+@primary-color: #ae6eef;
+
+.chat-user-list {
+    border-right: solid 1px rgb(200, 200, 200);
+}
+.list-container {
+    background-color: #fff;
+    overflow: auto;
 }
 
-.list-container {
-    background-color: #f5f5f5;
-    overflow: auto;
+.action-header {
+    .action {
+        i {
+            margin-left: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            &:hover {
+                color: @primary-color;
+            }
+        }
+    }
 }
 
 .item-action {
@@ -133,18 +151,20 @@ export default class ChatUserList extends Vue {
 .list-item {
     height: 80px;
     padding: 10px;
-    border-bottom: solid 1px #afafaf;
-    &:hover {
-        background-color: lightblue;
+    border-bottom: solid 3px transparent;
+    padding-right: 15px;
+    .username {
+        font-weight: bold;
+        color: black;
     }
-
     &.active {
-        background-color: burlywood;
+        border-bottom: solid 3px @primary-color;
+        color: @primary-color;
+        .username {
+            color: @primary-color;
+        }
     }
 }
-</style>
-
-<style lang="less" scoped>
 </style>
 
 <i18n>

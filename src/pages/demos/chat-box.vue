@@ -3,6 +3,9 @@
         class="flex-row justify-content-center align-items-center background full-absolute"
     >
         <div class="chat-box-container">
+            <div class="chat-header-wrap wrap">
+                <chat-header></chat-header>
+            </div>
             <div class="user-list-wrap wrap">
                 <chat-user-list></chat-user-list>
             </div>
@@ -27,6 +30,8 @@ import ChatUserInput from '~/components/demos/chat-box/chat-user-input.vue'
 import ChatUserMessage from '~/components/demos/chat-box/chat-user-message.vue'
 import ChatUserOrder from '~/components/demos/chat-box/chat-user-order.vue'
 import ChatUserList from '~/components/demos/chat-box/chat-user-list.vue'
+import ChatHeader from '~/components/demos/chat-box/chat-header.vue'
+
 import Mock from 'mockjs'
 
 @Page({
@@ -35,6 +40,7 @@ import Mock from 'mockjs'
 })
 @Component({
     components: {
+        ChatHeader,
         ChatUserInput,
         ChatUserList,
         ChatUserMessage,
@@ -51,7 +57,7 @@ export default class ChatBox extends Vue {
 
 <style lang="less" scoped>
 .chat-box-container {
-    background: #e5e5e5;
+    background: #ffffff;
     min-height: 800px;
     min-width: 1280px;
     border-radius: 10px;
@@ -59,8 +65,9 @@ export default class ChatBox extends Vue {
     box-shadow: 0 0 10px #7a7a7a;
     display: grid;
     grid-template-columns: 300px auto 250px;
-    grid-template-rows: auto 150px;
+    grid-template-rows: 60px auto 150px;
     grid-template-areas:
+        'chat-header chat-header chat-header'
         'user-list chat-message user-order'
         'user-list chat-input user-order';
 }
@@ -71,6 +78,11 @@ export default class ChatBox extends Vue {
 
 .wrap {
     position: relative;
+}
+
+.chat-header-wrap {
+    grid-area: chat-header;
+    box-shadow: 0px 5px 5px #dadce0;
 }
 
 .user-list-wrap {
