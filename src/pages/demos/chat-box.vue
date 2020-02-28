@@ -58,8 +58,10 @@ export default class ChatBox extends Vue {
 <style lang="less" scoped>
 .chat-box-container {
     background: #ffffff;
-    min-height: 800px;
-    min-width: 1280px;
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+    min-width: 800px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px #7a7a7a;
