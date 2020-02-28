@@ -44,7 +44,9 @@
                     </a-checkbox>
                 </div>
                 <div class="padding-x">
-                    <a-avatar :size="48" :src="user.avatar"></a-avatar>
+                    <a-badge :count="user.unread">
+                        <a-avatar :size="48" :src="user.avatar"></a-avatar>
+                    </a-badge>
                 </div>
                 <div class="flex-auto">
                     <div class="flex-row justify-content-between">
@@ -102,6 +104,7 @@ export default class ChatUserList extends Vue {
             .map(x => {
                 x.fromNow = moment(x.latest).fromNow()
                 x.check = false
+                x.unread = Math.floor(Math.abs(Math.random() * 5 - 1))
                 return x
             })
     }
