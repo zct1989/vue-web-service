@@ -4,6 +4,9 @@
             placeholder="please input message"
             :rows="4"
             v-model="content"
+            :autosize="false"
+            :resize="false"
+            style="resize: none;"
         />
         <div
             class="flex-row align-items-center justify-content-between margin-y"
@@ -78,6 +81,13 @@ export default class ChatUserInput extends Vue {
     }
 }
 </script>
+
+<style lang="less" scoped>
+.chat-user-input {
+    border-top: solid 1px rgb(200, 200, 200);
+    padding: 5px;
+}
+</style>
 
 <i18n>
 {

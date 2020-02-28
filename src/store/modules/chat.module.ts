@@ -1,3 +1,4 @@
+import faker from 'faker'
 interface IMessageUser {
     id: number
     username: string
@@ -9,54 +10,34 @@ interface IMessage {
     message: string
 }
 
+const fakerUser = number => {
+    return Array.from(Array(number), (x, i) => {
+        const username = faker.name.findName()
+        const time = Date.parse(faker.date.recent())
+        const user = {
+            id: i + 1,
+            username
+        }
+        return {
+            ...user,
+            messages: [
+                {
+                    sender: user,
+                    message: `hello! I am ${username}`,
+                    time
+                }
+            ],
+            latest: time,
+            avatar: faker.image.avatar()
+        }
+    })
+}
+
 export default {
     namespaced: true,
     state: {
         currentUser: 1,
-        userList: [
-            {
-                id: 1,
-                username: 'Jack',
-                messages: [
-                    {
-                        sender: {
-                            id: 1,
-                            username: 'Jack'
-                        },
-                        message: 'hello! I am Jack',
-                        time: Date.parse('2020-02-11 12:12')
-                    }
-                ],
-                latest: Date.parse('2020-02-11 12:12')
-            },
-            {
-                id: 2,
-                username: 'Jim',
-                messages: [
-                    {
-                        sender: {
-                            id: 2,
-                            username: 'Jim'
-                        },
-                        message: 'hello! I am Jim',
-                        time: Date.parse('2020-02-10 12:12')
-                    }
-                ],
-                latest: Date.parse('2020-02-10 12:12')
-            },
-            {
-                id: 3,
-                username: 'Rose',
-                messages: [
-                    {
-                        sender: { id: 3, username: 'Rose' },
-                        message: 'hello! I am Rose',
-                        time: Date.parse('2020-02-08 12:12')
-                    }
-                ],
-                time: Date.parse('2020-02-08 12:12')
-            }
-        ]
+        userList: fakerUser(12)
     },
     mutations: {
         changeChatUser(state, id) {
