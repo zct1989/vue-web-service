@@ -1,8 +1,12 @@
 <template>
     <div
+        ref="container"
         class="flex-row justify-content-center align-items-center background full-absolute"
     >
-        <div class="chat-box-container">
+        <div
+            class="chat-box-container"
+            :style="'grid-template-rows: 60px auto 150px;'"
+        >
             <div class="chat-header-wrap wrap">
                 <chat-header></chat-header>
             </div>
@@ -15,15 +19,18 @@
             <div class="user-order-wrap wrap">
                 <chat-user-order></chat-user-order>
             </div>
-            <div class="user-input-wrap wrap">
-                <chat-user-input></chat-user-input>
+            <div class="user-input-wrap ">
+                <div class="split" ref="split"></div>
+                <div class="wrap">
+                    <chat-user-input></chat-user-input>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, Ref } from 'vue-property-decorator'
 import { Page } from '@/core/decorators'
 
 import ChatUserInput from '~/components/demos/chat-box/chat-user-input.vue'
@@ -48,14 +55,48 @@ import Mock from 'mockjs'
     }
 })
 export default class ChatBox extends Vue {
-    public mounted() {
-        this.fakeUserList()
+    @Ref('split')
+    private split!: HTMLDivElement
+
+    @Ref('container')
+    private container!: HTMLDivElement
+
+    private inputHeight = 150
+
+    private get gridTemplateRows() {
+        return `60px auto 150px;`
     }
-    private fakeUserList() {}
+
+    public mounted() {
+        this.setupDrag()
+    }
+
+    private setupDrag() {
+        let moving = false
+        this.split.onmousedown = () => (moving = true)
+        this.split.onmouseup = () => (moving = false)
+        this.split.onmousemove = (...a) => {
+            if (!moving) return
+            console.log(this.container.style)
+        }
+    }
+
+    // grid-template-rows: 60px auto 219px;
 }
 </script>
 
 <style lang="less" scoped>
+.split {
+    width: 100%;
+    height: 1px;
+    background: rgb(200, 200, 200);
+    width: 100%;
+    height: 2px;
+    padding: 2px 0;
+    border: 2px;
+    cursor: row-resize;
+}
+
 .chat-box-container {
     background: #ffffff;
     height: 100%;
@@ -67,7 +108,6 @@ export default class ChatBox extends Vue {
     box-shadow: 0 0 10px #7a7a7a;
     display: grid;
     grid-template-columns: 300px auto 250px;
-    grid-template-rows: 60px auto 150px;
     grid-template-areas:
         'chat-header chat-header chat-header'
         'user-list chat-message user-order'
