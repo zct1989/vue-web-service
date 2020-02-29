@@ -6,12 +6,30 @@
             :inlineCollapsed="collapsed"
             @select="onMenuSelect($event)"
         >
-            <a-menu-item :key="item.name" v-for="item in menuResource">
-                <div class="flex-row justify-content-start align-items-center">
-                    <a-icon :type="item.icon"></a-icon>
-                    <span>{{ $t(`menu.${item.name}`) }}</span>
-                </div>
-            </a-menu-item>
+            <template v-for="item in menuResource">
+                <a-sub-menu :key="item.name" v-if="item.children">
+                    <a-menu-item
+                        :key="sub_item.name"
+                        v-for="sub_item of subItem"
+                    >
+                        <div
+                            class="flex-row justify-content-start align-items-center"
+                        >
+                            <a-icon :type="sub_item.icon"></a-icon>
+                            <span>{{ $t(`menu.${sub_item.name}`) }}</span>
+                        </div>
+                    </a-menu-item>
+                </a-sub-menu>
+
+                <a-menu-item :key="item.name" v-else>
+                    <div
+                        class="flex-row justify-content-start align-items-center"
+                    >
+                        <a-icon :type="item.icon"></a-icon>
+                        <span>{{ $t(`menu.${item.name}`) }}</span>
+                    </div>
+                </a-menu-item>
+            </template>
         </a-menu>
     </section>
 </template>

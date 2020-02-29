@@ -1,4 +1,4 @@
-# 0.1.0 (2020-02-28)
+# 0.1.0 (2020-02-29)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -10,6 +10,7 @@
  - | 添加modal-service | [908bc36](https://github.com/zct1989/vue-web-service/commit/908bc36)
  - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
  - | 添加分页功能 | [ec1674f](https://github.com/zct1989/vue-web-service/commit/ec1674f)
+ - | 添加动态扩展功能 | [5d21832](https://github.com/zct1989/vue-web-service/commit/5d21832)
  - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
  - | 添加字典多语言翻译支持&添加表单校验示例 | [b52ef11](https://github.com/zct1989/vue-web-service/commit/b52ef11)
  - | 添加客户示例 | [b04f7bd](https://github.com/zct1989/vue-web-service/commit/b04f7bd)
@@ -41,6 +42,7 @@
 --|--|--
  - | 修改chat布局 | [9f01e89](https://github.com/zct1989/vue-web-service/commit/9f01e89)
  - | 修改vue.config | [b6d157d](https://github.com/zct1989/vue-web-service/commit/b6d157d)
+ - | 修正chat-box大小 | [2fb68b7](https://github.com/zct1989/vue-web-service/commit/2fb68b7)
  - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
  - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
  - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)

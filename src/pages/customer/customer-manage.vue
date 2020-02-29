@@ -6,7 +6,12 @@
             }}</a-button>
             <a-button type="primary">{{ $t('action.batch-create') }}</a-button>
         </template>
-        <data-form ref="dataForm" @submit="getCustomerList" :column="3">
+        <data-form
+            :extends="extendItems"
+            ref="dataForm"
+            @submit="getCustomerList"
+            :column="3"
+        >
             <!--默认显示项-->
             <template #default>
                 <a-form-item :label="$t('form.status')">
@@ -186,6 +191,7 @@ import { CustomerStatus } from '~/config/dict.config'
 import { CommonService } from '../../shared/utils/common.service'
 import AvailableWareHouse from '~/components/customer/available-warehouse.vue'
 import CustomerForm from '~/components/customer/customer-form.vue'
+import { formConfig } from '../../config/form.config'
 
 @Page({
     layout: 'workspace',
@@ -204,6 +210,10 @@ export default class CustomerManage extends Vue {
 
     @Ref()
     readonly pageContainer!: PageContainer
+
+    private get extendItems() {
+        return formConfig.defaults()
+    }
 
     // 订单服务
     private customerService = new CustomerService()
@@ -299,7 +309,8 @@ export default class CustomerManage extends Vue {
                                 company_name: 'like',
                                 status: '=',
                                 contract_start: '>=',
-                                contract_end: '<='
+                                contract_end: '<=',
+                                ...formConfig.condition
                             }),
                             {
                                 page: this.pageService

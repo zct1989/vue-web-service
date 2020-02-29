@@ -78,7 +78,6 @@ import { Page } from '@/core/decorators'
 import DataForm from '@/shared/components/data-form.vue'
 import { OrderService } from '@/services/order.service'
 import { RequestParams } from '@/core/http'
-
 @Page({
     name: 'data-form',
     layout: 'workspace'
