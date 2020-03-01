@@ -5,7 +5,8 @@
     >
         <div
             class="chat-box-container"
-            :style="'grid-template-rows: 60px auto 150px;'"
+            :class="{ moving: moving }"
+            :style="{ 'grid-template-rows': gridTemplateRows }"
         >
             <div class="chat-header-wrap wrap">
                 <chat-header></chat-header>
@@ -21,7 +22,7 @@
             </div>
             <div class="user-input-wrap ">
                 <div class="split" ref="split"></div>
-                <div class="wrap">
+                <div class="full-height wrap">
                     <chat-user-input></chat-user-input>
                 </div>
             </div>
@@ -62,9 +63,9 @@ export default class ChatBox extends Vue {
     private container!: HTMLDivElement
 
     private inputHeight = 150
-
+    private moving = false
     private get gridTemplateRows() {
-        return `60px auto 150px;`
+        return `60px auto ${this.inputHeight}px`
     }
 
     public mounted() {
@@ -72,12 +73,11 @@ export default class ChatBox extends Vue {
     }
 
     private setupDrag() {
-        let moving = false
-        this.split.onmousedown = () => (moving = true)
-        this.split.onmouseup = () => (moving = false)
-        this.split.onmousemove = (...a) => {
-            if (!moving) return
-            console.log(this.container.style)
+        this.split.onmousedown = () => (this.moving = true)
+        this.container.onmouseup = () => (this.moving = false)
+        this.container.onmousemove = ({ movementY }) => {
+            if (!this.moving) return
+            this.inputHeight -= movementY
         }
     }
 
@@ -94,7 +94,9 @@ export default class ChatBox extends Vue {
     height: 2px;
     padding: 2px 0;
     border: 2px;
-    cursor: row-resize;
+    &:hover {
+        cursor: row-resize;
+    }
 }
 
 .chat-box-container {
@@ -112,6 +114,9 @@ export default class ChatBox extends Vue {
         'chat-header chat-header chat-header'
         'user-list chat-message user-order'
         'user-list chat-input user-order';
+    &.moving {
+        cursor: row-resize !important;
+    }
 }
 
 .background {
