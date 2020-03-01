@@ -46,13 +46,37 @@
                     @click="tool = ''"
                 />
             </div>
-            <div v-if="(tool = 'search')" class="flex-auto">
+            <div
+                v-if="(tool = 'search')"
+                class="flex-auto flex-row justify-content-between align-items-center"
+            >
                 <a-input
                     class="margin-x search-input"
                     placeholder="Search Here"
                 ></a-input>
+                <a style="padding-right:50px;" @click="visible = true"
+                    >高级搜索</a
+                >
             </div>
         </template>
+        <a-modal
+            title="邮件搜索"
+            :visible="visible"
+            @ok="visible = false"
+            @cancel="visible = false"
+        >
+            <a-form>
+                <a-form-item label="订单编号">
+                    <a-input placeholder="input placeholder" />
+                </a-form-item>
+                <a-form-item label="客户名称">
+                    <a-input placeholder="input placeholder" />
+                </a-form-item>
+                <a-form-item label="订单时间">
+                    <a-date-picker />
+                </a-form-item>
+            </a-form>
+        </a-modal>
     </section>
 </template>
 
@@ -70,7 +94,7 @@ export default class ChatUserInput extends Vue {
     private iconStyle = { fontSize: '16px', color: '#5a5a5a' }
     private userAvatar = faker.image.avatar()
     private tool = ''
-
+    private visible = false
     mounted() {}
 }
 </script>
