@@ -44,10 +44,21 @@
                     </a-checkbox>
                 </div>
                 <div class="padding-x">
-                    <a-badge :count="user.unread">
+                    <a-badge
+                        :count="user.unread"
+                        :numberStyle="
+                            user.replay
+                                ? {
+                                      backgroundColor: '#cecece',
+                                      color: '#5a5a5a'
+                                  }
+                                : {}
+                        "
+                    >
                         <a-avatar :size="48" :src="user.avatar"></a-avatar>
                     </a-badge>
                 </div>
+
                 <div class="flex-auto">
                     <div class="flex-row justify-content-between">
                         <div class="username">
@@ -57,6 +68,14 @@
                     </div>
                     <div style="color:#7f7f7f;font-weight:500;margin-top:3px">
                         The Message Description...
+                    </div>
+                    <div style="color:#7f7f7f;font-weight:500;margin-top:3px">
+                        <span>OrderNo:</span>
+                        {{ user.order }}
+                    </div>
+                    <div style="color:#7f7f7f;font-weight:500;margin-top:3px">
+                        <span>DateTime:</span>
+                        {{ user.latest | date('yyyy-MM-dd hh:mm:ss') }}
                     </div>
                 </div>
             </div>
@@ -105,6 +124,8 @@ export default class ChatUserList extends Vue {
                 x.fromNow = moment(x.latest).fromNow()
                 x.check = false
                 x.unread = Math.floor(Math.abs(Math.random() * 5 - 1))
+                x.order = Math.floor(Math.random() * 10000) + 10000
+                x.replay = Math.random() > 0.5 && x.unread
                 return x
             })
     }
@@ -152,7 +173,7 @@ export default class ChatUserList extends Vue {
 }
 
 .list-item {
-    height: 80px;
+    height: 100px;
     padding: 10px;
     border-bottom: solid 3px transparent;
     padding-right: 15px;

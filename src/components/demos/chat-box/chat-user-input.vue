@@ -1,6 +1,9 @@
 <template>
-    <section class="component chat-user-input padding-x">
+    <section
+        class="component full-absolute chat-user-input padding-x flex-column"
+    >
         <a-textarea
+            class="flex-auto"
             placeholder="please input message"
             :rows="4"
             v-model="content"
