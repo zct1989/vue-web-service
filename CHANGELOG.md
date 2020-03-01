@@ -51,6 +51,7 @@
  - | 修正输入框拖动异常 | [725c32a](https://github.com/zct1989/vue-web-service/commit/725c32a)
  - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)
  - | 添加unread显示 | [5453bd0](https://github.com/zct1989/vue-web-service/commit/5453bd0)
+ - | 添加付款方式示例 | [f0523d1](https://github.com/zct1989/vue-web-service/commit/f0523d1)
  - | 添加客户信息 | [39e2074](https://github.com/zct1989/vue-web-service/commit/39e2074)
  - | 添加弹窗示例 | [8c1618d](https://github.com/zct1989/vue-web-service/commit/8c1618d)
  - | 添加打印标识 | [4c627a3](https://github.com/zct1989/vue-web-service/commit/4c627a3)
