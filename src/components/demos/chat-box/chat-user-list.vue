@@ -47,7 +47,7 @@
                     <a-badge
                         :count="user.unread"
                         :numberStyle="
-                            user.replay
+                            !user.replay
                                 ? {
                                       backgroundColor: '#cecece',
                                       color: '#5a5a5a'
@@ -125,8 +125,13 @@ export default class ChatUserList extends Vue {
                 x.check = false
                 x.unread = Math.floor(Math.abs(Math.random() * 5 - 1))
                 x.order = Math.floor(Math.random() * 10000) + 10000
-                x.replay = Math.random() > 0.5 && x.unread
+                x.replay = !!(Math.random() > 0.5 && x.unread > 0)
                 return x
+            })
+            .sort((x, y) => {
+                let xv = (x.replay ? 2 : 0) + (x.unread == 0 ? 0 : 1)
+                let yv = (y.replay ? 2 : 0) + (y.unread == 0 ? 0 : 1)
+                return yv - xv
             })
     }
 
