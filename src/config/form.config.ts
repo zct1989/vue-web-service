@@ -1,13 +1,13 @@
-import AgeFormItem from '~/shared/search-items/age.vue'
+import PayMehtodFormItem from '~/shared/search-items/pay-method.vue'
 import Test1FormItem from '~/shared/search-items/test1.vue'
 import Test2FormItem from '~/shared/search-items/test2.vue'
 
 export const formConfig = {
     defaults: () => [
         {
-            label: '城市',
+            label: '付款方式',
             show: false,
-            component: AgeFormItem
+            component: PayMehtodFormItem
         },
         {
             label: 'test1',
@@ -23,9 +23,9 @@ export const formConfig = {
     customs: {
         order: () => [
             {
-                label: 'age',
+                label: '付款方式',
                 show: false,
-                component: AgeFormItem
+                component: PayMehtodFormItem
             },
             {
                 label: 'test1',
@@ -42,7 +42,7 @@ export const formConfig = {
         ]
     },
     condition: {
-        age: '=',
+        paymethod: '=',
         test1: 'like',
         test2: '='
     }
