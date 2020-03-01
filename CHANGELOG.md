@@ -45,6 +45,7 @@
  - | 修改chat布局 | [9f01e89](https://github.com/zct1989/vue-web-service/commit/9f01e89)
  - | 修改vue.config | [b6d157d](https://github.com/zct1989/vue-web-service/commit/b6d157d)
  - | 修正chat-box大小 | [2fb68b7](https://github.com/zct1989/vue-web-service/commit/2fb68b7)
+ - | 修正chat-user-list 排序 | [b40737c](https://github.com/zct1989/vue-web-service/commit/b40737c)
  - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
  - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
  - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)

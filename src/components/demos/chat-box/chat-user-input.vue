@@ -2,6 +2,17 @@
     <section
         class="component full-absolute chat-user-input padding-x flex-column"
     >
+        <div>
+            <a-select
+                defaultValue="模版一"
+                style="width: 200px"
+                class="priority-container margin-y"
+            >
+                <a-select-option value="template1">模版一</a-select-option>
+                <a-select-option value="template2">模版二</a-select-option>
+                <a-select-option value="template3">模版三</a-select-option>
+            </a-select>
+        </div>
         <a-textarea
             class="flex-auto"
             placeholder="please input message"
