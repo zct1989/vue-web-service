@@ -75,6 +75,7 @@ export default class ChatBox extends Vue {
     private setupDrag() {
         this.split.onmousedown = () => (this.moving = true)
         this.container.onmouseup = () => (this.moving = false)
+        this.container.onmouseleave = () => (this.moving = false)
         this.container.onmousemove = ({ movementY }) => {
             if (!this.moving) return
             if (movementY > 0 && this.inputHeight <= 200) return
