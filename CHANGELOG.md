@@ -53,6 +53,7 @@
  - | 添加客户信息 | [39e2074](https://github.com/zct1989/vue-web-service/commit/39e2074)
  - | 添加弹窗示例 | [8c1618d](https://github.com/zct1989/vue-web-service/commit/8c1618d)
  - | 添加打印标识 | [4c627a3](https://github.com/zct1989/vue-web-service/commit/4c627a3)
+ - | 添加模版选择按钮 | [8d10329](https://github.com/zct1989/vue-web-service/commit/8d10329)
 
 
 范围|描述|commitId

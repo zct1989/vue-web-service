@@ -62,7 +62,7 @@ export default class ChatBox extends Vue {
     @Ref('container')
     private container!: HTMLDivElement
 
-    private inputHeight = 150
+    private inputHeight = 200
     private moving = false
     private get gridTemplateRows() {
         return `60px auto ${this.inputHeight}px`
@@ -77,6 +77,7 @@ export default class ChatBox extends Vue {
         this.container.onmouseup = () => (this.moving = false)
         this.container.onmousemove = ({ movementY }) => {
             if (!this.moving) return
+            if (movementY > 0 && this.inputHeight <= 200) return
             this.inputHeight -= movementY
         }
     }
