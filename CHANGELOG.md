@@ -54,6 +54,7 @@
  - | 添加弹窗示例 | [8c1618d](https://github.com/zct1989/vue-web-service/commit/8c1618d)
  - | 添加打印标识 | [4c627a3](https://github.com/zct1989/vue-web-service/commit/4c627a3)
  - | 添加模版选择按钮 | [8d10329](https://github.com/zct1989/vue-web-service/commit/8d10329)
+ - | 添加输出框最低高度 | [13fcfdf](https://github.com/zct1989/vue-web-service/commit/13fcfdf)
 
 
 范围|描述|commitId
