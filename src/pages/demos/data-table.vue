@@ -82,7 +82,7 @@ export default class DataTableDemo extends Vue {
 
     private data = []
     // 表格选择项
-    private selectedRowKeys: any[] = []
+    public selectedRowKeys: any[] = []
 
     // 订单服务
     private orderService = new OrderService()
