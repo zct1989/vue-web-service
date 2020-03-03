@@ -311,6 +311,8 @@ TimePicker.install = function (Vue) {
 
 "use strict";
 
+// UNUSED EXPORTS: TimelineProps, TimeLineItemProps
+
 // EXTERNAL MODULE: ./node_modules/babel-runtime/helpers/extends.js
 var helpers_extends = __webpack_require__("41b2");
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
@@ -515,8 +517,6 @@ var TimelineProps = {
 var base = __webpack_require__("db14");
 
 // CONCATENATED MODULE: ./node_modules/ant-design-vue/es/timeline/index.js
-/* unused concated harmony import TimelineProps */
-/* unused concated harmony import TimeLineItemProps */
 
 
 
@@ -541,6 +541,8 @@ Timeline.install = function (Vue) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+
+// UNUSED EXPORTS: TransferDirection, TransferItem, TransferProps, TransferLocale
 
 // EXTERNAL MODULE: ./node_modules/babel-runtime/helpers/extends.js
 var helpers_extends = __webpack_require__("41b2");
@@ -1169,10 +1171,6 @@ var warning = __webpack_require__("6a21");
 var base = __webpack_require__("db14");
 
 // CONCATENATED MODULE: ./node_modules/ant-design-vue/es/transfer/index.js
-/* unused harmony export TransferDirection */
-/* unused harmony export TransferItem */
-/* unused harmony export TransferProps */
-/* unused harmony export TransferLocale */
 
 
 
@@ -1665,6 +1663,8 @@ Transfer.install = function (Vue) {
 
 "use strict";
 
+// UNUSED EXPORTS: TreeData, TreeSelectProps
+
 // EXTERNAL MODULE: ./node_modules/babel-runtime/helpers/defineProperty.js
 var defineProperty = __webpack_require__("6042");
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
@@ -1767,8 +1767,6 @@ var es = __webpack_require__("0464");
 var vnode = __webpack_require__("7b05");
 
 // CONCATENATED MODULE: ./node_modules/ant-design-vue/es/tree-select/index.js
-/* unused concated harmony import TreeData */
-/* unused concated harmony import TreeSelectProps */
 
 
 

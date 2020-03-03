@@ -5,6 +5,8 @@
 
 "use strict";
 
+// UNUSED EXPORTS: UploadProps, UploadListProps, UploadChangeParam
+
 // EXTERNAL MODULE: ./node_modules/babel-helper-vue-jsx-merge-props/index.js
 var babel_helper_vue_jsx_merge_props = __webpack_require__("92fa");
 var babel_helper_vue_jsx_merge_props_default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props);
@@ -912,9 +914,6 @@ function removeFileItem(file, fileList) {
 var base = __webpack_require__("db14");
 
 // CONCATENATED MODULE: ./node_modules/ant-design-vue/es/upload/index.js
-/* unused concated harmony import UploadProps */
-/* unused concated harmony import UploadListProps */
-/* unused concated harmony import UploadChangeParam */
 
 
 

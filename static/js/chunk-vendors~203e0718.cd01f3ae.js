@@ -4,7 +4,11 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "default", function() { return /* reexport */ isMobile; });
 
 // CONCATENATED MODULE: ./node_modules/ismobilejs/esm/isMobile.js
 const appleIphone = /iPhone/i;
@@ -100,7 +104,6 @@ function isMobile(userAgent) {
 }
 //# sourceMappingURL=isMobile.js.map
 // CONCATENATED MODULE: ./node_modules/ismobilejs/esm/index.js
-/* concated harmony reexport default */__webpack_require__.d(__webpack_exports__, "default", function() { return isMobile; });
 
 
 //# sourceMappingURL=index.js.map
