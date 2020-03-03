@@ -32,7 +32,6 @@
             <div
                 v-for="user of chatUserList"
                 :key="user.id"
-                @click="changeUser(user.id)"
                 class="list-item flex-row align-items-center"
                 :class="{ active: user.id === currentUser }"
             >
@@ -43,7 +42,7 @@
                     >
                     </a-checkbox>
                 </div>
-                <div class="padding-x">
+                <div class="padding-x" @click="changeUser(user.id)">
                     <a-badge
                         :count="user.unread"
                         :numberStyle="
@@ -59,7 +58,7 @@
                     </a-badge>
                 </div>
 
-                <div class="flex-auto">
+                <div class="flex-auto" @click="changeUser(user.id)">
                     <div class="flex-row justify-content-between">
                         <div class="username">
                             {{ user.username }}
