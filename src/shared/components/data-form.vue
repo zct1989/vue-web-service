@@ -29,15 +29,21 @@ export default class DataForm extends Vue {
     private collapsed = true
 
     // FormItem Label Span
-    private labelCol = {
-        span: 6
-    }
+    @Prop({
+        default: () => ({
+            span: 6
+        })
+    })
+    public labelCol
 
     // FormItem Content Span
-    private wrapperCol = {
-        span: 16,
-        offset: 2
-    }
+    @Prop({
+        default: () => ({
+            span: 16,
+            offset: 2
+        })
+    })
+    private wrapperCol
 
     private moreVisible = false
 

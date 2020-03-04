@@ -1,4 +1,4 @@
-# 0.1.0 (2020-03-03)
+# 0.1.0 (2020-03-04)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -43,6 +43,7 @@
 范围|描述|commitId
 --|--|--
  - | 修改chat布局 | [9f01e89](https://github.com/zct1989/vue-web-service/commit/9f01e89)
+ - | 修改selectRowKeys为public | [3205aee](https://github.com/zct1989/vue-web-service/commit/3205aee)
  - | 修改vue.config | [b6d157d](https://github.com/zct1989/vue-web-service/commit/b6d157d)
  - | 修改聊天页面用户选择 | [438edeb](https://github.com/zct1989/vue-web-service/commit/438edeb)
  - | 修正chat-box大小 | [2fb68b7](https://github.com/zct1989/vue-web-service/commit/2fb68b7)
