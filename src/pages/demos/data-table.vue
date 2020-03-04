@@ -10,7 +10,7 @@
                 }"
             >
                 <template #action>
-                    <a-button>操作一</a-button>
+                    <a-button @click="action1">操作一</a-button>
                 </template>
                 <a-table-column
                     :title="$t('columns.name')"
@@ -80,7 +80,7 @@ import { RequestParams } from '@/core/http'
 export default class DataTableDemo extends Vue {
     private readonly calendarPlugins = [dayGridPlugin]
 
-    private data = []
+    private data: any[] = []
     // 表格选择项
     public selectedRowKeys: any[] = []
 
@@ -91,13 +91,32 @@ export default class DataTableDemo extends Vue {
         this.getOrderList()
     }
 
+    private action1() {
+        this.selectedRowKeys = []
+    }
     /**
      * 获取订单数据
      */
     private getOrderList() {
-        this.orderService.getOrderList(new RequestParams()).subscribe(data => {
-            this.data = data
-        })
+        this.data = [
+            {
+                id: 1,
+                name: '123',
+                age: 1,
+                address: '123',
+                tag: ['1', '2']
+            },
+            {
+                id: 2,
+                name: '333',
+                age: 3,
+                address: '444',
+                tag: ['1', '2']
+            }
+        ]
+        // this.orderService.getOrderList(new RequestParams()).subscribe(data => {
+        //     this.data = data
+        // })
     }
 }
 </script>

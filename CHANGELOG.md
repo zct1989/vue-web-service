@@ -62,6 +62,12 @@
  - | 添加输出框最低高度 | [13fcfdf](https://github.com/zct1989/vue-web-service/commit/13fcfdf)
 
 
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ - | 添加表单项宽度配置文档 | [7445691](https://github.com/zct1989/vue-web-service/commit/7445691)
+
+
 范围|描述|commitId
 --|--|--
  - | 完成data-table组件&添加列表详情页面 | [a378161](https://github.com/zct1989/vue-web-service/commit/a378161)
