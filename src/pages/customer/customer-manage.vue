@@ -101,6 +101,7 @@
         </data-form>
         <a-card class="margin-y">
             <data-table
+                :stripe="true"
                 :data="data"
                 :page="pageService"
                 rowKey="customer_code"
