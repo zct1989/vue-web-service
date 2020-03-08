@@ -27,6 +27,8 @@
             </div>
         </div>
         <a-table
+            :class="{ stripe: stripe }"
+            :rowClassName="rowClassName"
             :columns="columns"
             :dataSource="data"
             :rowKey="rowKey"
@@ -89,6 +91,9 @@ export default class DataTable extends Vue {
     @Prop()
     public rowSelection
 
+    @Prop({ default: false })
+    public stripe
+
     // @Prop({ default: false })
     public exportable: boolean = false
 
@@ -104,6 +109,13 @@ export default class DataTable extends Vue {
             this.loading.status.subscribe(value => (this.loadingState = value))
         }
     }
+
+    @Prop({
+        default: () => (record, index) => {
+            return index % 2 == 0 ? 'even-row' : 'odd-row'
+        }
+    })
+    private rowClassName
 
     private onPageChange(page, pageSize) {
         this.page.pageIndex = page

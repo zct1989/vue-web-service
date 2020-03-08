@@ -1,4 +1,4 @@
-# 0.1.0 (2020-03-03)
+# 0.1.0 (2020-03-08)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -43,7 +43,9 @@
 范围|描述|commitId
 --|--|--
  - | 修改chat布局 | [9f01e89](https://github.com/zct1989/vue-web-service/commit/9f01e89)
+ - | 修改selectRowKeys为public | [3205aee](https://github.com/zct1989/vue-web-service/commit/3205aee)
  - | 修改vue.config | [b6d157d](https://github.com/zct1989/vue-web-service/commit/b6d157d)
+ - | 修改聊天页面用户选择 | [438edeb](https://github.com/zct1989/vue-web-service/commit/438edeb)
  - | 修正chat-box大小 | [2fb68b7](https://github.com/zct1989/vue-web-service/commit/2fb68b7)
  - | 修正chat-user-list 排序 | [b40737c](https://github.com/zct1989/vue-web-service/commit/b40737c)
  - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
@@ -58,6 +60,13 @@
  - | 添加模版选择按钮 | [8d10329](https://github.com/zct1989/vue-web-service/commit/8d10329)
  - | 添加订单搜索弹出窗 | [5152063](https://github.com/zct1989/vue-web-service/commit/5152063)
  - | 添加输出框最低高度 | [13fcfdf](https://github.com/zct1989/vue-web-service/commit/13fcfdf)
+
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ - | 添加置空选择项示例 | [21cdab1](https://github.com/zct1989/vue-web-service/commit/21cdab1)
+ - | 添加表单项宽度配置文档 | [7445691](https://github.com/zct1989/vue-web-service/commit/7445691)
 
 
 范围|描述|commitId
