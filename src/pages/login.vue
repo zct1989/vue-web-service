@@ -74,6 +74,8 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Page } from '~/core/decorators'
 import { namespace } from 'vuex-class'
+import { WmsService } from '../services/wms.service'
+import { RequestParams } from '../core/http'
 
 const userModule = namespace('userModule')
 
@@ -87,6 +89,7 @@ const userModule = namespace('userModule')
 export default class Login extends Vue {
     private locale
     private form
+    private wmsService = new WmsService()
 
     @userModule.Mutation('login')
     private login
@@ -117,8 +120,30 @@ export default class Login extends Vue {
                 return
             }
 
-            this.login(values)
-            this.$router.replace({ path: '/' })
+            this.wmsService
+                .login(
+                    new RequestParams({
+                        login: values.username,
+                        password: values.password
+                    })
+                )
+                .subscribe(({ user_login_info: data }) => {
+                    if (!data) {
+                        this.$message.error('用户名密码错误')
+                        return
+                    }
+
+                    this.login({
+                        id: data.uid,
+                        token: data.csrf_token,
+                        username: data.login,
+                        menus: data.user_menu_list,
+                        department: data.department_info,
+                        data: data
+                    })
+
+                    this.$router.replace({ path: '/' })
+                })
         })
     }
 }

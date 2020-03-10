@@ -1,6 +1,7 @@
 import { RequestService } from '~/core/http'
 import appConfig from '~/config/app.config'
 import store from '~/store'
+import { TokenService } from '../services/token.service'
 // import { TokenService } from '~/extension/services/token.service'
 
 export default function() {
@@ -60,5 +61,5 @@ export default function() {
     }
 
     // 安装全局服务扩展
-    // RequestService.installExtendService(new TokenService())
+    RequestService.installExtendService(new TokenService())
 }

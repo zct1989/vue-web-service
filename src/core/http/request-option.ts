@@ -75,8 +75,18 @@ export class RequestOption {
                 : [])
         ]
 
+        let targetUrl = requestServerArray.filter(x => x).join('/')
+
+        if (this.requestParams.options.query) {
+            const query = Object.entries(this.requestParams.options.query)
+                .map(([key, value]) => `${key}=${value}`)
+                .join('&')
+
+            query && (targetUrl += `?${query}`)
+        }
+
         // 组合为url形式
-        return requestServerArray.filter(x => x).join('/')
+        return targetUrl
     }
 
     /**
