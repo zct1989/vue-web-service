@@ -1,4 +1,6 @@
 import * as dictData from '@/config/dict.config'
+import store from '~/store'
+
 /**
  * 字典转换
  * @param value
@@ -6,7 +8,8 @@ import * as dictData from '@/config/dict.config'
  */
 export default function(value, code): string {
     try {
-        const target = dictData[code] as any[]
+        const dictSource = Object.assign({}, dictData, store.state.dictData)
+        const target = dictSource[code] as any[]
         const { label } = target.find(x => x.value === value)
         return label
     } catch (ex) {
