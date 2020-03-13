@@ -1,8 +1,8 @@
 <template>
     <page-container>
-        <a-card>
+        <a-card title="基础表格">
             <data-table
-                :data="data"
+                :data="data1"
                 rowKey="id"
                 :rowSelection="{
                     selectedRowKeys: selectedRowKeys,
@@ -44,15 +44,144 @@
                     </template>
                 </a-table-column>
                 <a-table-column :title="$t('columns.action')" key="action">
-                    <template slot-scope="detail">
-                        <a-popconfirm
-                            :title="$t('delete')"
-                            @confirm="onDelete(detail.id)"
-                        >
+                    <template>
+                        <a-popconfirm :title="$t('delete')" @confirm="() => {}">
                             <a class="margin-right">
                                 {{ $t('action.delete') }}</a
                             >
                         </a-popconfirm>
+                    </template>
+                </a-table-column>
+            </data-table>
+        </a-card>
+
+        <a-card title="可编辑表格" class="margin-top">
+            <template slot="extra">
+                <a-button type="link" v-if="editing" @click="onSubmit2()"
+                    >提交</a-button
+                >
+                <a-button type="link" v-if="editing" @click="onCancel2()"
+                    >取消</a-button
+                >
+                <a-button type="link" v-if="!editing" @click="onEdit2()"
+                    >编辑</a-button
+                >
+            </template>
+            <data-table :data="data2" rowKey="id">
+                <a-table-column
+                    :title="$t('columns.name')"
+                    dataIndex="name"
+                    key="name"
+                >
+                    <template slot-scope="name, row">
+                        <a-input
+                            v-if="editing"
+                            :value="name"
+                            @change="e => onInputChange2(e, row.id, 'name')"
+                        />
+                        <div v-else>{{ name }}</div>
+                    </template>
+                </a-table-column>
+                <a-table-column
+                    :title="$t('columns.age')"
+                    dataIndex="age"
+                    key="age"
+                ></a-table-column>
+                <a-table-column
+                    :title="$t('columns.address')"
+                    dataIndex="address"
+                    key="address"
+                ></a-table-column>
+                <a-table-column
+                    :title="$t('columns.tags')"
+                    dataIndex="tags"
+                    key="tags"
+                >
+                    <template slot-scope="tags">
+                        <span>
+                            <a-tag
+                                v-for="tag in tags"
+                                color="blue"
+                                :key="tag"
+                                >{{ tag }}</a-tag
+                            >
+                        </span>
+                    </template>
+                </a-table-column>
+                <a-table-column :title="$t('columns.action')" key="action">
+                    <template>
+                        <a-popconfirm :title="$t('delete')" @confirm="() => {}">
+                            <a class="margin-right">
+                                {{ $t('action.delete') }}</a
+                            >
+                        </a-popconfirm>
+                    </template>
+                </a-table-column>
+            </data-table>
+        </a-card>
+
+        <a-card title="行编辑表格" class="margin-top">
+            <data-table :data="data3" rowKey="id">
+                <a-table-column
+                    :title="$t('columns.name')"
+                    dataIndex="name"
+                    key="name"
+                >
+                    <template slot-scope="name, row">
+                        <a-input
+                            v-if="row.editing"
+                            :value="name"
+                            @change="e => onInputChange3(e, row.id, 'name')"
+                        />
+                        <div v-else>{{ name }}</div>
+                    </template>
+                </a-table-column>
+                <a-table-column
+                    :title="$t('columns.age')"
+                    dataIndex="age"
+                    key="age"
+                ></a-table-column>
+                <a-table-column
+                    :title="$t('columns.address')"
+                    dataIndex="address"
+                    key="address"
+                ></a-table-column>
+                <a-table-column
+                    :title="$t('columns.tags')"
+                    dataIndex="tags"
+                    key="tags"
+                >
+                    <template slot-scope="tags">
+                        <span>
+                            <a-tag
+                                v-for="tag in tags"
+                                color="blue"
+                                :key="tag"
+                                >{{ tag }}</a-tag
+                            >
+                        </span>
+                    </template>
+                </a-table-column>
+                <a-table-column :title="$t('columns.action')" key="action">
+                    <template slot-scope="row">
+                        <a-button
+                            type="link"
+                            v-if="row.editing"
+                            @click="onSubmit3(row)"
+                            >提交</a-button
+                        >
+                        <a-button
+                            type="link"
+                            v-if="row.editing"
+                            @click="onCancel3(row)"
+                            >取消</a-button
+                        >
+                        <a-button
+                            type="link"
+                            v-if="!row.editing"
+                            @click="onEdit3(row)"
+                            >编辑</a-button
+                        >
                     </template>
                 </a-table-column>
             </data-table>
@@ -67,6 +196,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import { Page } from '@/core/decorators'
 import { OrderService } from '@/services/order.service'
 import { RequestParams } from '@/core/http'
+import { cloneDeep } from 'lodash'
 
 @Page({
     name: 'data-table',
@@ -80,7 +210,13 @@ import { RequestParams } from '@/core/http'
 export default class DataTableDemo extends Vue {
     private readonly calendarPlugins = [dayGridPlugin]
 
-    private data: any[] = []
+    private data1: any[] = []
+    private data2: any[] = []
+    private data3: any[] = []
+
+    private cacheData2: any[] = []
+    private cacheData3: any[] = []
+    private editing = false
     // 表格选择项
     public selectedRowKeys: any[] = []
 
@@ -94,11 +230,12 @@ export default class DataTableDemo extends Vue {
     private action1() {
         this.selectedRowKeys = []
     }
+
     /**
      * 获取订单数据
      */
     private getOrderList() {
-        this.data = [
+        const data = [
             {
                 id: 1,
                 name: '123',
@@ -117,6 +254,87 @@ export default class DataTableDemo extends Vue {
         // this.orderService.getOrderList(new RequestParams()).subscribe(data => {
         //     this.data = data
         // })
+
+        this.data1 = cloneDeep(data)
+        this.data2 = cloneDeep(data)
+        this.data3 = cloneDeep(data)
+    }
+
+    /**
+     * 提交编辑数据
+     */
+    private onSubmit2() {
+        this.editing = false
+        this.data1 = cloneDeep(this.data2)
+        this.data3 = cloneDeep(this.data2)
+    }
+
+    /**
+     * 取消编辑数据
+     */
+    private onCancel2() {
+        this.editing = false
+        this.data2 = [...this.cacheData2]
+    }
+
+    /**
+     * 开启编辑模式
+     */
+    private onEdit2() {
+        this.editing = true
+        this.cacheData2 = cloneDeep(this.data2)
+    }
+    /**
+     * 单元格编辑
+     */
+    onInputChange2(e, key, column) {
+        const data = [...this.data2]
+        const [target] = data.filter(item => key === item.id)
+        if (target) {
+            target[column] = e.target.value
+            this.data2 = data
+        }
+    }
+
+    /**
+     * 提交编辑数据
+     */
+    private onSubmit3(row) {
+        const target = this.data3.find(x => x.id === row.id)
+        delete target.editing
+        this.data1 = cloneDeep(this.data3)
+        this.data2 = cloneDeep(this.data3)
+    }
+
+    /**
+     * 取消编辑数据
+     */
+    private onCancel3(row) {
+        const target = this.data3.find(x => x.id === row.id)
+        delete target.editing
+        this.data3 = [...this.cacheData3]
+    }
+
+    /**
+     * 开启编辑模式
+     */
+    private onEdit3(row) {
+        this.cacheData3 = cloneDeep(this.data3)
+        const target = this.data3.find(x => x.id === row.id)
+        target.editing = true
+        this.data3 = [...this.data3]
+    }
+
+    /**
+     * 单元格编辑
+     */
+    onInputChange3(e, key, column) {
+        const data = [...this.data3]
+        const [target] = data.filter(item => key === item.id)
+        if (target) {
+            target[column] = e.target.value
+            this.data3 = data
+        }
     }
 }
 </script>
