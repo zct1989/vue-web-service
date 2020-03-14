@@ -1,4 +1,4 @@
-# 0.1.0 (2020-03-13)
+# 0.1.0 (2020-03-14)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -32,6 +32,7 @@
  - | 添加示例页面 | [fe574ab](https://github.com/zct1989/vue-web-service/commit/fe574ab)
  - | 添加移动端显示支持 | [8b98752](https://github.com/zct1989/vue-web-service/commit/8b98752)
  - | 添加网络通讯示例 | [88afb00](https://github.com/zct1989/vue-web-service/commit/88afb00)
+ - | 添加表格编辑示例 | [d29f099](https://github.com/zct1989/vue-web-service/commit/d29f099)
  - | 添加部分页面示例 | [94fef2c](https://github.com/zct1989/vue-web-service/commit/94fef2c)
 
 
