@@ -7,8 +7,11 @@
                         <a-icon type="home" />
                     </a>
                 </a-breadcrumb-item>
-                <a-breadcrumb-item :key="item" v-for="item in breadcrumb">
+                <a-breadcrumb-item :key="item" v-for="item in breadcrumb.path">
                     <span>{{ $t(`menu.${item}`) }}</span>
+                </a-breadcrumb-item>
+                <a-breadcrumb-item>
+                    <span>{{ title || $t(`menu.${breadcrumb.title}`) }}</span>
                 </a-breadcrumb-item>
             </a-breadcrumb>
         </div>
@@ -43,7 +46,12 @@ export default class PageHeader extends Vue {
     title
 
     private get breadcrumb() {
-        return this.$route.path.split('/').filter(x => x)
+        const paths = this.$route.path.split('/').filter(x => x)
+        const [title] = paths.splice(-1)
+        return {
+            path: paths,
+            title: title
+        }
     }
 
     private get mobile() {

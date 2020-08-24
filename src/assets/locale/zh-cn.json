@@ -27,7 +27,8 @@
         "demo-mobile": "示例",
         "customer": "客户",
         "customer-manage": "客户管理",
-        "chat-box": "聊天"
+        "chat-box": "聊天",
+        "order-detail": "订单详情"
     },
     "dict": {
         "all": "全部",

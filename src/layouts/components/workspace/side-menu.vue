@@ -70,7 +70,11 @@ export default class SideMenu extends Vue {
 
     @Watch('$route')
     onRouteChange(newRoute, oldRoute) {
-        this.current = [newRoute.name]
+        if (this.menuResource.find(x => x.name === newRoute.name)) {
+            this.current = [newRoute.name]
+        } else {
+            this.current = []
+        }
     }
 
     private onMenuSelect({ key }) {

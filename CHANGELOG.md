@@ -1,4 +1,4 @@
-# 0.1.0 (2020-03-14)
+# 0.1.0 (2020-08-24)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -54,6 +54,7 @@
  - | 修正chat-user-list 排序 | [b40737c](https://github.com/zct1989/vue-web-service/commit/b40737c)
  - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
  - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
+ - | 修正文档错误 | [4317593](https://github.com/zct1989/vue-web-service/commit/4317593)
  - | 修正输入框拖动异常 | [725c32a](https://github.com/zct1989/vue-web-service/commit/725c32a)
  - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)
  - | 添加unread显示 | [5453bd0](https://github.com/zct1989/vue-web-service/commit/5453bd0)

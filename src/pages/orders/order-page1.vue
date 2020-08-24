@@ -49,7 +49,9 @@
             </template>
             <!--操作行为项-->
             <template #action>
-                <a-button type="primary">{{ $t('action.create') }}</a-button>
+                <a-button type="primary" @click="onCreateNew">{{
+                    $t('action.create')
+                }}</a-button>
                 <a-button>{{ $t('action.delete') }}</a-button>
             </template>
         </data-form>
@@ -159,6 +161,8 @@ export default class OrderPage1 extends Vue {
     // 详情项
     private detail = null
 
+    private index = 1
+
     // 校验规则
     private get rules() {
         return {
@@ -200,6 +204,16 @@ export default class OrderPage1 extends Vue {
      * 删除订单操作
      */
     private onDelete(id) {}
+
+    private onCreateNew() {
+        this.$app.openTab({
+            name: 'order-detail',
+            title: `名称测试-${this.index}`,
+            path: `/orders/order-detail/${this.index}`
+        })
+
+        this.index += 1
+    }
 }
 </script>
 

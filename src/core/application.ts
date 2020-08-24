@@ -56,10 +56,13 @@ export default class Application {
         // 添加插件
         Vue.use({
             install: () => {
+                const store = ApplicationStore.getStore()
                 Vue.prototype.$app = {
                     router: this.router,
-                    store: ApplicationStore.getStore(),
-                    state: ApplicationStore.getStore().state
+                    store: store,
+                    state: store.state,
+                    openTab: tab => store.commit('openTab', tab),
+                    closeTab: tab => store.commit('closeTab', tab)
                 }
             }
         })

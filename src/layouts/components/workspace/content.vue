@@ -1,7 +1,7 @@
 <template>
     <section class="layout-component content full-absolute">
         <transition name="fade">
-            <keep-alive :include="tabs">
+            <keep-alive>
                 <router-view></router-view>
             </keep-alive>
         </transition>
@@ -16,7 +16,7 @@ import { Vue, Component } from 'vue-property-decorator'
 })
 export default class Content extends Vue {
     private get tabs() {
-        return this.$app.state.tabs
+        return this.$app.state.tabs.filter(x => x.name)
     }
 }
 </script>

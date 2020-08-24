@@ -35,7 +35,11 @@ export default class PageContainer extends Vue {
      */
     private get pageTitle() {
         const name = this.$parent.$options.name
-        return this.title || this.$t(`menu.${name}`)
+        return (
+            this.title ||
+            this.$app.state.currentTab.title ||
+            this.$t(`menu.${name}`)
+        )
     }
 
     public scrollToBottom() {

@@ -1,20 +1,16 @@
 <template>
     <section class="layout-component tabs full-absolute">
         <a-tabs
-            :active-key="activePage"
+            :active-key="currentTab.name"
             :hide-add="true"
             type="editable-card"
             @change="changePage"
             @edit="editPage"
         >
-            <a-tab-pane
-                :id="page.name"
-                :key="page.name"
-                v-for="page in pageList"
-            >
+            <a-tab-pane :id="page.id" :key="page.id" v-for="page in tabs">
                 <template v-slot:tab>
-                    <span :pagekey="page.name">{{
-                        $t(`menu.${page.name}`)
+                    <span :pagekey="page.id">{{
+                        page.title || $t(`menu.${page.name}`)
                     }}</span>
                 </template>
             </a-tab-pane>
@@ -24,32 +20,28 @@
 
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator'
-
+import { State } from 'vuex-class'
 @Component({
     components: {}
 })
 export default class Tabs extends Vue {
-    // 页面列表
-    private pageList: any[] = []
-    // 当前页面
-    private activePage = ''
-
     private created() {
         if (this.$route && this.$route.name) {
-            this.pageList.push(this.$route)
-            this.activePage = this.$route.name
+            this.$app.store.commit('openTab', {
+                name: this.$route.name,
+                path: this.$route.path,
+                params: this.$route.params,
+                query: this.$route.query
+            })
         }
     }
 
-    /**
-     * 更新tabs列表
-     */
-    @Watch('pageList')
-    private onPageListChange(list) {
-        this.$app.store.commit(
-            'updateTabs',
-            list.map(x => x.name)
-        )
+    private get tabs() {
+        return this.$app.store.state.tabs
+    }
+
+    private get currentTab() {
+        return this.$app.store.state.currentTab
     }
 
     /**
@@ -57,23 +49,44 @@ export default class Tabs extends Vue {
      */
     @Watch('$route')
     onRouteChange(newRoute, oldRoute) {
-        const page = this.pageList.find(x => x.name === newRoute.name)
-        if (!page) {
-            this.pageList.push(newRoute)
+        const currentTab = this.$app.state.currentTab
+        if (
+            newRoute.name !== currentTab.name &&
+            newRoute.path !== currentTab.path
+        ) {
+            this.$app.store.commit('openTab', {
+                name: newRoute.name,
+                path: newRoute.path,
+                params: newRoute.params,
+                query: newRoute.query
+            })
         }
-
-        this.activePage = newRoute.name
     }
 
     /**
      * 监听激活页面改变
      */
-    @Watch('activePage')
-    onActivePageChange(newName, oldName) {
-        if (this.$route.name !== newName) {
-            this.$router.push({
-                name: newName
-            })
+    @Watch('currentTab')
+    onCurrentTabChange(newTab, oldTab) {
+        if (
+            (newTab && this.$route.name !== newTab.name) ||
+            this.$route.path !== newTab.path
+        ) {
+            if (newTab.path) {
+                return this.$router.push({
+                    path: newTab.path,
+                    params: newTab.params,
+                    query: newTab.query
+                })
+            }
+
+            if (newTab.name) {
+                return this.$router.push({
+                    name: newTab.name,
+                    params: newTab.params,
+                    query: newTab.query
+                })
+            }
         }
     }
 
@@ -81,7 +94,8 @@ export default class Tabs extends Vue {
      * 页面改变
      */
     private changePage(key) {
-        this.activePage = key
+        const tab = this.tabs.find(x => x.id === key)
+        this.$app.store.commit('updateCurrentTab', tab)
     }
 
     /**
@@ -94,17 +108,10 @@ export default class Tabs extends Vue {
     /**
      * 关闭标签页
      */
-    private remove(key) {
-        if (this.pageList.length === 1) {
-            this.$message.warning('这是最后一页，不能再关闭了啦')
-            return
-        }
-
-        let index = this.pageList.findIndex(item => item.name === key)
-        this.pageList = this.pageList.filter(item => item.name !== key)
-
-        index = index >= this.pageList.length ? this.pageList.length - 1 : index
-        this.activePage = this.pageList[index].name
+    private remove(id) {
+        this.$app.store.commit('closeTab', {
+            id
+        })
     }
 }
 </script>
