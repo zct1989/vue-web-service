@@ -1,7 +1,7 @@
 <template>
     <section class="layout-component content full-absolute">
         <transition name="fade">
-            <keep-alive :include="tabs">
+            <keep-alive>
                 <router-view></router-view>
             </keep-alive>
         </transition>

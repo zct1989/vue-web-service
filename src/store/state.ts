@@ -1,6 +1,6 @@
 export default {
     // 字典数据
-    // dictData: {},
+    dictData: {},
     // 菜单资源
     menuResource: [],
     // // 激活菜单

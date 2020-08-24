@@ -7,7 +7,20 @@ export default {
     updateUserMenuResource(state, rescource) {
         state.menuResource = rescource
     },
+    /**
+     * 更新当前菜单
+     * @param state
+     * @param menu
+     */
     updateMenuActive(state, menu) {
         state.menuActive = menu
+    },
+    /**
+     * 更新字典数据
+     * @param state
+     * @param dict
+     */
+    updateDict(state, dict) {
+        state.dictData = Object.assign(state.dictData, dict)
     }
 }

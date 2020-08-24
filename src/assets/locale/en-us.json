@@ -27,7 +27,8 @@
         "demo-mobile": "Demo",
         "customer": " Customer",
         "customer-manage": "Customer Manage",
-        "chat-box": "Chat Box"
+        "chat-box": "Chat Box",
+        "order-detail": "Order Detail"
     },
     "dict": {
         "all": "ALL",

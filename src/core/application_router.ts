@@ -143,6 +143,8 @@ export class ApplicationRouter {
     }
 
     private importAutoRoutes() {
+        const configRoutes = this.router['options'].routes
+
         if (process.env.ROUTERS) {
             const routes = process.env.ROUTERS as any
 
@@ -150,15 +152,17 @@ export class ApplicationRouter {
                 const { default: component } = require('~/pages/' +
                     route.componentPath)
                 const { $name: name, $meta: meta } = component
-                this.router.addRoutes([
-                    {
-                        name,
-                        meta,
-                        path: route.routePath,
-                        component: () =>
-                            import('~/pages/' + route.componentPath)
-                    }
-                ])
+                if (!configRoutes.find(x => x.name === name)) {
+                    this.router.addRoutes([
+                        {
+                            name,
+                            meta,
+                            path: route.routePath,
+                            component: () =>
+                                import('~/pages/' + route.componentPath)
+                        }
+                    ])
+                }
             })
         }
     }

@@ -22,7 +22,7 @@ module.exports = {
                     },
                     {
                         title: '表单布局',
-                        path: '/basic/DATA-FROM'
+                        path: '/basic/DATA-FORM'
                     }
                 ]
             }

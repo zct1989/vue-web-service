@@ -1,8 +1,26 @@
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import MobileDetect from 'mobile-detect'
+import router from '@/router'
+import { message } from 'ant-design-vue'
+import { ConsoleLoggerService } from '@/shared/utils/logger.service'
+
+export enum RedirectMethod {
+    Auto = 'auto',
+    Redirect = 'redirect',
+    Router = 'router'
+}
 
 const detect = new MobileDetect(navigator.userAgent)
+
+interface Tab {
+    title?: string
+    name?: string
+    path?: string
+    params?: any
+    query?: any
+}
+
 /**
  * 应用内部数据存储
  */
@@ -32,6 +50,8 @@ export class ApplicationStore {
                 ready: false,
                 // 选项卡标签
                 tabs: [],
+                // 当前标签页
+                currentTab: '',
                 // 当前布局
                 layout: 'loading',
                 // 当前主题
@@ -66,8 +86,91 @@ export class ApplicationStore {
                  * @param state
                  * @param tabs
                  */
-                updateTabs(state, tabs) {
+                closeTab(
+                    state: any,
+                    {
+                        id,
+                        name,
+                        method = RedirectMethod.Auto,
+                        redirectName
+                    }: {
+                        id?: string
+                        name?: string
+                        method: RedirectMethod
+                        redirectName?: string
+                    }
+                ) {
+                    if (state.tabs.length === 1) {
+                        message.warning('这是最后一页，不能再关闭了啦')
+                        return
+                    }
+                    // 获取需要关闭的页面名称
+                    let index = -1
+                    const tabs = [...state.tabs]
+
+                    if (id) {
+                        // 获取需要关闭的页面Index
+                        index = state.tabs.findIndex(item => item.id === id)
+                    } else {
+                        name = name || state.currentTab.name
+                        // 获取需要关闭的页面Index
+                        index = state.tabs.findIndex(item => item.name === name)
+                    }
+
+                    // 删除目标tab
+                    tabs.splice(index, 1)
+
+                    switch (method) {
+                        case RedirectMethod.Auto:
+                            index =
+                                index >= tabs.length ? tabs.length - 1 : index
+                            state.currentTab = tabs[index]
+                            break
+                        case RedirectMethod.Router:
+                            router.back()
+                            break
+                        case RedirectMethod.Redirect: {
+                            const tab = state.tabs.find(
+                                x => x.name === x.redirectName
+                            )
+
+                            if (tab) {
+                                state.currentTab = tabs[index]
+                            } else {
+                                router.push({ name: redirectName })
+                            }
+                        }
+                    }
+
                     state.tabs = tabs
+                },
+                /**
+                 * 更新Tabs列表
+                 * @param state
+                 * @param tabs
+                 */
+                openTab(state, tab) {
+                    const tabs: any[] = state.tabs
+
+                    if (!tab.name && !tab.path) {
+                        return
+                    }
+
+                    tab.id = `${tab.name || ''}_${tab.path || ''}`
+
+                    if (!tabs.find(x => x.id === tab.id)) {
+                        tabs.push(tab)
+                    }
+
+                    state.currentTab = tab
+                },
+                /**
+                 * 更新激活tab
+                 * @param state
+                 * @param tab
+                 */
+                updateCurrentTab(state, tab) {
+                    state.currentTab = tab
                 },
                 /**
                  * 更新当前布局

@@ -1,4 +1,4 @@
-# 0.1.0 (2020-03-10)
+# 0.1.0 (2020-08-24)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -9,6 +9,7 @@
  - | 添加commitlint&change-log'支持 | [801c43c](https://github.com/zct1989/vue-web-service/commit/801c43c)
  - | 添加Loading服务 | [1ba898b](https://github.com/zct1989/vue-web-service/commit/1ba898b)
  - | 添加modal-service | [908bc36](https://github.com/zct1989/vue-web-service/commit/908bc36)
+ - | 添加store字典支持 | [0bd24e1](https://github.com/zct1989/vue-web-service/commit/0bd24e1)
  - | 添加table斑马纹示例 | [7c7be29](https://github.com/zct1989/vue-web-service/commit/7c7be29)
  - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
  - | 添加侧边菜单多层级支持 | [14a4e3b](https://github.com/zct1989/vue-web-service/commit/14a4e3b)
@@ -25,11 +26,13 @@
  - | 添加日历示例&&添加登录模块 | [21665df](https://github.com/zct1989/vue-web-service/commit/21665df)
  - | 添加日历详情页面 | [bf0e8c8](https://github.com/zct1989/vue-web-service/commit/bf0e8c8)
  - | 添加日志文档 | [0945ed9](https://github.com/zct1989/vue-web-service/commit/0945ed9)
+ - | 添加登录请求 | [593729b](https://github.com/zct1989/vue-web-service/commit/593729b)
  - | 添加示例模块 | [061b592](https://github.com/zct1989/vue-web-service/commit/061b592)
  - | 添加示例模块 | [510d3bb](https://github.com/zct1989/vue-web-service/commit/510d3bb)
  - | 添加示例页面 | [fe574ab](https://github.com/zct1989/vue-web-service/commit/fe574ab)
  - | 添加移动端显示支持 | [8b98752](https://github.com/zct1989/vue-web-service/commit/8b98752)
  - | 添加网络通讯示例 | [88afb00](https://github.com/zct1989/vue-web-service/commit/88afb00)
+ - | 添加表格编辑示例 | [d29f099](https://github.com/zct1989/vue-web-service/commit/d29f099)
  - | 添加部分页面示例 | [94fef2c](https://github.com/zct1989/vue-web-service/commit/94fef2c)
 
 
@@ -51,6 +54,7 @@
  - | 修正chat-user-list 排序 | [b40737c](https://github.com/zct1989/vue-web-service/commit/b40737c)
  - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
  - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
+ - | 修正文档错误 | [4317593](https://github.com/zct1989/vue-web-service/commit/4317593)
  - | 修正输入框拖动异常 | [725c32a](https://github.com/zct1989/vue-web-service/commit/725c32a)
  - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)
  - | 添加unread显示 | [5453bd0](https://github.com/zct1989/vue-web-service/commit/5453bd0)
