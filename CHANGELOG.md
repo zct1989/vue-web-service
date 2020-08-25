@@ -1,4 +1,4 @@
-# 0.1.0 (2020-08-24)
+# 0.1.0 (2020-08-25)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -16,6 +16,7 @@
  - | 添加分页功能 | [ec1674f](https://github.com/zct1989/vue-web-service/commit/ec1674f)
  - | 添加动态扩展功能 | [5d21832](https://github.com/zct1989/vue-web-service/commit/5d21832)
  - | 添加图表示例 | [22af706](https://github.com/zct1989/vue-web-service/commit/22af706)
+ - | 添加多tab管理支持 | [d51b6ff](https://github.com/zct1989/vue-web-service/commit/d51b6ff)
  - | 添加字典多语言翻译支持&添加表单校验示例 | [b52ef11](https://github.com/zct1989/vue-web-service/commit/b52ef11)
  - | 添加客户示例 | [b04f7bd](https://github.com/zct1989/vue-web-service/commit/b04f7bd)
  - | 添加弹窗功能示例 | [d96afec](https://github.com/zct1989/vue-web-service/commit/d96afec)

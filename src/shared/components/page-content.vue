@@ -16,5 +16,7 @@ export default class PageContent extends Vue {}
 <style lang="less" scoped>
 .page-content {
     margin: 24px 24px 0;
+    position: relative;
+    overflow: auto;
 }
 </style>

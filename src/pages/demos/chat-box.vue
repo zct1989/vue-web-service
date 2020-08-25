@@ -21,7 +21,13 @@
                 <chat-user-order></chat-user-order>
             </div>
             <div class="user-input-wrap ">
-                <div class="split" ref="split"></div>
+                <div
+                    class="split"
+                    ref="split"
+                    draggable="true"
+                    @dragenter="preventDrag"
+                    @dragover="preventDrag"
+                ></div>
                 <div class="full-height wrap">
                     <chat-user-input></chat-user-input>
                 </div>
@@ -75,12 +81,17 @@ export default class ChatBox extends Vue {
     private setupDrag() {
         this.split.onmousedown = () => (this.moving = true)
         this.container.onmouseup = () => (this.moving = false)
+        this.container.onmouseup = () => (this.moving = false)
         this.container.onmouseleave = () => (this.moving = false)
         this.container.onmousemove = ({ movementY }) => {
             if (!this.moving) return
             if (movementY > 0 && this.inputHeight <= 200) return
             this.inputHeight -= movementY
         }
+    }
+
+    private preventDrag(event) {
+        event.preventDefault()
     }
 
     // grid-template-rows: 60px auto 219px;

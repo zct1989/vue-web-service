@@ -1,5 +1,5 @@
 <template>
-    <section class="page-container">
+    <section class="page-container flex-column">
         <PageHeader :title="pageTitle">
             <slot name="header-action" slot="action"></slot>
             <slot name="header-content" slot="content"></slot>
@@ -9,7 +9,7 @@
             </div>
             <slot name="extra" slot="extra"></slot>
         </PageHeader>
-        <PageContent>
+        <PageContent class="flex-auto">
             <slot></slot>
         </PageContent>
     </section>
