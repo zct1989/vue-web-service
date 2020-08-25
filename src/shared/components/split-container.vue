@@ -4,15 +4,15 @@
         class="split-container justify-content-center align-items-center"
         :class="{
             moving: moving,
-            'flex-column': mode === 'horizontal',
-            'flex-row': mode === 'vertical'
+            'flex-column': mode === 'column',
+            'flex-row': mode === 'row'
         }"
     >
-        <template v-if="mode === 'horizontal'">
+        <template v-if="mode === 'column'">
             <div class="top-wrapper flex-auto">
                 <slot name="top"></slot>
             </div>
-            <div class="split horizontal" ref="split"></div>
+            <div class="split column" ref="split"></div>
             <div
                 class="down-wrap"
                 :style="{
@@ -24,11 +24,11 @@
             </div>
         </template>
 
-        <template v-if="mode === 'vertical'">
+        <template v-if="mode === 'row'">
             <div class="left-wrapper flex-auto">
                 <slot name="left"></slot>
             </div>
-            <div class="split vertical" ref="split"></div>
+            <div class="split row" ref="split"></div>
             <div
                 class="right-wrap"
                 :style="{
@@ -53,7 +53,7 @@ export default class SplitContainer extends Vue {
     @Ref('container')
     private container!: HTMLDivElement
 
-    @Prop({ default: 'horizontal' })
+    @Prop({ default: 'column' })
     private mode
 
     private fixedHeight = 200
@@ -78,7 +78,7 @@ export default class SplitContainer extends Vue {
         this.container.onmousemove = ({ movementX, movementY }) => {
             if (!this.moving) return
 
-            if (this.mode === 'horizontal') {
+            if (this.mode === 'column') {
                 if (movementY > 0 && this.fixedHeight <= 200) return
                 this.fixedHeight -= movementY
             } else {
@@ -104,7 +104,7 @@ export default class SplitContainer extends Vue {
     flex-basis: 3px;
     background: rgb(200, 200, 200);
 
-    &.horizontal {
+    &.column {
         width: 100%;
         height: 3px;
         &:hover {
@@ -112,7 +112,7 @@ export default class SplitContainer extends Vue {
         }
     }
 
-    &.vertical {
+    &.row {
         height: 100%;
         width: 3px;
         &:hover {

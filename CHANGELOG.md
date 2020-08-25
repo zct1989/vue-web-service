@@ -9,6 +9,7 @@
  - | 添加commitlint&change-log'支持 | [801c43c](https://github.com/zct1989/vue-web-service/commit/801c43c)
  - | 添加Loading服务 | [1ba898b](https://github.com/zct1989/vue-web-service/commit/1ba898b)
  - | 添加modal-service | [908bc36](https://github.com/zct1989/vue-web-service/commit/908bc36)
+ - | 添加split-container组件 | [920a0c4](https://github.com/zct1989/vue-web-service/commit/920a0c4)
  - | 添加store字典支持 | [0bd24e1](https://github.com/zct1989/vue-web-service/commit/0bd24e1)
  - | 添加table斑马纹示例 | [7c7be29](https://github.com/zct1989/vue-web-service/commit/7c7be29)
  - | 添加webpack chunk split | [be61afb](https://github.com/zct1989/vue-web-service/commit/be61afb)
