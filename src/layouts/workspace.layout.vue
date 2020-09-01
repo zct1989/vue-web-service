@@ -31,7 +31,11 @@ import Header from './components/workspace/header.vue'
 import SideMenu from './components/workspace/side-menu.vue'
 import Tabs from './components/workspace/tabs.vue'
 import Content from './components/workspace/content.vue'
+import { Layout } from '@/core/decorators'
 
+@Layout({
+    name: 'WorkspaceLayout'
+})
 @Component({
     components: { Header, SideMenu, Logo, Tabs, Content }
 })

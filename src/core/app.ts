@@ -15,7 +15,7 @@ import { antdLocale } from '@/assets/locale'
                 result = (requireContext =>
                     requireContext.keys().map(requireContext))(req).map(
                     (layout: any) => ({
-                        name: layout.default.options.name,
+                        name: layout.default.$name,
                         component: layout.default
                     })
                 )

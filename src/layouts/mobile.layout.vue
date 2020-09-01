@@ -19,6 +19,11 @@ import { State } from 'vuex-class'
 import fullscreen from 'fullscreen'
 import Content from './components/mobile/content.vue'
 import Header from './components/mobile/header.vue'
+import { Layout } from '@/core/decorators'
+
+@Layout({
+    name: 'MobileLayout'
+})
 @Component({
     components: { Content, Header }
 })

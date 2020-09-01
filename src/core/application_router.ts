@@ -143,7 +143,7 @@ export class ApplicationRouter {
     }
 
     private importAutoRoutes() {
-        const configRoutes = this.router['options'].routes
+        const configRoutes = this.router['options'].routes as any
 
         if (process.env.ROUTERS) {
             const routes = process.env.ROUTERS as any

@@ -5,10 +5,11 @@ const svgExtend = require('./extends/svg.extend')
 const i18nExtend = require('./extends/i18n.extend')
 const markdownExtend = require('./extends/markdown.extend')
 const proxyConfig = require('./proxy.config')
+const CompressionPlugin = require('compression-webpack-plugin')
+
 module.exports = {
     // 资源根路径
-    publicPath:
-        process.env.NODE_ENV === 'production' ? '/vue-web-service/' : '/',
+    publicPath: '/',
     // 静态资源路径
     assetsDir: process.env.NODE_ENV === 'production' ? 'static' : '',
     // 生产环境下sourcemap
@@ -26,17 +27,43 @@ module.exports = {
         // Markdown扩展
         markdownExtend(config)
     },
-    configureWebpack: {
-        module: {
-            unknownContextCritical: false
-        },
-        optimization: {
-            minimize: false,
-            splitChunks: {
-                minSize: 20000,
-                maxSize: 500000
+    configureWebpack(config) {
+        const baseConfig = {
+            module: {
+                unknownContextCritical: false
             }
         }
+
+        // 开发模式配置
+        const developmentConfig = {}
+
+        // 生产模式配置
+        const productionConfig = {
+            optimization: {
+                minimize: true,
+                splitChunks: {
+                    minSize: 2000,
+                    maxSize: 500000
+                }
+            },
+            plugins: [
+                new CompressionPlugin({
+                    filename: '[path].gz',
+                    algorithm: 'gzip',
+                    test: /\.js$|\.css$|\.svg$/,
+                    threshold: 10240,
+                    minRatio: 0.8,
+                    compressionOptions: {
+                        level: 9
+                    },
+                    deleteOriginalAssets: false
+                })
+            ]
+        }
+
+        return process.env.NODE_ENV === 'production'
+            ? Object.assign(baseConfig, productionConfig)
+            : Object.assign(baseConfig, developmentConfig)
     },
     devServer: {
         host: '0.0.0.0',

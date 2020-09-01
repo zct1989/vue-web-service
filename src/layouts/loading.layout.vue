@@ -19,7 +19,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Layout } from '@/core/decorators'
 
+@Layout({
+    name: 'LoadingLayout'
+})
 @Component({
     components: {}
 })
