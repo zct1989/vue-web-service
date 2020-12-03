@@ -1,10 +1,8 @@
 <template>
-    <a-config-provider :getPopupContainer="getPopupContainer">
-        <a-locale-provider :locale="locale">
-            <main class="full-absolute" ref="main">
-                <slot></slot>
-            </main>
-        </a-locale-provider>
+    <a-config-provider :getPopupContainer="getPopupContainer" :locale="locale">
+        <main class="full-absolute" ref="main">
+            <slot></slot>
+        </main>
     </a-config-provider>
 </template>
 
