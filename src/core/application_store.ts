@@ -81,6 +81,33 @@ export class ApplicationStore {
                 updateReady(state, value: boolean) {
                     state.ready = value
                 },
+                clearOtherTabs(state: any, name: string) {
+                    // 获取需要关闭的页面名称
+                    name = name || state.currentTab.name
+                    // 修改页面tabs
+                    const tabs = state.tabs.filter(item => item.name === name)
+
+                    state.currentTab = tabs[0]
+                    state.tabs = tabs
+                },
+                clearRightTabs(state: any, name: string) {
+                    // 获取需要关闭的页面名称
+                    name = name || state.currentTab.name
+                    // 目标Index
+                    let index = state.tabs.findIndex(item => item.name === name)
+                    // 当前Tab的Index
+                    let currentindex = state.tabs.findIndex(
+                        item => item.name === state.currentTab.name
+                    )
+                    // 修改页面tabs
+                    const tabs = state.tabs.slice(0, index + 1)
+
+                    if (currentindex > index) {
+                        state.currentTab = tabs[index]
+                    }
+
+                    state.tabs = tabs
+                },
                 /**
                  * 更新Tabs列表
                  * @param state

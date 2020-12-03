@@ -9,9 +9,23 @@
         >
             <a-tab-pane :id="page.name" :key="page.name" v-for="page in tabs">
                 <template v-slot:tab>
-                    <span :pagekey="page.name">{{
-                        page.title || $t(`menu.${page.name}`)
-                    }}</span>
+                    <a-dropdown :trigger="['contextmenu']">
+                        <span :pagekey="page.name" class="no-select">{{
+                            page.title || $t(`menu.${page.name}`)
+                        }}</span>
+                        <a-menu slot="overlay">
+                            <a-menu-item>
+                                <a @click="onCloseOtherTabs(page.name)"
+                                    >关闭其他</a
+                                >
+                            </a-menu-item>
+                            <a-menu-item>
+                                <a @click="onCloseRightTabs(page.name)"
+                                    >关闭右侧</a
+                                >
+                            </a-menu-item>
+                        </a-menu>
+                    </a-dropdown>
                 </template>
             </a-tab-pane>
         </a-tabs>
@@ -37,7 +51,6 @@ export default class Tabs extends Vue {
     }
 
     private get tabs() {
-        console.log(this.$app.store.state.tabs)
         return this.$app.store.state.tabs
     }
 
@@ -113,6 +126,14 @@ export default class Tabs extends Vue {
         this.$app.store.commit('closeTab', {
             id
         })
+    }
+
+    private onCloseOtherTabs(name) {
+        this.$app.store.commit('clearOtherTabs', name)
+    }
+
+    private onCloseRightTabs(name) {
+        this.$app.store.commit('clearRightTabs', name)
     }
 }
 </script>

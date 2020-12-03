@@ -11,6 +11,7 @@
  - | 修正chat-box大小 | [2fb68b7](https://github.com/zct1989/vue-web-service/commit/2fb68b7)
  - | 修正chat-user-list 排序 | [b40737c](https://github.com/zct1989/vue-web-service/commit/b40737c)
  - | 修正split参数类型 | [8d7fce7](https://github.com/zct1989/vue-web-service/commit/8d7fce7)
+ - | 修正tab无法显示选中状态 | [79aa547](https://github.com/zct1989/vue-web-service/commit/79aa547)
  - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
  - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
  - | 修正文档错误 | [4317593](https://github.com/zct1989/vue-web-service/commit/4317593)
