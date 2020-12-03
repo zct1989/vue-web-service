@@ -7,9 +7,9 @@
             @change="changePage"
             @edit="editPage"
         >
-            <a-tab-pane :id="page.id" :key="page.id" v-for="page in tabs">
+            <a-tab-pane :id="page.name" :key="page.name" v-for="page in tabs">
                 <template v-slot:tab>
-                    <span :pagekey="page.id">{{
+                    <span :pagekey="page.name">{{
                         page.title || $t(`menu.${page.name}`)
                     }}</span>
                 </template>
@@ -37,6 +37,7 @@ export default class Tabs extends Vue {
     }
 
     private get tabs() {
+        console.log(this.$app.store.state.tabs)
         return this.$app.store.state.tabs
     }
 
@@ -94,7 +95,7 @@ export default class Tabs extends Vue {
      * 页面改变
      */
     private changePage(key) {
-        const tab = this.tabs.find(x => x.id === key)
+        const tab = this.tabs.find(x => x.name === key)
         this.$app.store.commit('updateCurrentTab', tab)
     }
 

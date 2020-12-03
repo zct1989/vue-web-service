@@ -1,5 +1,31 @@
 # 0.1.0 (2020-12-03)
 
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ - | 修复local-config | [c72f4c9](https://github.com/zct1989/vue-web-service/commit/c72f4c9)
+ - | 修改chat布局 | [9f01e89](https://github.com/zct1989/vue-web-service/commit/9f01e89)
+ - | 修改selectRowKeys为public | [3205aee](https://github.com/zct1989/vue-web-service/commit/3205aee)
+ - | 修改vue.config | [b6d157d](https://github.com/zct1989/vue-web-service/commit/b6d157d)
+ - | 修改聊天页面用户选择 | [438edeb](https://github.com/zct1989/vue-web-service/commit/438edeb)
+ - | 修正chat-box大小 | [2fb68b7](https://github.com/zct1989/vue-web-service/commit/2fb68b7)
+ - | 修正chat-user-list 排序 | [b40737c](https://github.com/zct1989/vue-web-service/commit/b40737c)
+ - | 修正split参数类型 | [8d7fce7](https://github.com/zct1989/vue-web-service/commit/8d7fce7)
+ - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
+ - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
+ - | 修正文档错误 | [4317593](https://github.com/zct1989/vue-web-service/commit/4317593)
+ - | 修正输入框拖动异常 | [725c32a](https://github.com/zct1989/vue-web-service/commit/725c32a)
+ - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)
+ - | 添加unread显示 | [5453bd0](https://github.com/zct1989/vue-web-service/commit/5453bd0)
+ - | 添加付款方式示例 | [f0523d1](https://github.com/zct1989/vue-web-service/commit/f0523d1)
+ - | 添加客户信息 | [39e2074](https://github.com/zct1989/vue-web-service/commit/39e2074)
+ - | 添加弹窗示例 | [8c1618d](https://github.com/zct1989/vue-web-service/commit/8c1618d)
+ - | 添加打印标识 | [4c627a3](https://github.com/zct1989/vue-web-service/commit/4c627a3)
+ - | 添加模版选择按钮 | [8d10329](https://github.com/zct1989/vue-web-service/commit/8d10329)
+ - | 添加订单搜索弹出窗 | [5152063](https://github.com/zct1989/vue-web-service/commit/5152063)
+ - | 添加输出框最低高度 | [13fcfdf](https://github.com/zct1989/vue-web-service/commit/13fcfdf)
+
+
 范围|描述|commitId
 --|--|--
  - | 添加dockerfile支持 | [0616135](https://github.com/zct1989/vue-web-service/commit/0616135)
@@ -84,31 +110,6 @@
 --|--|--
  - | remove console.log | [b524ccb](https://github.com/zct1989/vue-web-service/commit/b524ccb)
  - | 修正代码格式 | [c93bef2](https://github.com/zct1989/vue-web-service/commit/c93bef2)
-
-
-### 🐛 Bug 修复
-范围|描述|commitId
---|--|--
- - | 修改chat布局 | [9f01e89](https://github.com/zct1989/vue-web-service/commit/9f01e89)
- - | 修改selectRowKeys为public | [3205aee](https://github.com/zct1989/vue-web-service/commit/3205aee)
- - | 修改vue.config | [b6d157d](https://github.com/zct1989/vue-web-service/commit/b6d157d)
- - | 修改聊天页面用户选择 | [438edeb](https://github.com/zct1989/vue-web-service/commit/438edeb)
- - | 修正chat-box大小 | [2fb68b7](https://github.com/zct1989/vue-web-service/commit/2fb68b7)
- - | 修正chat-user-list 排序 | [b40737c](https://github.com/zct1989/vue-web-service/commit/b40737c)
- - | 修正split参数类型 | [8d7fce7](https://github.com/zct1989/vue-web-service/commit/8d7fce7)
- - | 修正代码格式 | [1eda521](https://github.com/zct1989/vue-web-service/commit/1eda521)
- - | 修正守卫认证方式 | [8eaecfb](https://github.com/zct1989/vue-web-service/commit/8eaecfb)
- - | 修正文档错误 | [4317593](https://github.com/zct1989/vue-web-service/commit/4317593)
- - | 修正输入框拖动异常 | [725c32a](https://github.com/zct1989/vue-web-service/commit/725c32a)
- - | 展示去除分页服务 | [58d0ac6](https://github.com/zct1989/vue-web-service/commit/58d0ac6)
- - | 添加unread显示 | [5453bd0](https://github.com/zct1989/vue-web-service/commit/5453bd0)
- - | 添加付款方式示例 | [f0523d1](https://github.com/zct1989/vue-web-service/commit/f0523d1)
- - | 添加客户信息 | [39e2074](https://github.com/zct1989/vue-web-service/commit/39e2074)
- - | 添加弹窗示例 | [8c1618d](https://github.com/zct1989/vue-web-service/commit/8c1618d)
- - | 添加打印标识 | [4c627a3](https://github.com/zct1989/vue-web-service/commit/4c627a3)
- - | 添加模版选择按钮 | [8d10329](https://github.com/zct1989/vue-web-service/commit/8d10329)
- - | 添加订单搜索弹出窗 | [5152063](https://github.com/zct1989/vue-web-service/commit/5152063)
- - | 添加输出框最低高度 | [13fcfdf](https://github.com/zct1989/vue-web-service/commit/13fcfdf)
 
 
 ### 📝 文档
